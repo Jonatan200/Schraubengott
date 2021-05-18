@@ -621,8 +621,13 @@ public partial class MainWindow : Window
 
             return newfeld;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            CatiaControl.Catia_Starten();
+        }
+
     }
 
-  
 }
 

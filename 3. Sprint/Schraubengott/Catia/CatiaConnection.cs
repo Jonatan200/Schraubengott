@@ -14,8 +14,8 @@ namespace Schraubengott
     {
        
         INFITF.Application hsp_catiaApp;
-        MECMOD.PartDocument SchraubePart;
-
+        MECMOD.PartDocument hsp_catiaPart;
+        Sketch hsp_catiaProfil;
 
 
         public bool CATIALaeuft()
@@ -39,35 +39,94 @@ namespace Schraubengott
             Documents catDokument = hsp_catiaApp.Documents;
 
             //Datei erstellen
-             SchraubePart =(PartDocument) catDokument.Add("Part");
+             hsp_catiaPart =(PartDocument) catDokument.Add("Part");
         }
 
 
         internal void LeereSkizzeErzeugen()
         {
-            HybridBodies geometrischeKörper1 = SchraubePart.Part.HybridBodies;
-
-            //geometrischen Körper erstellen 
-            HybridBody geometrischerKörper1;
+            HybridBodies catHybridbodys1 = hsp_catiaPart.Part.HybridBodies;
+            HybridBody catHybridBody1;
             try
             {
-                geometrischerKörper1 = geometrischeKörper1.Item("Geometrisches Set.1");
+                catHybridBody1 = catHybridbodys1.Item("Geometrisches Set.1");
             }
             catch (Exception)
             {
-                MessageBox.Show("Kein Geometrisches Set gefunden", "Fehler");MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+               /* MessageBox.Show("Kein Geometrisches Set gefunden", "Fehler");MessageBoxButton.OK, MessageBoxImage.Error);
+                */return;  
             }
             //Geometrisches Set Benennen 
-            geometrischerKörper1.set_Name("Schraube Außensechskannt");
+            catHybridBody1.set_Name("Schraube Außensechskannt");
 
-            Sketches Skizze = geometrischerKörper1.HybridSketches;
+            //Skizze erstellen 
+            Sketches catSketches = catHybridBody1.HybridSketches;
+
+            // Ebene festlegen ? 
+            OriginElements catoriginElements = hsp_catiaPart.Part.OriginElements;
+            Reference catRef = (Reference) catoriginElements.PlaneYZ;
+            
+            //Zkizze in YZ Ebene hizufügen 
+             hsp_catiaProfil = catSketches.Add(catRef);
+
+            ErzeugeAchsensystem();
+
+            hsp_catiaPart.Part.Update();
         }
 
+        private void ErzeugeAchsensystem()
+        {
+            object[] arr = new object[] {0.0, 0.0, 0.0,
+                                         0.0, 1.0, 0.0,
+                                         0.0, 0.0, 1.0 };
+            hsp_catiaProfil.SetAbsoluteAxisData(arr);
+        }
+
+        internal void ErzeugeProfiel()
+        {
+            hsp_catiaProfil.set_Name("Rechteck");
+            Factory2D catfactory2D = hsp_catiaProfil.OpenEdition();
+
+            Point2D catpoint2D1 = catfactory2D.CreatePoint(-50, 50);
+            Point2D catpoint2D2 = catfactory2D.CreatePoint(50, 50);
+            Point2D catpoint2D3 = catfactory2D.CreatePoint(50, -50);
+            Point2D catpoint2D4 = catfactory2D.CreatePoint(-50, -50);
+
+            Line2D catline2D1 = catfactory2D.CreateLine(-50, 50, 50, 50);
+            catline2D1.StartPoint = catpoint2D1;
+            catline2D1.EndPoint = catpoint2D2;
+
+            Line2D catline2D2 = catfactory2D.CreateLine(50, 50, 50, -50);
+            catline2D2.StartPoint = catpoint2D2;
+            catline2D2.EndPoint = catpoint2D3;
+
+            Line2D catline2D3 = catfactory2D.CreateLine(50, -50, -50, -50);
+            catline2D3.StartPoint = catpoint2D3;
+            catline2D3.EndPoint = catpoint2D4;
+
+            Line2D catline2D4 = catfactory2D.CreateLine(-50, -50, -50, 50);
+            catline2D4.StartPoint = catpoint2D4;
+            catline2D4.EndPoint = catpoint2D1;
+
+
+            hsp_catiaProfil.CloseEdition();
+            hsp_catiaPart.Part.Update();
+        }
+
+
+        internal void ErzeugeBalken()
+        {
+            hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
+            ShapeFactory shapFac = (ShapeFactory) hsp_catiaPart.Part.ShapeFactory;
+
+            Pad newPad = shapFac.AddNewPad(hsp_catiaProfil,100);
+            newPad.set_Name("Balken");
+            hsp_catiaPart.Part.Update();
+        }
         // 18:19 Minuten 
 
 
-  
+
 
 
 

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Schraubengott
 {
-     class CatiaControl
-    {
+     internal class CatiaControl
+     {
         CatiaControl()
         {
             try
@@ -26,10 +26,10 @@ namespace Schraubengott
                     cc.LeereSkizzeErzeugen();
 
                     // Generiere ein Profil
-                    cc.ErzeugeProfil(20, 10);
+                    cc.ErzeugeProfiel();
 
                     // Extrudiere Balken
-                    cc.ErzeugeBalken(300);
+                    cc.ErzeugeBalken();
                 }
                 else
                 {
@@ -38,12 +38,12 @@ namespace Schraubengott
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Exception aufgetreten");
+                // MessageBox.Show(ex.Message, "Exception aufgetreten");
             }
-
+              
         }
 
-        static void Main(string[] args)
+        public static void Catia_Starten()
         {
             new CatiaControl();
         }
