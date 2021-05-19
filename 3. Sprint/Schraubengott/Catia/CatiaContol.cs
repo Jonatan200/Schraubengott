@@ -26,10 +26,15 @@ namespace Schraubengott
                     cc.LeereSkizzeErzeugen();
 
                     // Generiere ein Profil
-                    cc.ErzeugeProfiel();
+                    cc.ZkizzeGewindestange();
 
                     // Extrudiere Balken
-                    cc.ErzeugeBalken();
+                    cc.ErzeugeGewindestange();
+
+
+
+                    cc.ZweiteSkizzeErzeugen();
+
                 }
                 else
                 {
