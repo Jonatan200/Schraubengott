@@ -15,7 +15,8 @@ namespace Schraubengott
        
         INFITF.Application hsp_catiaApp;
         MECMOD.PartDocument hsp_catiaPart;
-        Sketch hsp_catiaProfil;
+        Sketch sketch_zylinder;
+        Sketch sketch_Kopf;
         HybridBody catHybridBody1;
 
 
@@ -44,7 +45,7 @@ namespace Schraubengott
         }
 
         #region Gewindestange 
-        internal void LeereSkizzeErzeugen()
+        internal void ErsteSkizzeErstellen()
         {
             HybridBodies catHybridbodys1 = hsp_catiaPart.Part.HybridBodies;
             
@@ -68,7 +69,7 @@ namespace Schraubengott
             Reference catRef = (Reference) catoriginElements.PlaneYZ;
             
             //Zkizze in YZ Ebene hizufügen 
-             hsp_catiaProfil = catSketches.Add(catRef);
+             sketch_zylinder = catSketches.Add(catRef);
 
             ErzeugeAchsensystem();
 
@@ -80,40 +81,18 @@ namespace Schraubengott
             object[] arr = new object[] {0.0, 0.0, 0.0,
                                          0.0, 1.0, 0.0,
                                          0.0, 0.0, 1.0 };
-            hsp_catiaProfil.SetAbsoluteAxisData(arr);
+            sketch_zylinder.SetAbsoluteAxisData(arr);
         }
 
 
-        internal void ZkizzeGewindestange()
+        internal void ZkizzeZylinder(Schraube [] arr)
         {
-            hsp_catiaProfil.set_Name("Rechteck");
-            Factory2D catfactory2D = hsp_catiaProfil.OpenEdition();
+            sketch_zylinder.set_Name("Zylinder");
+            Factory2D catfactory2D = sketch_zylinder.OpenEdition();
 
-            Circle2D Zylinder1 = catfactory2D.CreateClosedCircle(0, 0, 30);
+            Circle2D Zylinder1 = catfactory2D.CreateClosedCircle(0, 0, 5);
 
-           /* Point2D catpoint2D1 = catfactory2D.CreatePoint(-50, 50);
-            Point2D catpoint2D2 = catfactory2D.CreatePoint(50, 50);
-            Point2D catpoint2D3 = catfactory2D.CreatePoint(50, -50);
-            Point2D catpoint2D4 = catfactory2D.CreatePoint(-50, -50);
-
-            Line2D catline2D1 = catfactory2D.CreateLine(-50, 50, 50, 50);
-            catline2D1.StartPoint = catpoint2D1;
-            catline2D1.EndPoint = catpoint2D2;
-
-            Line2D catline2D2 = catfactory2D.CreateLine(50, 50, 50, -50);
-            catline2D2.StartPoint = catpoint2D2;
-            catline2D2.EndPoint = catpoint2D3;
-
-            Line2D catline2D3 = catfactory2D.CreateLine(50, -50, -50, -50);
-            catline2D3.StartPoint = catpoint2D3;
-            catline2D3.EndPoint = catpoint2D4;
-
-            Line2D catline2D4 = catfactory2D.CreateLine(-50, -50, -50, 50);
-            catline2D4.StartPoint = catpoint2D4;
-            catline2D4.EndPoint = catpoint2D1;
-
-            */
-            hsp_catiaProfil.CloseEdition();
+            sketch_zylinder.CloseEdition();
             hsp_catiaPart.Part.Update();
         }
 
@@ -123,8 +102,8 @@ namespace Schraubengott
             hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
             ShapeFactory shapFac = (ShapeFactory) hsp_catiaPart.Part.ShapeFactory;
 
-            Pad newPad = shapFac.AddNewPad(hsp_catiaProfil,100);
-            newPad.set_Name("Balken");
+            Pad newPad = shapFac.AddNewPad(sketch_zylinder,100);
+            newPad.set_Name("Zylinder");
             hsp_catiaPart.Part.Update();
         }
 
@@ -141,7 +120,7 @@ namespace Schraubengott
             Reference catRef = (Reference)catoriginElements.PlaneYZ;
 
             //Zkizze in YZ Ebene hizufügen 
-            hsp_catiaProfil = catSketches.Add(catRef);
+            sketch_Kopf = catSketches.Add(catRef);
 
 
             hsp_catiaPart.Part.Update();
@@ -153,8 +132,8 @@ namespace Schraubengott
             double schlüsselweite = 10;
             double außenkreisSchraubenkopf = schlüsselweite / (Math.Sqrt(3) / 2);
 
-            hsp_catiaProfil.set_Name("Rechteck");
-            Factory2D catfactory2D = hsp_catiaProfil.OpenEdition();
+            sketch_Kopf.set_Name("Kopf");
+            Factory2D catfactory2D = sketch_Kopf.OpenEdition();
 
             Point2D point2D1 = catfactory2D.CreatePoint(0, 0);
             Point2D point2D2 = catfactory2D.CreatePoint(0, schlüsselweite);
@@ -162,43 +141,67 @@ namespace Schraubengott
             Circle2D circle2D1 = catfactory2D.CreateClosedCircle(0, 0, außenkreisSchraubenkopf);
             circle2D1.CenterPoint = point2D1;
             circle2D1.Construction = true;
+            
 
-            Circle2D circle2D2 = catfactory2D.CreateClosedCircle(0, 0, außenkreisSchraubenkopf);
-            circle2D2.CenterPoint = point2D2;
+            Circle2D circle2D2 = catfactory2D.CreateClosedCircle(0, 0, schlüsselweite);
+            circle2D2.CenterPoint = point2D1;
             circle2D2.Construction = true;
 
-            Point2D point2D3 = catfactory2D.CreatePoint(0.5 * außenkreisSchraubenkopf, 10);
-            Point2D point2D4 = catfactory2D.CreatePoint(-0.5 * außenkreisSchraubenkopf, 10);
-            Point2D point2D5 = catfactory2D.CreatePoint(außenkreisSchraubenkopf,0);
-            Point2D point2D6 = catfactory2D.CreatePoint(-0.5 * außenkreisSchraubenkopf, -10);
-            Point2D point2D7 = catfactory2D.CreatePoint(0.5 * außenkreisSchraubenkopf,-10);
-            Point2D point2D8 = catfactory2D.CreatePoint(außenkreisSchraubenkopf, 0);
+            Point2D point2D3 = catfactory2D.CreatePoint(0.5 * außenkreisSchraubenkopf, schlüsselweite);
+            Point2D point2D4 = catfactory2D.CreatePoint(-0.5 * außenkreisSchraubenkopf, schlüsselweite);
+            Point2D point2D5 = catfactory2D.CreatePoint(-1*außenkreisSchraubenkopf,0);
+            Point2D point2D6 = catfactory2D.CreatePoint(-0.5 * außenkreisSchraubenkopf, -1 * schlüsselweite);
+            Point2D point2D7 = catfactory2D.CreatePoint(0.5 * außenkreisSchraubenkopf,-1 * schlüsselweite);
+            Point2D point2D8 = catfactory2D.CreatePoint(außenkreisSchraubenkopf, -0);
 
-            Line2D line2D3 = catfactory2D.CreateLine(-0.5 * außenkreisSchraubenkopf, 10, -0.5 * außenkreisSchraubenkopf, 0);
+            Line2D line2D3 = catfactory2D.CreateLine(0.5 * außenkreisSchraubenkopf, schlüsselweite, -0.5 * außenkreisSchraubenkopf, schlüsselweite);
             line2D3.StartPoint = point2D3;
-            line2D3.StartPoint = point2D4;
+            line2D3.EndPoint = point2D4;
 
-            Line2D line2D4 = catfactory2D.CreateLine(-0.5 * außenkreisSchraubenkopf, 10, -außenkreisSchraubenkopf, 0);
+            Line2D line2D4 = catfactory2D.CreateLine(-0.5 * außenkreisSchraubenkopf, schlüsselweite, -1 * außenkreisSchraubenkopf, 0);
             line2D4.StartPoint = point2D4;
-            line2D4.StartPoint = point2D5;
+            line2D4.EndPoint = point2D5;
 
-            Line2D line2D5 = catfactory2D.CreateLine(-außenkreisSchraubenkopf, 0, -0.5 * außenkreisSchraubenkopf, -10);
+            Line2D line2D5 = catfactory2D.CreateLine(-1 * außenkreisSchraubenkopf, 0, -0.5 * außenkreisSchraubenkopf, -1 * schlüsselweite);
             line2D5.StartPoint = point2D5;
-            line2D5.StartPoint = point2D6;
+            line2D5.EndPoint = point2D6;
 
-            Line2D line2D6 = catfactory2D.CreateLine(-0.5 * außenkreisSchraubenkopf, -10, 0.5 * außenkreisSchraubenkopf, -10);
+            Line2D line2D6 = catfactory2D.CreateLine(-0.5 * außenkreisSchraubenkopf, -1 * schlüsselweite, 0.5 * außenkreisSchraubenkopf, -1 * schlüsselweite);
             line2D6.StartPoint = point2D6;
             line2D6.EndPoint = point2D7;
 
+            Line2D line2D7 = catfactory2D.CreateLine(0.5*außenkreisSchraubenkopf, -1 * schlüsselweite, außenkreisSchraubenkopf,0);
+            line2D7.StartPoint = point2D7;
+            line2D7.EndPoint = point2D8;
 
+            Line2D line2D8 = catfactory2D.CreateLine(außenkreisSchraubenkopf, 0, 0.5 * außenkreisSchraubenkopf, schlüsselweite);
+            line2D8.StartPoint = point2D8;
+            line2D8.EndPoint = point2D3;
+
+            Line2D line2D9 = catfactory2D.CreateLine(0, 0, 0, schlüsselweite);
+            line2D9.Construction = true;
+            line2D9.StartPoint = point2D1;
+            line2D9.EndPoint = point2D2;
+
+            Constraints Constraints1 = sketch_Kopf.Constraints;
+            
+
+            // Reference reference1 = hsp_catiaPart.
             //zeile 115 
 
-            hsp_catiaProfil.CloseEdition();
+            sketch_Kopf.CloseEdition();
             hsp_catiaPart.Part.Update();
         }
 
+        internal void ErzeugeKopf()
+        {
+            hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
+            ShapeFactory shapFac = (ShapeFactory)hsp_catiaPart.Part.ShapeFactory;
 
-
+            Pad pad_Kopf = shapFac.AddNewPad(sketch_Kopf, 7);
+            pad_Kopf.set_Name("Kopf");
+            hsp_catiaPart.Part.Update();
+        }
 
 
         /*

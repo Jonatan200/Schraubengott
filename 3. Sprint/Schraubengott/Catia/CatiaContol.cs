@@ -8,7 +8,7 @@ namespace Schraubengott
 {
      internal class CatiaControl
      {
-        CatiaControl()
+        CatiaControl(Schraube[] arr)
         {
             try
             {
@@ -23,10 +23,10 @@ namespace Schraubengott
                     cc.ErzeugePart();
 
                     // Erstelle eine Skizze
-                    cc.LeereSkizzeErzeugen();
+                    cc.ErsteSkizzeErstellen();
 
                     // Generiere ein Profil
-                    cc.ZkizzeGewindestange();
+                    cc.ZkizzeZylinder(arr);
 
                     // Extrudiere Balken
                     cc.ErzeugeGewindestange();
@@ -34,6 +34,10 @@ namespace Schraubengott
 
 
                     cc.ZweiteSkizzeErzeugen();
+
+                    cc.ZkizzeKopf();
+
+                    cc.ErzeugeKopf();
 
                 }
                 else
@@ -48,9 +52,9 @@ namespace Schraubengott
               
         }
 
-        public static void Catia_Starten()
+        public static void Catia_Starten(Schraube[] arr)
         {
-            new CatiaControl();
+            new CatiaControl(arr);
         }
     }
 }

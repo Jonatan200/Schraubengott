@@ -624,7 +624,7 @@ public partial class MainWindow : Window
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            CatiaControl.Catia_Starten();
+            CatiaControl.Catia_Starten(feld);
         }
 
     }
