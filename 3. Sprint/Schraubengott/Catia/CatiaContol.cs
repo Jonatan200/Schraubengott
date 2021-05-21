@@ -29,15 +29,15 @@ namespace Schraubengott
                     cc.ZkizzeZylinder(arr);
 
                     // Extrudiere Balken
-                    cc.ErzeugeGewindestange();
+                    cc.ErzeigeZylinder(arr);
 
 
 
                     cc.ZweiteSkizzeErzeugen();
 
-                    cc.ZkizzeKopf();
+                    cc.ZkizzeKopf(arr);
 
-                    cc.ErzeugeKopf();
+                    cc.ErzeugeKopf(arr);
 
                 }
                 else

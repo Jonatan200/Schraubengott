@@ -18,6 +18,7 @@ namespace Schraubengott
         Sketch sketch_zylinder;
         Sketch sketch_Kopf;
         HybridBody catHybridBody1;
+       
 
 
         public bool CATIALaeuft()
@@ -90,19 +91,19 @@ namespace Schraubengott
             sketch_zylinder.set_Name("Zylinder");
             Factory2D catfactory2D = sketch_zylinder.OpenEdition();
 
-            Circle2D Zylinder1 = catfactory2D.CreateClosedCircle(0, 0, 5);
+            Circle2D Zylinder1 = catfactory2D.CreateClosedCircle(0, 0, arr[0].durchmesser);
 
             sketch_zylinder.CloseEdition();
             hsp_catiaPart.Part.Update();
         }
 
 
-        internal void ErzeugeGewindestange()
+        internal void ErzeigeZylinder(Schraube [] arr)
         {
             hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
             ShapeFactory shapFac = (ShapeFactory) hsp_catiaPart.Part.ShapeFactory;
 
-            Pad newPad = shapFac.AddNewPad(sketch_zylinder,100);
+            Pad newPad = shapFac.AddNewPad(sketch_zylinder, Convert.ToDouble(arr[0].laenge));
             newPad.set_Name("Zylinder");
             hsp_catiaPart.Part.Update();
         }
@@ -127,9 +128,9 @@ namespace Schraubengott
         }
 
 
-        internal void ZkizzeKopf()
+        internal void ZkizzeKopf(Schraube [] arr)
         {
-            double schlüsselweite = 10;
+            double schlüsselweite = Convert.ToDouble(arr[0].schluesselbreite);
             double außenkreisSchraubenkopf = schlüsselweite / (Math.Sqrt(3) / 2);
 
             sketch_Kopf.set_Name("Kopf");
@@ -193,12 +194,13 @@ namespace Schraubengott
             hsp_catiaPart.Part.Update();
         }
 
-        internal void ErzeugeKopf()
+        internal void ErzeugeKopf(Schraube [] arr)
         {
+            double schraubenkopfhöhe = 7;
             hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
             ShapeFactory shapFac = (ShapeFactory)hsp_catiaPart.Part.ShapeFactory;
 
-            Pad pad_Kopf = shapFac.AddNewPad(sketch_Kopf, 7);
+            Pad pad_Kopf = shapFac.AddNewPad(sketch_Kopf, -schraubenkopfhöhe);
             pad_Kopf.set_Name("Kopf");
             hsp_catiaPart.Part.Update();
         }

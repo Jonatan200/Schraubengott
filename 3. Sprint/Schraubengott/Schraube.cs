@@ -15,8 +15,9 @@ namespace Schraubengott
         public int schluesselbreite;
         public string typ; //Innensechskant/Ausßensechskant
         public string festigkeit;
-        
 
+        public double durchmesser;
+        public double kopfhöhe;
         public string gewindeart;
         public int gewindelaenge;
         public double gewindesteigung;
@@ -288,41 +289,49 @@ namespace Schraubengott
                     case "M4":
                         this.gewindesteigung = 0.7;
                         this.schluesselbreite = 7;
+                        this.kopfhöhe = 2.8;
                         break;
 
                     case "M5":
                         this.gewindesteigung = 0.8;
                         this.schluesselbreite = 8;
+                        this.kopfhöhe = 3.5;
                         break;
 
                     case "M6":
                         this.gewindesteigung = 1;
                         this.schluesselbreite = 10;
+                        this.kopfhöhe = 4;
                         break;
 
                     case "M8":
                         this.gewindesteigung = 1.25;
                         this.schluesselbreite = 13;
+                        this.kopfhöhe = 5.3;
                         break;
 
                     case "M10":
                         this.gewindesteigung = 1.5;
                         this.schluesselbreite = 17;
+                        this.kopfhöhe = 6.4;
                         break;
 
                     case "M12":
                         this.gewindesteigung = 1.75;
                         this.schluesselbreite = 19;
+                        this.kopfhöhe = 7.5;
                         break;
 
                     case "M16":
                         this.gewindesteigung = 2;
                         this.schluesselbreite = 24;
+                        this.kopfhöhe = 10;
                         break;
 
                     case "M20":
                         this.gewindesteigung = 2.5;
                         this.schluesselbreite = 30;
+                        this.kopfhöhe = 12.5;
                         break;
                 }
             }
@@ -380,7 +389,7 @@ namespace Schraubengott
             flankenwikel = 60;  //Flankenwinkel 
 
             // Speichern in Schraube 
-
+            this.durchmesser = d;
             this.gewindetiefe = h3;
             this.gewinderundung = r;
             this.flankendurchmesser = d2;
