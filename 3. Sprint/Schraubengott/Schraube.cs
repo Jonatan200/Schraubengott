@@ -13,6 +13,7 @@ namespace Schraubengott
         public int laenge;
         public double volumen;
         public int schluesselbreite;
+        public double kopfdurchmesser = 0;
         public string typ; //Innensechskant/Ausßensechskant
         public string festigkeit;
 
@@ -288,50 +289,122 @@ namespace Schraubengott
                 {
                     case "M4":
                         this.gewindesteigung = 0.7;
-                        this.schluesselbreite = 7;
-                        this.kopfhöhe = 2.8;
+                        if(this.typ == "Außensechskant")
+                        {
+                            this.schluesselbreite = 7;
+                            this.kopfhöhe = 2.8;
+                        }
+                        else
+                        {
+                            this.schluesselbreite = 3;
+                            this.kopfhöhe = 4;
+                            this.kopfdurchmesser = 7;
+                        }
                         break;
 
                     case "M5":
                         this.gewindesteigung = 0.8;
-                        this.schluesselbreite = 8;
-                        this.kopfhöhe = 3.5;
+                        if (this.typ == "Außensechskant")
+                        {
+                            this.schluesselbreite = 8;
+                            this.kopfhöhe = 3.5;
+                        }
+                        else
+                        {
+                            this.schluesselbreite = 4;
+                            this.kopfhöhe = 5;
+                            this.kopfdurchmesser = 8.5;
+                        }
                         break;
 
                     case "M6":
                         this.gewindesteigung = 1;
-                        this.schluesselbreite = 10;
-                        this.kopfhöhe = 4;
+                        if (this.typ == "Außensechskant")
+                        {
+                            this.schluesselbreite = 10;
+                            this.kopfhöhe = 4;
+                        }
+                        else
+                        {
+                            this.schluesselbreite = 5;
+                            this.kopfhöhe = 6;
+                            this.kopfdurchmesser = 10;
+                        }
                         break;
 
                     case "M8":
                         this.gewindesteigung = 1.25;
-                        this.schluesselbreite = 13;
-                        this.kopfhöhe = 5.3;
+                        if (this.typ == "Außensechskant")
+                        {
+                            this.schluesselbreite = 13;
+                            this.kopfhöhe = 5.3;
+                        }
+                        else
+                        {
+                            this.schluesselbreite = 6;
+                            this.kopfhöhe = 8;
+                            this.kopfdurchmesser = 13;
+                        }
                         break;
 
                     case "M10":
                         this.gewindesteigung = 1.5;
-                        this.schluesselbreite = 17;
-                        this.kopfhöhe = 6.4;
+                        if (this.typ == "Außensechskant") 
+                        {
+                            this.schluesselbreite = 17;
+                            this.kopfhöhe = 6.4;
+                        }
+                        else
+                        {
+                            this.schluesselbreite = 8;
+                            this.kopfhöhe = 10;
+                            this.kopfdurchmesser = 16;
+                        }
                         break;
 
                     case "M12":
                         this.gewindesteigung = 1.75;
-                        this.schluesselbreite = 19;
-                        this.kopfhöhe = 7.5;
+                        if (this.typ == "Außensechskant")
+                        {
+                            this.schluesselbreite = 19;
+                            this.kopfhöhe = 7.5;
+                        }
+                        else
+                        {
+                            this.schluesselbreite = 10;
+                            this.kopfhöhe = 12;
+                            this.kopfdurchmesser = 18;
+                        }
                         break;
 
                     case "M16":
                         this.gewindesteigung = 2;
-                        this.schluesselbreite = 24;
-                        this.kopfhöhe = 10;
+                        if (this.typ == "Außensechskant")
+                        {
+                            this.schluesselbreite = 24;
+                            this.kopfhöhe = 10;
+                        }
+                        else
+                        {
+                            this.schluesselbreite = 14;
+                            this.kopfhöhe = 16;
+                            this.kopfdurchmesser = 24;
+                        }
                         break;
 
                     case "M20":
                         this.gewindesteigung = 2.5;
-                        this.schluesselbreite = 30;
-                        this.kopfhöhe = 12.5;
+                        if (this.typ == "Außensechskant")
+                        {
+                            this.schluesselbreite = 30;
+                            this.kopfhöhe = 12.5;
+                        }
+                        else
+                        {
+                            this.schluesselbreite = 17;
+                            this.kopfhöhe = 20;
+                            this.kopfdurchmesser = 30;
+                        }
                         break;
                 }
             }
@@ -385,7 +458,7 @@ namespace Schraubengott
             h3 = 0.6134 * this.gewindesteigung;    // Gewindetiefe 
             r = 0.1443 * this.gewindesteigung; // Rundung
             d2 = d - 0.64595 * this.gewindesteigung;   //Flankendurchmesser 
-            d3 = d - 1.2269;    //Kerndurchmesser 
+            d3 = d - 1.2269 * this.gewindesteigung;    //Kerndurchmesser 
             flankenwikel = 60;  //Flankenwinkel 
 
             // Speichern in Schraube 

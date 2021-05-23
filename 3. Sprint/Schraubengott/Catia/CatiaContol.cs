@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Forms;
 
 namespace Schraubengott
 {
@@ -22,23 +24,33 @@ namespace Schraubengott
                     // Öffne ein neues Part
                     cc.ErzeugePart();
 
-                    // Erstelle eine Skizze
-                    cc.ErsteSkizzeErstellen();
 
-                    // Generiere ein Profil
-                    cc.ZkizzeZylinder(arr);
+                    //Zylinder
 
-                    // Extrudiere Balken
-                    cc.ErzeigeZylinder(arr);
+                    cc.SkizzeZylinderErstellen();      // Erstelle eine Skizze
+                
+                    cc.ZkizzeZylinder(arr);         // Generiere ein Profil
 
+                    cc.ErzeugeZylinder(arr);        // Extrudiere Balken
 
-
-                    cc.ZweiteSkizzeErzeugen();
+                    cc.ErzeugeGewindehelix(arr);
+                   // cc.ErzeugeGewindeFeature(arr);
+                    
+                    
+                    cc.ErstelleSkizzeKopf(arr);       //Erstelle Skizze für den Kopf 
 
                     cc.ZkizzeKopf(arr);
 
-                    cc.ErzeugeKopf(arr);
+                    cc.ErzeugeKopf(arr);           //Extrudiere Kopf
 
+                    if (arr[0].typ == "Innensechskant")
+                    {
+                        cc.ZkizzeTasche(arr);
+
+                        cc.TascheErzeugen(arr);
+                        
+                    }
+                   
                 }
                 else
                 {
