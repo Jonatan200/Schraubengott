@@ -398,7 +398,10 @@ namespace Schraubengott
             hsp_catiaPartDoc.Part.Update();
         }
 
-      
+        internal void Zeichenableitung()
+        {
+            Drwa
+        }
     }
 
 }
