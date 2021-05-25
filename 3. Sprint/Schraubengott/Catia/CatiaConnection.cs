@@ -400,7 +400,7 @@ namespace Schraubengott
 
         internal void Zeichenableitung()
         {
-            Drwa
+           
         }
     }
 
