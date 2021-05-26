@@ -18,7 +18,7 @@ namespace Schraubengott
             head = node;
             count++;
         }
-        public void PrintList()
+        public void PrintList()// nur zum Testen, kommt später wech
         {
 
             LinkedListElement runner = head;
@@ -27,6 +27,19 @@ namespace Schraubengott
                 //irgendeinlable.content=runner.kundennr;
                 runner = runner.next;
             }
+        }
+        public Boolean Search(int nummer)
+        {
+            LinkedListElement runner = head;
+            while (runner != null)
+            {
+                if (runner.kundennr == nummer)
+                {
+                    return true;
+                }
+                runner = runner.next;
+            }
+            return false;
         }
 
 

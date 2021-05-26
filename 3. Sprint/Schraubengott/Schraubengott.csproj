@@ -92,6 +92,7 @@
     <Compile Include="Catia\CatiaContol.cs" />
     <Compile Include="Catia\CatiaConnection.cs" />
     <Compile Include="ExelControl.cs" />
+    <Compile Include="LinkedList.cs" />
     <Compile Include="Schraube.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

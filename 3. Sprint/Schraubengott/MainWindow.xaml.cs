@@ -56,6 +56,7 @@ public partial class MainWindow : Window
             bestellnummer = nummer.Next(10000000, 99999999);
             
         }
+        #region "alle Elemente"
 
         private void Btnexit_Click(object sender, RoutedEventArgs e)
         {
@@ -627,6 +628,29 @@ public partial class MainWindow : Window
             CatiaControl.Catia_Starten(feld);
         }
 
+        //private void btn_einloogen()//was passiert, wenn man den Button einloggen drückt
+        //{
+        //    int kundnennr = ConvertToInt32(txtKundenNR.TextChanged);
+        //    String password = txtPassword.TextChanged;
+
+        //    if (namevonliste.Search(kundennr == ture)
+        //    {
+        //        //dann gehts hier weiter. Vielleicht eine private Methode aufrufen. Dann kann man nicht versehendlich weiter kommen
+        //        WeiterGehts(kundennr);
+        //    }
+        //    else
+        //    {
+        //        //Messagebox mit "Kundennummer nicht gefunden
+                
+        //        return;
+        //    }
+        //}
+        //private void WeiterGehts()
+        //{
+        //    // if password ist richtig, dann gehts noch mal weiter
+        //}
+
+        #endregion
     }
 
 }
