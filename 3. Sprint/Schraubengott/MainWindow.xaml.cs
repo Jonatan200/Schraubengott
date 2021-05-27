@@ -54,7 +54,8 @@ public partial class MainWindow : Window
             
             // Bestellnummer 
             bestellnummer = nummer.Next(10000000, 99999999);
-            
+
+
         }
         #region "alle Elemente"
 
@@ -151,6 +152,8 @@ public partial class MainWindow : Window
 
         private void Btnauswahl_Click(object sender, RoutedEventArgs e)
         {
+            
+            
             #region Fehlermeldung bei Falscheingaben"
 
             if (feld[nr].gewinde == "")
@@ -641,7 +644,7 @@ public partial class MainWindow : Window
         //    else
         //    {
         //        //Messagebox mit "Kundennummer nicht gefunden
-                
+
         //        return;
         //    }
         //}
@@ -651,7 +654,11 @@ public partial class MainWindow : Window
         //}
 
         #endregion
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 
 }
-

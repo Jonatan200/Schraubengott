@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace Schraubengott
 {
@@ -226,7 +227,7 @@ namespace Schraubengott
             {                                           // Verzinkte Schraube 
                 preis = kilopreis_verzinkt;
             }
-            else if (this.material.Equals("V2A")) 
+            else if (this.material.Equals("V2A"))
             {
                 preis = kilopreis_V2A;                     // Edelstahlschraube 
             }
@@ -289,7 +290,7 @@ namespace Schraubengott
                 {
                     case "M4":
                         this.gewindesteigung = 0.7;
-                        if(this.typ == "Außensechskant")
+                        if (this.typ == "Außensechskant")
                         {
                             this.schluesselbreite = 7;
                             this.kopfhöhe = 2.8;
@@ -349,7 +350,7 @@ namespace Schraubengott
 
                     case "M10":
                         this.gewindesteigung = 1.5;
-                        if (this.typ == "Außensechskant") 
+                        if (this.typ == "Außensechskant")
                         {
                             this.schluesselbreite = 17;
                             this.kopfhöhe = 6.4;
@@ -451,7 +452,7 @@ namespace Schraubengott
         public void Geometrie()
         {
             double h3, r, d2, d3, flankenwikel;
-            
+
             String[] feld = this.gewinde.Split('M');
             int d = Int32.Parse(feld[1]);
             // Rechnungen   
@@ -525,5 +526,44 @@ namespace Schraubengott
             this.Zugfestigkeit = Rm;
         }
         #endregion
+
+        public void hdf(Schraube[] feld)
+        {
+            GetDataTable(feld);
+        }
+
+        public void DataTable(Schraube[] feld)
+        {
+            DataTableCollection = GetDataTable(feld);
+        }
+
+        public DataTable DataTableCollection { get; set; }
+
+        public DataTable GetDataTable(Schraube[] feld)
+        {
+
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("Schraube", typeof(string));
+            dataTable.Columns.Add("Material", typeof(string));
+            dataTable.Columns.Add("Festigkeit", typeof(string));
+            dataTable.Columns.Add("Kopf", typeof(string));
+            dataTable.Columns.Add("Gewinde", typeof(int));
+            dataTable.Columns.Add("Typ", typeof(int));
+            dataTable.Columns.Add("Länge", typeof(int));
+            dataTable.Columns.Add("Gewindelänge", typeof(int));
+            dataTable.Columns.Add("Menge", typeof(int));
+            if(feld.Length < 1)
+            {
+                for (int i = 0; i < feld.Length; i++)
+                {
+                    dataTable.Rows.Add("Schraube" + i, feld[i].material, feld[i].festigkeit, feld[i].typ, feld[i].gewinde, feld[i].laenge, feld[i].gewindelaenge, feld[i].menge);
+                }
+            }
+
+            return dataTable;
+        }
     }
 }
+
+
+   

@@ -39,11 +39,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interop.HybridShapeTypeLib">
-      <HintPath>D:\jonat\Downloads\MinimalCatia-Schrauben\Verweise\Interop.HybridShapeTypeLib.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\Interop.HybridShapeTypeLib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Interop.INFITF">
-      <HintPath>D:\jonat\Downloads\Verweise\Interop.INFITF.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\Interop.INFITF.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Interop.KnowledgewareTypeLib">
@@ -51,11 +51,11 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Interop.MECMOD">
-      <HintPath>D:\jonat\Downloads\Verweise\Interop.MECMOD.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\Interop.MECMOD.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Interop.PARTITF">
-      <HintPath>D:\jonat\Downloads\Verweise\Interop.PARTITF.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\Interop.PARTITF.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Interop.ProductStructureTypeLib">
