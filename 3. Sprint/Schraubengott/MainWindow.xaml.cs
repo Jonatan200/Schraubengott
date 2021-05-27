@@ -17,7 +17,6 @@ using System.Windows.Shapes;
 using System.Net.Mail;
 using Excel = Microsoft.Office.Interop.Excel; 
 
-
 namespace Schraubengott
 {
     /// <summary>
