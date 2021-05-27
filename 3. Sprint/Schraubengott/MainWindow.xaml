@@ -189,7 +189,7 @@
         </TabControl>
         <Label Content="Fynn Kummer | Jonathan Rietig | Lars Bohling | Malte Klarmann" HorizontalAlignment="Left" Height="29" Margin="10,571,0,0" VerticalAlignment="Top" Width="481" Grid.ColumnSpan="2"/>
         <Image x:Name="logo1" Visibility="Collapsed" Grid.Column="1" HorizontalAlignment="Left" Height="153" Margin="410.333,478,0,-21" VerticalAlignment="Top" Width="214" Source="Logo.png" RenderTransformOrigin="-0.274,0.063"/>
-        <Border x:Name="gridlogin" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="404" Margin="150.333,88,0,0" VerticalAlignment="Top" Width="733">
+        <Border x:Name="gridlogin" Visibility="Visible" BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="404" Margin="150.333,88,0,0" VerticalAlignment="Top" Width="733">
             <Grid >
                 <TextBox x:Name="txtkundennr" HorizontalAlignment="Left" Height="30" Margin="228,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" RenderTransformOrigin="0.917,0.583" TextChanged="TextBox_TextChanged"/>
                 <Label Content="Login" HorizontalAlignment="Left" Height="36" Margin="94,101,0,0" VerticalAlignment="Top" Width="111" FontSize="16"/>
@@ -203,7 +203,7 @@
             </Grid>
 
         </Border>
-        <Border x:Name="gridregr" BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="448" Margin="123.333,59,0,0" VerticalAlignment="Top" Width="797">
+        <Border x:Name="gridregr" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="448" Margin="123.333,59,0,0" VerticalAlignment="Top" Width="797">
             <Grid>
                 <Label Content="Legen Sie ein Kundenkonto an um alle Funktionen von Schraubengott nutzen zu können." HorizontalAlignment="Left" Height="30" Margin="36,33,0,0" VerticalAlignment="Top" Width="644"/>
                 <Label Content="Registrieren" HorizontalAlignment="Left" Height="46" Margin="70,113,0,0" VerticalAlignment="Top" Width="131" FontSize="16"/>
