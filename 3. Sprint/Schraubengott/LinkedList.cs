@@ -41,6 +41,19 @@ namespace Schraubengott
             }
             return false;
         }
+        public Boolean check(int nummer, String pass)
+        {
+            LinkedListElement runner = head;
+            while (runner != null)
+            {
+                if (runner.kundennr == nummer&&runner.getpassword()==pass)
+                {
+                    return true;
+                }
+                runner = runner.next;
+            }
+            return false;
+        }
 
 
 
@@ -49,6 +62,13 @@ namespace Schraubengott
     {
         public int kundennr;
         private String password;
+
+        public String name;
+        public String firmenName;
+        public String adresse;
+        public int postleitzahl;
+
+
         public LinkedListElement next;
 
         public LinkedListElement(int kundennr, String password)
@@ -56,6 +76,10 @@ namespace Schraubengott
             this.kundennr = kundennr;
             this.password = password;
             next = null;
+        }
+        public String getpassword()
+        {
+            return this.password;
         }
 
 
