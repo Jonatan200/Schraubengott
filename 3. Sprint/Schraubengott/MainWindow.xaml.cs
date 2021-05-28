@@ -46,10 +46,12 @@ namespace Schraubengott
             }
             Schraube a = new Schraube();
 
-            datenbank.AddNodToFront(1111, "hallo123"); //
+            datenbank.AddNodToFront(1001, "hallo123"); // Datenbankeinträge
+            datenbank.AddNodToFront(1002, "hallo456");
+            datenbank.AddNodToFront(1003, "hallo789");
 
 
-            
+
 
             InitializeComponent();
             cmb_nr.SelectedIndex = 0;           //Combobox hat von Anfang an die erste Schraube ausgewählt
