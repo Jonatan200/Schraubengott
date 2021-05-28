@@ -670,6 +670,7 @@ namespace Schraubengott
                 gridlogin.Visibility = Visibility.Collapsed;
                 logo1.Visibility = Visibility.Visible;
                 tabcontrol.Visibility = Visibility.Visible;
+                ausloggen.Visibility = Visibility.Visible;
             }
         }
 
@@ -703,7 +704,15 @@ namespace Schraubengott
                 gridregr.Visibility = Visibility.Collapsed;
                 logo1.Visibility = Visibility.Visible;
                 tabcontrol.Visibility = Visibility.Visible;
-                MessageBox.Show("Ihr Kundenkonto wurde angelegt.\n\nIhre Kundennummer:" + kundennummer, "Erfolgreich Registriert", MessageBoxButton.OK};
+                MessageBox.Show("Ihr Kundenkonto wurde angelegt.\n\nIhre Kundennummer:" + kundennummer, "Erfolgreich Registriert", MessageBoxButton.OK);
+                ausloggen.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void ausloggen_Click(object sender, RoutedEventArgs e)
+        {
+            tabcontrol.Visibility = Visibility.Collapsed;
+            gridlogin.Visibility = Visibility.Visible;
         }
     }
 }
