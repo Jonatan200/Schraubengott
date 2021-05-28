@@ -720,6 +720,7 @@ namespace Schraubengott
         {
             tabcontrol.Visibility = Visibility.Collapsed;
             gridlogin.Visibility = Visibility.Visible;
+            logo1.Visibility = Visibility.Collapsed;
         }
     }
 }
