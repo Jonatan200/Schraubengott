@@ -22,26 +22,26 @@ namespace Schraubengott
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
-public partial class MainWindow : Window
+    public partial class MainWindow : Window
     {
         Schraube[] feld = new Schraube[5];      //Array vom Typ Schraube erstellen
         int nr = 0;                             //Variable für den Index des Feldes Schraube
         int new_screw_int = 1;                  //Varibale für Neue Schraube Button und Combobox mit Schraubenauswahl
 
         //Zufällige Bestellnummer erstellen
-        Random nummer = new Random();           
+        Random nummer = new Random();
         int bestellnummer;
 
         string kundennummer;
 
         public MainWindow()
         {
-            for (int i = 0; i < feld.Length; i++) 
+            for (int i = 0; i < feld.Length; i++)
             {
                 feld[i] = new Schraube();         // Array wird mit Objekten gefüllt
             }
             Schraube a = new Schraube();
-            
+
             InitializeComponent();
             cmb_nr.SelectedIndex = 0;           //Combobox hat von Anfang an die erste Schraube ausgewählt
 
@@ -50,7 +50,7 @@ public partial class MainWindow : Window
             cbgewinde.SelectedIndex = 0;
             cbmat.SelectedIndex = 0;
             cbkopf.SelectedIndex = 0;
-            
+
             // Bestellnummer 
             bestellnummer = nummer.Next(10000000, 99999999);
 
@@ -61,13 +61,13 @@ public partial class MainWindow : Window
         private void Btnexit_Click(object sender, RoutedEventArgs e)
         {
             //Wenn Exit-Button geklickt wird, wird gefragt, ob das Fenster geschlossen werden soll. Mit klick auf ja wird die App beendet
-            if (MessageBox.Show("Das Fenster wirklich schließen?\nAlle Konfigurationen werden gelöscht!","Warnung", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Das Fenster wirklich schließen?\nAlle Konfigurationen werden gelöscht!", "Warnung", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-                Application.Current.Shutdown();  
+                Application.Current.Shutdown();
             }
             else
             {
-                return;  
+                return;
             }
         }
 
@@ -77,7 +77,7 @@ public partial class MainWindow : Window
             if (cbmat.SelectedValue.ToString() == "V2A")
             {
                 cbfk.Items.Clear();
-                cbfk.Items.Add("--Bitte auswählen--");             
+                cbfk.Items.Add("--Bitte auswählen--");
                 cbfk.Items.Add("V2A 50");
                 cbfk.Items.Add("V2A 70");
             }
@@ -151,8 +151,8 @@ public partial class MainWindow : Window
 
         private void Btnauswahl_Click(object sender, RoutedEventArgs e)
         {
-            
-            
+
+
             #region Fehlermeldung bei Falscheingaben"
 
             if (feld[nr].gewinde == "")
@@ -196,7 +196,7 @@ public partial class MainWindow : Window
             #endregion
 
             #region "Ausgewählten Werte werden dem Objekt zugewiesen"
-            if (gewartcheck.IsChecked== true)
+            if (gewartcheck.IsChecked == true)
             {
                 feld[nr].gewindeart = "Feingewinde";
             }
@@ -216,7 +216,7 @@ public partial class MainWindow : Window
             #endregion
 
             //Die Werte den Objekts Schraube werden in der Übersichtstabelle übernommen
-            Materialtxt.Text = ("Material" + "\n\n\n"  + feld[0].material + "\n\n\n" + feld[1].material + "\n\n\n" + feld[2].material + "\n\n\n" + feld[3].material + "\n\n\n" + feld[4].material);
+            Materialtxt.Text = ("Material" + "\n\n\n" + feld[0].material + "\n\n\n" + feld[1].material + "\n\n\n" + feld[2].material + "\n\n\n" + feld[3].material + "\n\n\n" + feld[4].material);
             Festtxt.Text = ("Festigkeit" + "\n\n\n" + feld[0].festigkeit + "\n\n\n" + feld[1].festigkeit + "\n\n\n" + feld[2].festigkeit + "\n\n\n" + feld[3].festigkeit + "\n\n\n" + feld[4].festigkeit);
             Kopftxt.Text = ("Kopf" + "\n\n\n" + feld[0].typ + "\n\n\n" + feld[1].typ + "\n\n\n" + feld[2].typ + "\n\n\n" + feld[3].typ + "\n\n\n" + feld[4].typ);
             Gewindetxt.Text = ("Gewinde" + "\n\n" + feld[0].gewinde + "\n\n\n" + feld[1].gewinde + "\n\n\n" + feld[2].gewinde + "\n\n\n" + feld[3].gewinde + "\n\n\n" + feld[4].gewinde);
@@ -236,37 +236,37 @@ public partial class MainWindow : Window
             switch (cmb_nr.SelectedIndex)//Auswahl der Schraube
             {
                 case 0:
-                    nr = 0;     
+                    nr = 0;
                     break;
-            
+
                 case 1:
                     nr = 1;
                     break;
-                
+
                 case 2:
                     nr = 2;
                     break;
-                
+
                 case 3:
                     nr = 3;
                     break;
-                
+
                 case 4:
                     nr = 4;
                     break;
             }
 
             #region "Die gespeicherten Werte des Objekts werden in den Comboboxen angezeigt"
-            if (feld[nr].material=="Verzinkter Stahl")
+            if (feld[nr].material == "Verzinkter Stahl")
             {
                 cbmat.SelectedIndex = 1;
 
                 switch (feld[nr].festigkeit)
                 {
                     case "5.8":
-                        cbfk.SelectedIndex =1 ;
+                        cbfk.SelectedIndex = 1;
                         break;
-                    
+
                     case "6.8":
                         cbfk.SelectedIndex = 2;
                         break;
@@ -325,11 +325,11 @@ public partial class MainWindow : Window
                     break;
 
                 case "M5":
-                    cbgewinde.SelectedIndex =2;
+                    cbgewinde.SelectedIndex = 2;
                     break;
 
                 case "M6":
-                    cbgewinde.SelectedIndex =3;
+                    cbgewinde.SelectedIndex = 3;
                     break;
 
                 case "M8":
@@ -339,22 +339,22 @@ public partial class MainWindow : Window
                 case "M10":
                     cbgewinde.SelectedIndex = 5;
                     break;
-                    
+
                 case "M12":
-                    cbgewinde.SelectedIndex = 6;                   
+                    cbgewinde.SelectedIndex = 6;
                     break;
-                    
+
                 case "M16":
-                    cbgewinde.SelectedIndex = 7;                 
+                    cbgewinde.SelectedIndex = 7;
                     break;
-                
+
                 case "M20":
                     cbgewinde.SelectedIndex = 8;
-                    
+
                     break;
             }
 
-            if (feld[nr].gewindeart=="Feingewinde")
+            if (feld[nr].gewindeart == "Feingewinde")
             {
                 gewartcheck.IsChecked = true;
             }
@@ -396,25 +396,25 @@ public partial class MainWindow : Window
             txt_len.Text = "";
             txt_menge.Text = "";
             gewartcheck.IsChecked = false;
-            
+
             switch (new_screw_int)
             {
                 case 1:
                     screw2.Visibility = Visibility.Visible;
                     cmb_nr.SelectedItem = screw2;
-                    new_screw_int++;                  
+                    new_screw_int++;
                     break;
 
                 case 2:
                     screw3.Visibility = Visibility.Visible;
                     cmb_nr.SelectedItem = screw3;
-                    new_screw_int++;                  
+                    new_screw_int++;
                     break;
 
                 case 3:
                     screw4.Visibility = Visibility.Visible;
                     cmb_nr.SelectedItem = screw4;
-                    new_screw_int++;                  
+                    new_screw_int++;
                     new_screw.Content = "letzte Schraube erstellen";
                     break;
 
@@ -435,13 +435,13 @@ public partial class MainWindow : Window
             {
                 MessageBox.Show("Die Auswahl ist leer.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;//wenn die ausgewählte schraube leer ist, wird die Methode beendet
-            }          
+            }
             else if (check1.IsChecked == true || check2.IsChecked == true || check3.IsChecked == true || check4.IsChecked == true || check5.IsChecked == true)
             {
-               MessageBox.Show("Auswahl wurde dem Warenkorb hinzugefügt.","", MessageBoxButton.OK, MessageBoxImage.Information);
-               tab_2.Visibility = Visibility.Visible;
+                MessageBox.Show("Auswahl wurde dem Warenkorb hinzugefügt.", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                tab_2.Visibility = Visibility.Visible;
             }
-            else 
+            else
             {
                 MessageBox.Show("Es ist nichts ausgewählt.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;//wenn keine Checkbox ausgewählt, wird die Methode beendet
@@ -453,10 +453,10 @@ public partial class MainWindow : Window
             {
                 menge1txt.Text = feld[0].menge.ToString();
                 gew1txt.Text = Math.Round(feld[0].gesamtgewicht, 2).ToString();
-                preis1txt.Text = Math.Round(feld[0].stückpreis,2).ToString();
-                gpreis1txt.Text = Math.Round(feld[0].nettopreis_Summe,2).ToString();
+                preis1txt.Text = Math.Round(feld[0].stückpreis, 2).ToString();
+                gpreis1txt.Text = Math.Round(feld[0].nettopreis_Summe, 2).ToString();
             }
-            else if(check1.IsChecked == false)
+            else if (check1.IsChecked == false)
             {
                 menge1txt.Text = "0";
                 gew1txt.Text = "0";
@@ -466,10 +466,10 @@ public partial class MainWindow : Window
 
             if (check2.IsChecked == true)
             {
-                 menge2txt.Text = feld[1].menge.ToString();
-                 gew2txt.Text = Math.Round(feld[1].gesamtgewicht, 2).ToString();
-                 preis2txt.Text = Math.Round(feld[1].stückpreis,2).ToString();
-                 gpreis2txt.Text = Math.Round(feld[1].nettopreis_Summe, 2).ToString();
+                menge2txt.Text = feld[1].menge.ToString();
+                gew2txt.Text = Math.Round(feld[1].gesamtgewicht, 2).ToString();
+                preis2txt.Text = Math.Round(feld[1].stückpreis, 2).ToString();
+                gpreis2txt.Text = Math.Round(feld[1].nettopreis_Summe, 2).ToString();
             }
             else if (check2.IsChecked == false)
             {
@@ -483,22 +483,22 @@ public partial class MainWindow : Window
             {
                 menge3txt.Text = feld[2].menge.ToString();
                 gew3txt.Text = Math.Round(feld[2].gesamtgewicht, 2).ToString();
-                preis3txt.Text = Math.Round(feld[2].stückpreis,2).ToString();
+                preis3txt.Text = Math.Round(feld[2].stückpreis, 2).ToString();
                 gpreis3txt.Text = Math.Round(feld[2].nettopreis_Summe, 2).ToString();
             }
             else if (check3.IsChecked == false)
             {
-                 menge3txt.Text = "0";
-                 gew3txt.Text = "0";
-                 preis3txt.Text = "0";
-                 gpreis3txt.Text = "0";
+                menge3txt.Text = "0";
+                gew3txt.Text = "0";
+                preis3txt.Text = "0";
+                gpreis3txt.Text = "0";
             }
 
             if (check4.IsChecked == true)
             {
                 menge4txt.Text = feld[3].menge.ToString();
                 gew4txt.Text = Math.Round(feld[3].gesamtgewicht, 2).ToString();
-                preis4txt.Text = Math.Round(feld[3].stückpreis,2).ToString();
+                preis4txt.Text = Math.Round(feld[3].stückpreis, 2).ToString();
                 gpreis4txt.Text = Math.Round(feld[3].nettopreis_Summe, 2).ToString();
             }
             else if (check4.IsChecked == false)
@@ -513,7 +513,7 @@ public partial class MainWindow : Window
             {
                 menge5txt.Text = feld[4].menge.ToString();
                 gew5txt.Text = Math.Round(feld[4].gesamtgewicht, 2).ToString();
-                preis5txt.Text = Math.Round(feld[4].stückpreis,2).ToString();
+                preis5txt.Text = Math.Round(feld[4].stückpreis, 2).ToString();
                 gpreis5txt.Text = Math.Round(feld[4].nettopreis_Summe, 2).ToString();
             }
             else if (check5.IsChecked == false)
@@ -530,8 +530,8 @@ public partial class MainWindow : Window
             double w4 = Convert.ToDouble(gpreis4txt.Text);
             double w5 = Convert.ToDouble(gpreis5txt.Text);
 
-            
-                gesamtpreistxt.Text = (w1 + w2 + w3 + w4 + w5).ToString();
+
+            gesamtpreistxt.Text = (w1 + w2 + w3 + w4 + w5).ToString();
 
             double x1 = Convert.ToDouble(menge1txt.Text);
             double x2 = Convert.ToDouble(menge2txt.Text);
@@ -539,8 +539,8 @@ public partial class MainWindow : Window
             double x4 = Convert.ToDouble(menge4txt.Text);
             double x5 = Convert.ToDouble(menge5txt.Text);
 
-            
-                summemengetxt.Text = (x1 + x2 + x3 + x4 + x5).ToString();
+
+            summemengetxt.Text = (x1 + x2 + x3 + x4 + x5).ToString();
 
             double y1 = Convert.ToDouble(gew1txt.Text);
             double y2 = Convert.ToDouble(gew2txt.Text);
@@ -548,8 +548,8 @@ public partial class MainWindow : Window
             double y4 = Convert.ToDouble(gew4txt.Text);
             double y5 = Convert.ToDouble(gew5txt.Text);
 
-            
-                summegewtxt.Text = (y1 + y2 + y3 + y4 + y5).ToString();
+
+            summegewtxt.Text = (y1 + y2 + y3 + y4 + y5).ToString();
 
             double z1 = Convert.ToDouble(preis1txt.Text);
             double z2 = Convert.ToDouble(preis2txt.Text);
@@ -557,15 +557,15 @@ public partial class MainWindow : Window
             double z4 = Convert.ToDouble(preis4txt.Text);
             double z5 = Convert.ToDouble(preis5txt.Text);
 
-            
-                summepreistxt.Text = (z1 + z2 + z3 + z4 + z5).ToString();
+
+            summepreistxt.Text = (z1 + z2 + z3 + z4 + z5).ToString();
             #endregion
         }
 
         private void Btnexcel_Click(object sender, RoutedEventArgs e)
         {
             bool senden = false;
-            ExelControl.ExelContoll_aufrufen(Feld_anpassen(feld), senden, bestellnummer,kundennummer);
+            ExelControl.ExelContoll_aufrufen(Feld_anpassen(feld), senden, bestellnummer, kundennummer);
         }
 
         public void Btnangebot_Click(object sender, RoutedEventArgs e)
@@ -582,44 +582,44 @@ public partial class MainWindow : Window
                 MessageBox.Show("Die Kundennummer muss aus 10 Zahlen bestehen.", "Falsche Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
                 return; //Methode beenden, wenn eine Kundennummer mit weniger als 10 Zeichen eigegeben wird
             }
-            
+
             bool senden = true;
 
-            ExelControl.ExelContoll_aufrufen(Feld_anpassen(feld), senden, bestellnummer,kundennummer);
+            ExelControl.ExelContoll_aufrufen(Feld_anpassen(feld), senden, bestellnummer, kundennummer);
             MessageBox.Show("Angebot wurde erfolgreich abgesendet!", "Bestellt", MessageBoxButton.OK);
         }
 
-        private  Schraube[] Feld_anpassen(Schraube[] feld)
+        private Schraube[] Feld_anpassen(Schraube[] feld)
         {
             Schraube[] newfeld = new Schraube[5];
-            for(int s=0; s < newfeld.Length; s++)
+            for (int s = 0; s < newfeld.Length; s++)
             {
                 newfeld[s] = new Schraube();
-            }        
+            }
 
             if (check1.IsChecked == true)
             {
-                newfeld[0] = feld[0];              
+                newfeld[0] = feld[0];
             }
 
             if (check2.IsChecked == true)
             {
-                newfeld[1] = feld[1];              
+                newfeld[1] = feld[1];
             }
 
             if (check3.IsChecked == true)
             {
-                newfeld[2] = feld[2];              
+                newfeld[2] = feld[2];
             }
 
             if (check4.IsChecked == true)
             {
-                newfeld[3] = feld[3];               
+                newfeld[3] = feld[3];
             }
 
             if (check5.IsChecked == true)
             {
-                newfeld[4] = feld[4];             
+                newfeld[4] = feld[4];
             }
 
             return newfeld;
@@ -661,7 +661,7 @@ public partial class MainWindow : Window
 
         private void login_Click(object sender, RoutedEventArgs e)
         {
-            if(txtkundennr.Text == null || passwortbox.Password == null)
+            if (txtkundennr.Text == null || passwortbox.Password == null)
             {
                 MessageBox.Show("Die Kundennummer oder das Passwort ist falsch", "Falsche Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -704,6 +704,6 @@ public partial class MainWindow : Window
                 logo1.Visibility = Visibility.Visible;
                 tabcontrol.Visibility = Visibility.Visible;
                 MessageBox.Show("Ihr Kundenkonto wurde angelegt.\n\nIhre Kundennummer:" + kundennummer, "Erfolgreich Registriert", MessageBoxButton.OK};
+        }
     }
-
 }
