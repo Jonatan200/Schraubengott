@@ -25,6 +25,8 @@ namespace Schraubengott
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly ViewModel viewModel;
+
         Schraube[] feld = new Schraube[5];      //Array vom Typ Schraube erstellen
         int nr = 0;                             //Variable für den Index des Feldes Schraube
         int new_screw_int = 1;                  //Varibale für Neue Schraube Button und Combobox mit Schraubenauswahl
@@ -71,6 +73,31 @@ namespace Schraubengott
 
             // Bestellnummer 
             bestellnummer = nummer.Next(10000000, 99999999);
+
+            this.viewModel = new ViewModel
+            {
+                DataGridItems = new List<DataGridItem>()
+                {
+
+                    new DataGridItem
+                    {
+                        Schraube= "Schraube 1",
+                        Gewinde = "M8",
+                        Kopf= "Außensechskant",
+                        Länge= 100,
+                        Gewindelänge = 50,
+                    },
+                    new DataGridItem
+                    {
+                        Schraube= "Schraube 2",
+                        Gewinde = "M20",
+                        Kopf= "Innensechskant",
+                        Länge= 100,
+                        Gewindelänge = 50,
+                    }
+                }
+            };
+            this.DataContext = this.viewModel;
 
         }
         #region "alle Elemente"

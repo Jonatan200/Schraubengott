@@ -127,7 +127,15 @@
                     <CheckBox x:Name="check4" Content="" HorizontalAlignment="Left" Margin="59,95,0,0" VerticalAlignment="Top" Grid.Row="1"/>
                     <CheckBox x:Name="check5" Content="" HorizontalAlignment="Left" Margin="59,159,0,0" VerticalAlignment="Top" Grid.Row="1"/>
                     <Button Content="zum Warenkorb" HorizontalAlignment="Left" Height="23" Margin="707,155,0,0" VerticalAlignment="Top" Width="92" Click="btnwarenkorb_Click" Grid.Row="1" Grid.Column="2"/>
-                    <DataGrid x:Name="myDataGrid" Grid.Column="2" HorizontalAlignment="Left" Height="255" Margin="136,121,0,0" VerticalAlignment="Top" Width="547" Grid.RowSpan="2" SelectionChanged="DataGrid_SelectionChanged" AutoGenerateColumns="True" ItemsSource="{Binding CreateDataTable}"/>
+                    <DataGrid x:Name="myDataGrid" Grid.Column="2" HorizontalAlignment="Left" Height="255" Margin="136,121,0,0" VerticalAlignment="Top" Width="547" Grid.RowSpan="2" SelectionChanged="DataGrid_SelectionChanged" AutoGenerateColumns="False" ItemsSource="{Binding DataGridItems}" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header ="Schraube" Width="*" Binding="{Binding Schraube}"/>
+                            <DataGridTextColumn Header ="Gewinde " Width="*" Binding="{Binding Gewinde}"/>
+                            <DataGridTextColumn Header=" Kopf" Width="*" Binding="{Binding Kopf}"/>
+                            <DataGridTextColumn Header=" Länge" Width="*" Binding="{Binding Länge}"/>
+                            <DataGridTextColumn Header=" Gewindelänge" Width="*" Binding="{Binding Gewindelänge}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
 
             </TabItem>
