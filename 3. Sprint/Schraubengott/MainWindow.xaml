@@ -197,7 +197,7 @@
                 <Label Content="Passwort" HorizontalAlignment="Left" Height="30" Margin="94,209,0,0" VerticalAlignment="Top" Width="111"/>
                 <Button x:Name="login" Content="Einloggen" HorizontalAlignment="Left" Height="25" Margin="94,296,0,0" VerticalAlignment="Top" Width="108" Click="login_Click"/>
                 <Button x:Name="regrist" Content="Registrieren" HorizontalAlignment="Left" Height="25" Margin="94,346,0,0" VerticalAlignment="Top" Width="108" Click="regrist_Click"/>
-                <Label Content="Bitte loggen Sie sich ein um Metrische Schrauben nach Ihrem Wunsch zu konfiguerieren und in CATIA zu erstellen." HorizontalAlignment="Left" Height="26" Margin="10,10,-41,0" VerticalAlignment="Top" Width="623"/>
+                <Label Content="Bitte loggen Sie sich ein um metrische Schrauben nach Ihrem Wunsch zu konfiguerieren und in CATIA zu erstellen." HorizontalAlignment="Left" Height="26" Margin="10,10,-41,0" VerticalAlignment="Top" Width="623"/>
                 <Image HorizontalAlignment="Left" Height="247" Margin="348,124,0,0" VerticalAlignment="Top" Width="373" Source="Logo.png"/>
                 <PasswordBox x:Name="passwortbox" HorizontalAlignment="Left" Height="30" Margin="228,209,0,0" VerticalAlignment="Top" Width="115"/>
             </Grid>
