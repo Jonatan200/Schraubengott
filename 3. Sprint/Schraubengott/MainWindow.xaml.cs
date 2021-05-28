@@ -125,7 +125,7 @@ namespace Schraubengott
         }
 
         private void Cbmat_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
+        {           
             //ComboBoxItems für Festigkeitsklasse werden abhängig von dem Material erstellt
             if (cbmat.SelectedValue.ToString() == "V2A")
             {
@@ -152,6 +152,8 @@ namespace Schraubengott
                 cbfk.Items.Add("10.9");
                 cbfk.Items.Add("12.9");
             }
+
+            cbfk.SelectedIndex = 0;
         }
 
         void TextBox_GotFocus(object sender, RoutedEventArgs e)
