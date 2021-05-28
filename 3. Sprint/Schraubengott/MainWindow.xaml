@@ -203,26 +203,31 @@
             </Grid>
 
         </Border>
-        <Border x:Name="gridregr" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="448" Margin="123.333,59,0,0" VerticalAlignment="Top" Width="797">
+        <Border x:Name="gridregr" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="438" Margin="94.333,54,0,0" VerticalAlignment="Top" Width="828">
             <Grid>
                 <Label Content="Legen Sie ein Kundenkonto an um alle Funktionen von Schraubengott nutzen zu können." HorizontalAlignment="Left" Height="30" Margin="36,33,0,0" VerticalAlignment="Top" Width="644"/>
-                <Label Content="Registrieren" HorizontalAlignment="Left" Height="46" Margin="70,113,0,0" VerticalAlignment="Top" Width="131" FontSize="16"/>
-                <Label Content="Name:" HorizontalAlignment="Left" Height="30" Margin="70,164,0,0" VerticalAlignment="Top" Width="122"/>
-                <Label Content="Vorname:" HorizontalAlignment="Left" Height="30" Margin="70,199,0,0" VerticalAlignment="Top" Width="122"/>
-                <Label Content="Email:" HorizontalAlignment="Left" Height="30" Margin="70,234,0,0" VerticalAlignment="Top" Width="122"/>
+                <Label Content="Registrieren" HorizontalAlignment="Left" Height="46" Margin="56,113,0,0" VerticalAlignment="Top" Width="131" FontSize="16"/>
+                <Label Content="Name, Vorname:" HorizontalAlignment="Left" Height="30" Margin="56,178,0,0" VerticalAlignment="Top" Width="122"/>
+                <Label Content="Email:" HorizontalAlignment="Left" Height="30" Margin="500,213,0,0" VerticalAlignment="Top" Width="122"/>
                 <Label Content="Bitte füllen Sie alle Felder aus." HorizontalAlignment="Left" Height="30" Margin="36,63,0,0" VerticalAlignment="Top" Width="644"/>
-                <TextBox x:Name="txtvorname" HorizontalAlignment="Left" Height="30" Margin="234,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
-                <TextBox x:Name="txtname" HorizontalAlignment="Left" Height="30" Margin="234,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
-                <TextBox x:Name="txtemail" HorizontalAlignment="Left" Height="30" Margin="234,234,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
-                <Image HorizontalAlignment="Left" Height="269" Margin="387,113,0,0" VerticalAlignment="Top" Width="398" Source="Logo.png"/>
-                <Button x:Name="kontoerstellen" Content="Konto erstellen" HorizontalAlignment="Left" Height="25" Margin="70,378,0,0" VerticalAlignment="Top" Width="103" Click="kontoerstellen_Click"/>
-                <Button x:Name="zurück" Content="Zurück" HorizontalAlignment="Left" Height="25" Margin="221,378,0,0" VerticalAlignment="Top" Width="103" Click="zurück_Click"/>
-                <Label Content="Passwort:" HorizontalAlignment="Left" Height="30" Margin="70,269,0,0" VerticalAlignment="Top" Width="122"/>
-                <PasswordBox x:Name="passwortbox2" HorizontalAlignment="Left" Height="30" Margin="234,269,0,0" VerticalAlignment="Top" Width="127"/>
-                <PasswordBox x:Name="passwortbox3" HorizontalAlignment="Left" Height="30" Margin="234,304,0,0" VerticalAlignment="Top" Width="127"/>
-                <Label Content="Passwort wiederholen" HorizontalAlignment="Left" Height="30" Margin="70,304,0,0" VerticalAlignment="Top" Width="122"/>
+                <TextBox x:Name="txtname" HorizontalAlignment="Left" Height="30" Margin="192,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232"/>
+                <TextBox x:Name="email" HorizontalAlignment="Left" Height="30" Margin="636,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127" TextChanged="email_TextChanged"/>
+                <Image HorizontalAlignment="Left" Height="161" Margin="580,10,0,0" VerticalAlignment="Top" Width="245" Source="Logo.png" RenderTransformOrigin="0.553,0.496"/>
+                <Button x:Name="kontoerstellen" Content="Konto erstellen" HorizontalAlignment="Left" Height="25" Margin="192,360,0,0" VerticalAlignment="Top" Width="103" Click="kontoerstellen_Click"/>
+                <Button x:Name="zurück" Content="Zurück" HorizontalAlignment="Left" Height="25" Margin="321,360,0,0" VerticalAlignment="Top" Width="103" Click="zurück_Click"/>
+                <Label Content="Passwort:" HorizontalAlignment="Left" Height="30" Margin="500,248,0,0" VerticalAlignment="Top" Width="122"/>
+                <PasswordBox x:Name="passwortbox2" HorizontalAlignment="Left" Height="30" Margin="636,246,0,0" VerticalAlignment="Top" Width="127"/>
+                <PasswordBox x:Name="passwortbox3" HorizontalAlignment="Left" Height="30" Margin="636,281,0,0" VerticalAlignment="Top" Width="127" />
+                <Label Content="Passwort wiederholen:" HorizontalAlignment="Left" Height="30" Margin="500,283,0,0" VerticalAlignment="Top" Width="136"/>
+                <Label Content="Firma:" HorizontalAlignment="Left" Height="30" Margin="56,213,0,0" VerticalAlignment="Top" Width="122"/>
+                <TextBox x:Name="firma" HorizontalAlignment="Left" Height="30" Margin="192,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232"/>
+                <Label Content="PLZ:" HorizontalAlignment="Left" Height="30" Margin="56,248,0,0" VerticalAlignment="Top" Width="122"/>
+                <TextBox x:Name="plz" MaxLength="10" TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Height="30" Margin="192,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+                <Label Content="Straße:" HorizontalAlignment="Left" Height="30" Margin="56,281,0,0" VerticalAlignment="Top" Width="122"/>
+                <TextBox x:Name="strasse" HorizontalAlignment="Left" Height="30" Margin="192,283,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232"/>
             </Grid>
         </Border>
+        <Button x:Name="ausloggen" Visibility="Collapsed" Content="Ausloggen" HorizontalAlignment="Left" Height="22" Margin="777.333,555,0,0" VerticalAlignment="Top" Width="92" Grid.Column="1" Click="ausloggen_Click"/>
 
     </Grid>
 </Window>
