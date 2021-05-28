@@ -154,6 +154,32 @@ namespace Schraubengott
             }
         }
 
+        void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            box.Text = string.Empty;
+            box.GotFocus -= TextBox_GotFocus;
+        }
+        void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            if (box.Text.Trim().Equals(string.Empty))
+            {
+                box.Text = "0";
+                box.GotFocus += TextBox_GotFocus;
+            }
+        }
+       
+        void TextBox2_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            if (box.Text.Trim().Equals(string.Empty))
+            {
+                box.Text = "z.B Bitte in 50er Paketen versenden";
+                box.GotFocus += TextBox_GotFocus;
+            }
+        }
+
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox a_textBox = (TextBox)sender;
@@ -623,19 +649,6 @@ namespace Schraubengott
 
         public void Btnangebot_Click(object sender, RoutedEventArgs e)
         {
-            kundennummer = txtkunde.Text; //Eingegebene Kundennr. wird in der Variablen gespeichert
-
-            if (txtkunde.Text == "")
-            {
-                MessageBox.Show("Es wurde keine Kundennummer eingetragen", "", MessageBoxButton.OK, MessageBoxImage.Error);
-                return; //Methode beenden, wenn keine Kundennummer eingetragen wird
-            }
-            else if (txtkunde.Text.Length != 10)
-            {
-                MessageBox.Show("Die Kundennummer muss aus 10 Zahlen bestehen.", "Falsche Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
-                return; //Methode beenden, wenn eine Kundennummer mit weniger als 10 Zeichen eigegeben wird
-            }
-
             bool senden = true;
 
             ExelControl.ExelContoll_aufrufen(Feld_anpassen(feld), senden, bestellnummer, kundennummer);
@@ -809,5 +822,9 @@ namespace Schraubengott
             
         }
 
+        private void txt_len_GotFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
