@@ -34,6 +34,10 @@ public partial class MainWindow : Window
 
         string kundennummer;
 
+        LinkedList datenbank = new LinkedList(); //Kunendatenbank wird erstellt
+
+
+
         public MainWindow()
         {
             for (int i = 0; i < feld.Length; i++) 
@@ -41,6 +45,9 @@ public partial class MainWindow : Window
                 feld[i] = new Schraube();         // Array wird mit Objekten gefüllt
             }
             Schraube a = new Schraube();
+            datenbank.AddNodToFront(1111, "hallo123"); //
+
+
             
             InitializeComponent();
             cmb_nr.SelectedIndex = 0;           //Combobox hat von Anfang an die erste Schraube ausgewählt
@@ -661,7 +668,7 @@ public partial class MainWindow : Window
 
         private void login_Click(object sender, RoutedEventArgs e)
         {
-            if(txtkundennr.Text == null || passwortbox.Password == null)
+            if(txtkundennr.Text == null || passwortbox.Password == null|| false==datenbank.check(Convert.ToInt32(txtkundennr.Text), passwortbox.Password ))
             {
                 MessageBox.Show("Die Kundennummer oder das Passwort ist falsch", "Falsche Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
             }
