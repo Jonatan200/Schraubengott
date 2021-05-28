@@ -38,25 +38,29 @@
     <ApplicationIcon>Symbol.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Interop.HybridShapeTypeLib">
-      <HintPath>..\..\..\..\..\Downloads\Interop.HybridShapeTypeLib.dll</HintPath>
+    <Reference Include="Interop.HybridShapeTypeLib, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>Catia\Verweise\Interop.HybridShapeTypeLib.dll</HintPath>
     </Reference>
-    <Reference Include="Interop.INFITF">
-      <HintPath>..\..\..\..\..\Downloads\Interop.INFITF.dll</HintPath>
+    <Reference Include="Interop.INFITF, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>Catia\Verweise\Interop.INFITF.dll</HintPath>
     </Reference>
     <Reference Include="Interop.KnowledgewareTypeLib">
       <HintPath>D:\jonat\Downloads\MinimalCatia-Schrauben\Verweise\Interop.KnowledgewareTypeLib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Interop.MECMOD">
-      <HintPath>..\..\..\..\..\Downloads\Interop.MECMOD.dll</HintPath>
+    <Reference Include="Interop.MECMOD, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>Catia\Verweise\Interop.MECMOD.dll</HintPath>
     </Reference>
-    <Reference Include="Interop.PARTITF">
-      <HintPath>..\..\..\..\..\Downloads\Interop.PARTITF.dll</HintPath>
+    <Reference Include="Interop.PARTITF, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>Catia\Verweise\Interop.PARTITF.dll</HintPath>
     </Reference>
     <Reference Include="Interop.ProductStructureTypeLib">
       <HintPath>D:\jonat\Downloads\MinimalCatia-Schrauben\Verweise\Interop.ProductStructureTypeLib.dll</HintPath>
@@ -146,6 +150,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Catia\Verweise\Interop.HybridShapeTypeLib.dll" />
+    <Content Include="Catia\Verweise\Interop.INFITF.dll" />
+    <Content Include="Catia\Verweise\Interop.MECMOD.dll" />
+    <Content Include="Catia\Verweise\Interop.PARTITF.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
