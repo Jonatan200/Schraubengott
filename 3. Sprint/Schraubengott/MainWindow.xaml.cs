@@ -673,7 +673,7 @@ namespace Schraubengott
         private void login_Click(object sender, RoutedEventArgs e)
         {
 
-            if(txtkundennr.Text == null || passwortbox.Password == null|| false==datenbank.check(Convert.ToInt32(txtkundennr.Text), passwortbox.Password ))
+            if(txtkundennr.Text == "" || passwortbox.Password == "" || false==datenbank.check(Convert.ToInt32(txtkundennr.Text), passwortbox.Password ))
 
             {
                 MessageBox.Show("Die Kundennummer oder das Passwort ist falsch", "Falsche Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -712,7 +712,7 @@ namespace Schraubengott
 
         private void kontoerstellen_Click(object sender, RoutedEventArgs e)
         {
-            if (txtname.Text == null || firma.Text == null || plz.Text == null || strasse.Text == null || plz.Text == null || email.Text == null || passwortbox2.Password == null || passwortbox3.Password == null)
+            if (txtname.Text == "" || firma.Text == "" || plz.Text == "" || strasse.Text == "" || plz.Text == "" || email.Text == "" || passwortbox2.Password == "" || passwortbox3.Password == "")
             {
                 MessageBox.Show("Mindestens ein Feld wurde nicht ausgefüllt!", "Fehlende Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
             }
