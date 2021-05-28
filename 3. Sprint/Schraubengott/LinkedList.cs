@@ -62,6 +62,8 @@ namespace Schraubengott
     {
         public int kundennr;
         private String password;
+
+        public String name;
         public String firmenName;
         public String adresse;
         public int postleitzahl;
