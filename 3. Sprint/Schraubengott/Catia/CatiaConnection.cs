@@ -153,6 +153,31 @@ namespace Schraubengott
             part_Schraube.Update();
         }
 
+
+        internal void ErzeugeFase()
+        {
+            part_Schraube.InWorkObject = part_Schraube;
+
+            
+            Reference reffase = (Reference)part_Schraube.CreateReferenceFromName("");
+
+
+            Chamfer fase1 = shapefac.AddNewChamfer(reffase, CatChamferPropagation.catMinimalChamfer, CatChamferMode.catLengthAngleChamfer, CatChamferOrientation.catNoReverseChamfer, 1, 45);
+
+            Bodies bodies1 = part_Schraube.Bodies;
+            Body bodie1 = bodies1.Item("Hauptkörper");
+            Shapes schapes1 = bodie1.Shapes;
+            ConstRadEdgeFillet constRadEdgeFillet1 = (ConstRadEdgeFillet) schapes1.Item("Kanntenverundung");
+            Reference reference2 = part_Schraube.CreateReferenceFromBRepName("REdge:(Edge:(Face:(Brp:(Pad.1;1);None:();Cf11:());Face:(Brp:(Pad.1;0:(Brp:(Sketch.1;1)));None:();Cf11:());None:(Limits1:();Limits2:());Cf11:());WithTemporaryBody;WithoutBuildError;WithSelectingFeatureSupport;MFBRepVersion_CXR15)", constRadEdgeFillet1);
+            fase1.AddElementToChamfer(reference2);
+            fase1.Mode = CatChamferMode.catLengthAngleChamfer;
+            fase1.Propagation = CatChamferPropagation.catTangencyChamfer;
+            fase1.Orientation = CatChamferOrientation.catNoReverseChamfer;
+
+            part_Schraube.Update();
+
+            
+        }
         
         internal void ErzeugeGewindehelix(Schraube[] arr)
         {
@@ -166,7 +191,7 @@ namespace Schraubengott
             HybridShapePointCoord Helixstartpunkt = hybridshapefac.AddNewPointCoord(0, 0, 0.5 * arr[0].durchmesser);
             Reference RefHelixstartpunkt = part_Schraube.CreateReferenceFromObject(Helixstartpunkt);
 
-            HybridShapeHelix Helix = hybridshapefac.AddNewHelix(RefHelxDir, false, RefHelixstartpunkt, arr[0].gewindesteigung, arr[0].gewindelaenge, false, 0, 0, false);
+            HybridShapeHelix Helix = hybridshapefac.AddNewHelix(RefHelxDir, false, RefHelixstartpunkt, arr[0].gewindesteigung, arr[0].gewindelaenge - 2, false, 0, 0, false);
 
             Reference RefHelix = part_Schraube.CreateReferenceFromObject(Helix);
             Reference RefGewinde = part_Schraube.CreateReferenceFromObject(gewinde);
@@ -282,7 +307,7 @@ namespace Schraubengott
 
             if (arr[0].typ == "Außensechskant")
             {
-                SechseckZeichnen(arr);
+                SechseckZeichnen(arr, skizze_kopf);
             }
             else
             {
@@ -295,16 +320,16 @@ namespace Schraubengott
         }
 
 
-        internal void SechseckZeichnen(Schraube[] arr)
+        internal void SechseckZeichnen(Schraube[] arr, Sketch skizze )
         {
 
 
             double schlüsselweite = 0.5 * Convert.ToDouble(arr[0].schluesselbreite);
             double außenkreisSchraubenkopf = schlüsselweite / (Math.Sqrt(3) / 2);
 
-            #region zeichnen 
+            
 
-            Factory2D catfactory2D = skizze_kopf.OpenEdition();
+            Factory2D catfactory2D = skizze.OpenEdition();
 
             Point2D point2D1 = catfactory2D.CreatePoint(0, 0);
             Point2D point2D2 = catfactory2D.CreatePoint(0, schlüsselweite);
@@ -370,7 +395,9 @@ namespace Schraubengott
         internal void ZkizzeTasche(Schraube [] arr)
         {
             part_Schraube.InWorkObject = body_Schraube;
-            Reference ref_tasche = part_Schraube.CreateReferenceFromName("Selection_RSur:(Face:(Brp:((Brp:(Pad.2;1);Brp:(Pad.1;2)));None:();Cf11:());Pad.2_ResultOUT;Z0;G8251)");
+            OriginElements catoriginElements = hsp_catiaPartDoc.Part.OriginElements;
+            
+            Reference ref_tasche = part_Schraube.CreateReferenceFromName("Selection_RSur:(Face:(Brp:(Pad.2;2);None:();Cf11:());Pad.2_ResultOUT;Z0;G8251)");
 
             skizze_tasche = sketches_Schraube.Add(ref_tasche);
             skizze_tasche.set_Name("Tasche Innensechskannt");
@@ -382,18 +409,23 @@ namespace Schraubengott
             // Inensechskannt Zeichnen 
 
             part_Schraube.InWorkObject = skizze_tasche;
-            Factory2D shapefac = skizze_tasche.OpenEdition();
+            Factory2D shapefac2 = skizze_tasche.OpenEdition();
 
-            SechseckZeichnen(arr);
+            SechseckZeichnen(arr,skizze_tasche);
+
+            skizze_tasche.CloseEdition();
+            hsp_catiaPartDoc.Part.Update();
+
+
             
         }
 
         internal void TascheErzeugen(Schraube[] arr)
         {
             hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;
-            ShapeFactory shapFac = (ShapeFactory)hsp_catiaPartDoc.Part.ShapeFactory;
+            ShapeFactory shapFac2 = (ShapeFactory)hsp_catiaPartDoc.Part.ShapeFactory;
 
-            Pocket pocket_innensechskannt = shapFac.AddNewPocket(skizze_tasche, 0.5 * arr[0].kopfhöhe);
+            Pocket pocket_innensechskannt = shapFac2.AddNewPocket(skizze_tasche, 0.5 * arr[0].kopfhöhe);
             pocket_innensechskannt.set_Name("Innensechskannt");
             hsp_catiaPartDoc.Part.Update();
         }
@@ -405,4 +437,3 @@ namespace Schraubengott
     }
 
 }
-#endregion

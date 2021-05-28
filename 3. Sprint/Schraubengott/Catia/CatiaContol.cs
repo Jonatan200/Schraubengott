@@ -34,9 +34,11 @@ namespace Schraubengott
                     cc.ErzeugeZylinder(arr);        // Extrudiere Balken
 
                     cc.ErzeugeGewindehelix(arr);
-                   // cc.ErzeugeGewindeFeature(arr);
-                    
-                    
+
+                    // 
+                    // cc.ErzeugeGewindeFeature(arr);
+
+
                     cc.ErstelleSkizzeKopf(arr);       //Erstelle Skizze für den Kopf 
 
                     cc.ZkizzeKopf(arr);
@@ -50,7 +52,8 @@ namespace Schraubengott
                         cc.TascheErzeugen(arr);
                         
                     }
-                   
+
+                    cc.ErzeugeFase();
                 }
                 else
                 {
