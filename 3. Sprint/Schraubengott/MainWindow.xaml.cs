@@ -671,6 +671,8 @@ namespace Schraubengott
                 logo1.Visibility = Visibility.Visible;
                 tabcontrol.Visibility = Visibility.Visible;
                 ausloggen.Visibility = Visibility.Visible;
+                txtkundennr.Clear();
+                passwortbox.Clear();
             }
         }
 
@@ -706,6 +708,11 @@ namespace Schraubengott
                 tabcontrol.Visibility = Visibility.Visible;
                 MessageBox.Show("Ihr Kundenkonto wurde angelegt.\n\nIhre Kundennummer:" + kundennummer, "Erfolgreich Registriert", MessageBoxButton.OK);
                 ausloggen.Visibility = Visibility.Visible;
+                txtname.Clear();
+                txtvorname.Clear();
+                txtemail.Clear();
+                passwortbox2.Clear();
+                passwortbox3.Clear();
             }
         }
 
