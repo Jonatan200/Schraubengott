@@ -211,13 +211,13 @@
                 <Label Content="Email:" HorizontalAlignment="Left" Height="30" Margin="500,213,0,0" VerticalAlignment="Top" Width="122"/>
                 <Label Content="Bitte füllen Sie alle Felder aus." HorizontalAlignment="Left" Height="30" Margin="36,63,0,0" VerticalAlignment="Top" Width="644"/>
                 <TextBox x:Name="txtname" HorizontalAlignment="Left" Height="30" Margin="192,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232"/>
-                <TextBox x:Name="email" HorizontalAlignment="Left" Height="30" Margin="636,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
+                <TextBox x:Name="email" HorizontalAlignment="Left" Height="30" Margin="636,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127" TextChanged="email_TextChanged"/>
                 <Image HorizontalAlignment="Left" Height="161" Margin="580,10,0,0" VerticalAlignment="Top" Width="245" Source="Logo.png" RenderTransformOrigin="0.553,0.496"/>
                 <Button x:Name="kontoerstellen" Content="Konto erstellen" HorizontalAlignment="Left" Height="25" Margin="192,360,0,0" VerticalAlignment="Top" Width="103" Click="kontoerstellen_Click"/>
                 <Button x:Name="zurück" Content="Zurück" HorizontalAlignment="Left" Height="25" Margin="321,360,0,0" VerticalAlignment="Top" Width="103" Click="zurück_Click"/>
                 <Label Content="Passwort:" HorizontalAlignment="Left" Height="30" Margin="500,248,0,0" VerticalAlignment="Top" Width="122"/>
                 <PasswordBox x:Name="passwortbox2" HorizontalAlignment="Left" Height="30" Margin="636,246,0,0" VerticalAlignment="Top" Width="127"/>
-                <PasswordBox x:Name="passwortbox3" HorizontalAlignment="Left" Height="30" Margin="636,281,0,0" VerticalAlignment="Top" Width="127"/>
+                <PasswordBox x:Name="passwortbox3" HorizontalAlignment="Left" Height="30" Margin="636,281,0,0" VerticalAlignment="Top" Width="127" />
                 <Label Content="Passwort wiederholen:" HorizontalAlignment="Left" Height="30" Margin="500,283,0,0" VerticalAlignment="Top" Width="136"/>
                 <Label Content="Firma:" HorizontalAlignment="Left" Height="30" Margin="56,213,0,0" VerticalAlignment="Top" Width="122"/>
                 <TextBox x:Name="firma" HorizontalAlignment="Left" Height="30" Margin="192,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232"/>

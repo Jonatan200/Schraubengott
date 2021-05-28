@@ -712,7 +712,11 @@ namespace Schraubengott
 
         private void kontoerstellen_Click(object sender, RoutedEventArgs e)
         {
-            if (txtname.Text == "" || firma.Text == "" || plz.Text == "" || strasse.Text == "" || plz.Text == "" || email.Text == "" || passwortbox2.Password == "" || passwortbox3.Password == "")
+            if (passwortbox2 != passwortbox3)
+            {
+                MessageBox.Show("Passwörter stimmen nicht überein.", "Passwort falsch", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            if (txtname.Text == ""|| firma.Text == "" || plz.Text == "" || strasse.Text == "" || plz.Text == "" || email.Text == "" || passwortbox2.Password == "" || passwortbox3.Password == "")
             {
                 MessageBox.Show("Mindestens ein Feld wurde nicht ausgefüllt!", "Fehlende Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -739,5 +743,6 @@ namespace Schraubengott
             gridlogin.Visibility = Visibility.Visible;
             logo1.Visibility = Visibility.Collapsed;
         }
+
     }
 }
