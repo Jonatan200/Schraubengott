@@ -661,7 +661,7 @@ public partial class MainWindow : Window
 
         private void login_Click(object sender, RoutedEventArgs e)
         {
-            if(txtkundennr.Text != null || passwortbox.Password != null)
+            if(txtkundennr.Text == null || passwortbox.Password == null)
             {
                 MessageBox.Show("Die Kundennummer oder das Passwort ist falsch", "Falsche Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -694,7 +694,7 @@ public partial class MainWindow : Window
 
         private void kontoerstellen_Click(object sender, RoutedEventArgs e)
         {
-            if (txtname.Text != null || txtvorname.Text != null || txtemail.Text != null || passwortbox2.Password != null || passwortbox3.Password != null)
+            if (txtname.Text == null || txtvorname.Text == null || txtemail.Text == null || passwortbox2.Password == null || passwortbox3.Password == null)
             {
                 MessageBox.Show("Mindestens ein Feld wurde nicht ausgefüllt!", "Fehlende Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
             }
