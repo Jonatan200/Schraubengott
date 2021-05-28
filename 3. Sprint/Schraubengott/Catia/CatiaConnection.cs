@@ -8,6 +8,7 @@ using INFITF;
 using MECMOD;
 using PARTITF;
 using HybridShapeTypeLib;
+using DRAFTINGITF;
 
 namespace Schraubengott
 {
@@ -15,6 +16,7 @@ namespace Schraubengott
     {
        
         INFITF.Application hsp_catiaApp;
+        INFITF.Documents catDokuments1;
         MECMOD.PartDocument hsp_catiaPartDoc;
         MECMOD.Sketch hsp_catiaSkizze;
 
@@ -52,7 +54,7 @@ namespace Schraubengott
         internal void ErzeugePart()
         {
             //Dokument erstellen
-            INFITF.Documents catDokuments1 = hsp_catiaApp.Documents;
+            catDokuments1 = hsp_catiaApp.Documents;
 
             //Part erstellen
              hsp_catiaPartDoc =(PartDocument) catDokuments1.Add("Part");
@@ -430,10 +432,37 @@ namespace Schraubengott
             hsp_catiaPartDoc.Part.Update();
         }
 
-        internal void Zeichenableitung()
+        internal void Zeichnungsableitung()
         {
-           
-        }
-    }
 
+            DrawingDocument drawingDokument1 = (DrawingDocument)hsp_catiaApp.Documents.NewFrom(@"C:\Users\jonat\Documents\GitHub\Schraubengott\3. Sprint\Schraubengott\Catia\A4_V.CATDrawing");
+
+            //drawingDokument1 = (DrawingDocument) hsp_catiaApp.ActiveDocument;
+            DrawingSheets drawingSheets1 = drawingDokument1.Sheets;
+            DrawingSheet drawingSheet1 = drawingSheets1.Item("A4_Zeichnungsrahmen");
+            DrawingViews drawingViews1 = drawingSheet1.Views;
+            DrawingView drawingView1 = drawingViews1.Add("AutomaticNaming");
+
+        // bis hierhin funktioniert 
+
+            DrawingViewGenerativeLinks drawingViewGenerativeLinks1 = drawingView1.GenerativeLinks;
+            DrawingViewGenerativeBehavior drawingViewGenerativeBehavior1 = drawingView1.GenerativeBehavior;
+
+            Documents catDokuments1 = (Documents) hsp_catiaApp.Documents;  //Eventuell unnötig 
+            PartDocument partDocument1 = (PartDocument) catDokuments1.Item("Part1.CATPart");
+            object product1 = partDocument1.GetItem("Part1");
+            drawingViewGenerativeBehavior1.Document = (INFITF.Application) product1;
+            drawingViewGenerativeBehavior1.DefineFrontView(0, 0, 0, 0, 0, 0);
+            drawingView1.x = 114;
+            drawingView1.y = 187;
+            drawingView1.Scale = 1;
+            drawingViewGenerativeBehavior1 = drawingView1.GenerativeBehavior;
+            drawingViewGenerativeBehavior1.Update();
+            drawingView1.Activate();
+
+
+            
+        }
+
+    }
 }

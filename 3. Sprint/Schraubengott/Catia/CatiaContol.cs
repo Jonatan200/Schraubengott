@@ -36,7 +36,7 @@ namespace Schraubengott
                     cc.ErzeugeGewindehelix(arr);
 
                     // 
-                    // cc.ErzeugeGewindeFeature(arr);
+                    //cc.ErzeugeGewindeFeature(arr);
 
 
                     cc.ErstelleSkizzeKopf(arr);       //Erstelle Skizze für den Kopf 
@@ -52,6 +52,8 @@ namespace Schraubengott
                         cc.TascheErzeugen(arr);
                         
                     }
+
+                    cc.Zeichnungsableitung();
 
                     cc.ErzeugeFase();
                 }
