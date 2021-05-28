@@ -223,6 +223,7 @@
                 <Label Content="Passwort wiederholen" HorizontalAlignment="Left" Height="30" Margin="70,304,0,0" VerticalAlignment="Top" Width="122"/>
             </Grid>
         </Border>
+        <Button x:Name="ausloggen" Visibility="Collapsed" Content="Ausloggen" HorizontalAlignment="Left" Height="22" Margin="777.333,555,0,0" VerticalAlignment="Top" Width="92" Grid.Column="1" Click="ausloggen_Click"/>
 
     </Grid>
 </Window>
