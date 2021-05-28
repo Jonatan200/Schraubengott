@@ -40,7 +40,7 @@ namespace Schraubengott
 
         LinkedList datenbank = new LinkedList(); //Kunendatenbank wird erstellt
 
-
+        
 
         public MainWindow()
         {
@@ -82,22 +82,31 @@ namespace Schraubengott
                     new DataGridItem
                     {
                         Schraube= "Schraube 1",
-                        Gewinde = "M8",
+                        Material= "V2A",
+                        Festigkeit= "bla",
                         Kopf= "Außensechskant",
+                        Gewinde = "M8",
+                        Typ="Feingewinde",
                         Länge= 100,
                         Gewindelänge = 50,
+                        Menge=500,
                     },
                     new DataGridItem
                     {
                         Schraube= "Schraube 2",
-                        Gewinde = "M20",
-                        Kopf= "Innensechskant",
+                        Material= "V2A",
+                        Festigkeit= "bla",
+                        Kopf= "Außensechskant",
+                        Gewinde = "M8",
+                        Typ="Feingewinde",
                         Länge= 100,
                         Gewindelänge = 50,
+                        Menge=500,
                     }
                 }
             };
             this.DataContext = this.viewModel;
+
 
         }
         #region "alle Elemente"
@@ -797,7 +806,7 @@ namespace Schraubengott
             {
                 dt.Rows.Add("Schraube" + i, feld[i].material, feld[i].festigkeit, feld[i].typ, feld[i].gewinde, feld[i].laenge, feld[i].gewindelaenge, feld[i].menge);
             }
-
+            
         }
 
     }
