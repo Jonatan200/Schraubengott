@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
 
 namespace Schraubengott
 {
@@ -527,43 +526,9 @@ namespace Schraubengott
         }
         #endregion
 
-        public void hdf(Schraube[] feld)
-        {
-            GetDataTable(feld);
-        }
-
-        public void DataTable(Schraube[] feld)
-        {
-            DataTableCollection = GetDataTable(feld);
-        }
-
-        public DataTable DataTableCollection { get; set; }
-
-        public DataTable GetDataTable(Schraube[] feld)
-        {
-
-            DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("Schraube", typeof(string));
-            dataTable.Columns.Add("Material", typeof(string));
-            dataTable.Columns.Add("Festigkeit", typeof(string));
-            dataTable.Columns.Add("Kopf", typeof(string));
-            dataTable.Columns.Add("Gewinde", typeof(int));
-            dataTable.Columns.Add("Typ", typeof(int));
-            dataTable.Columns.Add("Länge", typeof(int));
-            dataTable.Columns.Add("Gewindelänge", typeof(int));
-            dataTable.Columns.Add("Menge", typeof(int));
-            if(feld.Length < 1)
-            {
-                for (int i = 0; i < feld.Length; i++)
-                {
-                    dataTable.Rows.Add("Schraube" + i, feld[i].material, feld[i].festigkeit, feld[i].typ, feld[i].gewinde, feld[i].laenge, feld[i].gewindelaenge, feld[i].menge);
-                }
-            }
-
-            return dataTable;
-        }
     }
 }
 
 
-   
+
+

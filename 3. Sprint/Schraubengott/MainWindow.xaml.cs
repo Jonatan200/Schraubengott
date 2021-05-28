@@ -15,7 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net.Mail;
-using Excel = Microsoft.Office.Interop.Excel; 
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Data;
 
 namespace Schraubengott
 {
@@ -33,6 +34,7 @@ namespace Schraubengott
         int bestellnummer;
 
         string kundennummer;
+        
 
         LinkedList datenbank = new LinkedList(); //Kunendatenbank wird erstellt
 
@@ -46,10 +48,15 @@ namespace Schraubengott
             }
             Schraube a = new Schraube();
 
+
             datenbank.AddNodToFront(1001, "hallo123"); // Datenbankeinträge
             datenbank.AddNodToFront(1002, "hallo456");
             datenbank.AddNodToFront(1003, "hallo789");
 
+
+
+         //   DataTable Schraubennn = CreateDataTable();
+          //  myDataGrid.DataContext = Schraubennn.DefaultView;
 
 
 
@@ -64,7 +71,6 @@ namespace Schraubengott
 
             // Bestellnummer 
             bestellnummer = nummer.Next(10000000, 99999999);
-
 
         }
         #region "alle Elemente"
@@ -673,7 +679,9 @@ namespace Schraubengott
         private void login_Click(object sender, RoutedEventArgs e)
         {
 
+
             if(txtkundennr.Text == "" || passwortbox.Password == "" || false==datenbank.check(Convert.ToInt32(txtkundennr.Text), passwortbox.Password ))
+
 
             {
                 MessageBox.Show("Die Kundennummer oder das Passwort ist falsch", "Falsche Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -737,11 +745,32 @@ namespace Schraubengott
             }
         }
 
+
         private void ausloggen_Click(object sender, RoutedEventArgs e)
         {
             tabcontrol.Visibility = Visibility.Collapsed;
             gridlogin.Visibility = Visibility.Visible;
             logo1.Visibility = Visibility.Collapsed;
+        }
+
+
+        public void CreateDataTable()
+        {
+            System.Data.DataTable dt = new DataTable("MyTable");
+            dt.Columns.Add("Schraube", typeof(string));
+            dt.Columns.Add("Material", typeof(string));
+            dt.Columns.Add("Festigkeit", typeof(string));
+            dt.Columns.Add("Kopf", typeof(string));
+            dt.Columns.Add("Gewinde", typeof(int));
+            dt.Columns.Add("Typ", typeof(int));
+            dt.Columns.Add("Länge", typeof(int));
+            dt.Columns.Add("Gewindelänge", typeof(int));
+            dt.Columns.Add("Menge", typeof(int));
+            for (int i = 0; i < feld.Length; i++)
+            {
+                dt.Rows.Add("Schraube" + i, feld[i].material, feld[i].festigkeit, feld[i].typ, feld[i].gewinde, feld[i].laenge, feld[i].gewindelaenge, feld[i].menge);
+            }
+
         }
 
     }
