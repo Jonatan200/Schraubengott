@@ -702,15 +702,17 @@ namespace Schraubengott
             gridlogin.Visibility = Visibility.Visible;
             gridregr.Visibility = Visibility.Collapsed;
             txtname.Clear();
-            txtvorname.Clear();
-            txtemail.Clear();
+            firma.Clear();
+            plz.Clear();
+            strasse.Clear();
+            email.Clear();
             passwortbox2.Clear();
             passwortbox3.Clear();
         }
 
         private void kontoerstellen_Click(object sender, RoutedEventArgs e)
         {
-            if (txtname.Text == null || txtvorname.Text == null || txtemail.Text == null || passwortbox2.Password == null || passwortbox3.Password == null)
+            if (txtname.Text == null || firma.Text == null || plz.Text == null || strasse.Text == null || plz.Text == null || email.Text == null || passwortbox2.Password == null || passwortbox3.Password == null)
             {
                 MessageBox.Show("Mindestens ein Feld wurde nicht ausgefüllt!", "Fehlende Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -722,8 +724,10 @@ namespace Schraubengott
                 MessageBox.Show("Ihr Kundenkonto wurde angelegt.\n\nIhre Kundennummer:" + kundennummer, "Erfolgreich Registriert", MessageBoxButton.OK);
                 ausloggen.Visibility = Visibility.Visible;
                 txtname.Clear();
-                txtvorname.Clear();
-                txtemail.Clear();
+                firma.Clear();
+                plz.Clear();
+                strasse.Clear();
+                email.Clear();
                 passwortbox2.Clear();
                 passwortbox3.Clear();
             }
