@@ -40,7 +40,7 @@ namespace Schraubengott
 
         LinkedList datenbank = new LinkedList(); //Kunendatenbank wird erstellt
 
-
+        
 
         public MainWindow()
         {
@@ -82,22 +82,31 @@ namespace Schraubengott
                     new DataGridItem
                     {
                         Schraube= "Schraube 1",
-                        Gewinde = "M8",
+                        Material= "V2A",
+                        Festigkeit= "bla",
                         Kopf= "Außensechskant",
+                        Gewinde = "M8",
+                        Typ="Feingewinde",
                         Länge= 100,
                         Gewindelänge = 50,
+                        Menge=500,
                     },
                     new DataGridItem
                     {
                         Schraube= "Schraube 2",
-                        Gewinde = "M20",
-                        Kopf= "Innensechskant",
+                        Material= "V2A",
+                        Festigkeit= "bla",
+                        Kopf= "Außensechskant",
+                        Gewinde = "M8",
+                        Typ="Feingewinde",
                         Länge= 100,
                         Gewindelänge = 50,
+                        Menge=500,
                     }
                 }
             };
             this.DataContext = this.viewModel;
+
 
         }
         #region "alle Elemente"
@@ -115,8 +124,24 @@ namespace Schraubengott
             }
         }
 
-        private void Cbmat_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        
+        private void RegistrierenBtn_Click() //muss noch an den Button geknüpft werden
         {
+            String name = txtname.TextChanged;
+        }
+        
+        #region "Registrierfenster"
+
+        private void LogTxtName()
+        {
+            
+        }
+
+
+        #endregion
+
+        private void Cbmat_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {           
             //ComboBoxItems für Festigkeitsklasse werden abhängig von dem Material erstellt
             if (cbmat.SelectedValue.ToString() == "V2A")
             {
@@ -142,6 +167,34 @@ namespace Schraubengott
                 cbfk.Items.Add("9.8");
                 cbfk.Items.Add("10.9");
                 cbfk.Items.Add("12.9");
+            }
+
+            cbfk.SelectedIndex = 0;
+        }
+
+        void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            box.Text = string.Empty;
+            box.GotFocus -= TextBox_GotFocus;
+        }
+        void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            if (box.Text.Trim().Equals(string.Empty))
+            {
+                box.Text = "0";
+                box.GotFocus += TextBox_GotFocus;
+            }
+        }
+       
+        void TextBox2_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            if (box.Text.Trim().Equals(string.Empty))
+            {
+                box.Text = "z.B Bitte in 50er Paketen versenden";
+                box.GotFocus += TextBox_GotFocus;
             }
         }
 
@@ -614,19 +667,6 @@ namespace Schraubengott
 
         public void Btnangebot_Click(object sender, RoutedEventArgs e)
         {
-            kundennummer = txtkunde.Text; //Eingegebene Kundennr. wird in der Variablen gespeichert
-
-            if (txtkunde.Text == "")
-            {
-                MessageBox.Show("Es wurde keine Kundennummer eingetragen", "", MessageBoxButton.OK, MessageBoxImage.Error);
-                return; //Methode beenden, wenn keine Kundennummer eingetragen wird
-            }
-            else if (txtkunde.Text.Length != 10)
-            {
-                MessageBox.Show("Die Kundennummer muss aus 10 Zahlen bestehen.", "Falsche Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
-                return; //Methode beenden, wenn eine Kundennummer mit weniger als 10 Zeichen eigegeben wird
-            }
-
             bool senden = true;
 
             ExelControl.ExelContoll_aufrufen(Feld_anpassen(feld), senden, bestellnummer, kundennummer);
@@ -797,8 +837,12 @@ namespace Schraubengott
             {
                 dt.Rows.Add("Schraube" + i, feld[i].material, feld[i].festigkeit, feld[i].typ, feld[i].gewinde, feld[i].laenge, feld[i].gewindelaenge, feld[i].menge);
             }
-
+            
         }
 
+        private void txt_len_GotFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

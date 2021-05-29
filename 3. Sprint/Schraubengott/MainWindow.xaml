@@ -55,7 +55,7 @@
 
                             </ComboBox>
                             <CheckBox x:Name="gewartcheck" Content="Feingewinde" HorizontalAlignment="Left" Margin="188,226,0,0" VerticalAlignment="Top" Height="16" Width="87" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
-                            <ComboBox x:Name="cbgewinde" IsEditable="true" SelectedValuePath="Content" IsReadOnly="true" HorizontalAlignment="Left" Margin="135,185,0,0" VerticalAlignment="Top" Width="140" Height="26" MaxDropDownHeight="60">
+                            <ComboBox x:Name="cbgewinde" IsEditable="true" SelectedValuePath="Content" IsReadOnly="true" HorizontalAlignment="Left" Margin="135,185,0,0" VerticalAlignment="Top" Width="140" Height="26" >
                                 <ComboBoxItem Content="--Bitte auswählen--" IsEnabled="False"/>
                                 <ComboBoxItem Content="M4" HorizontalAlignment="Left" Width="118"/>
                                 <ComboBoxItem Content="M5" HorizontalAlignment="Left" Width="118"/>
@@ -68,7 +68,7 @@
                             </ComboBox>
                             <Label Content="Gewinde" HorizontalAlignment="Left" Margin="15,185,0,0" VerticalAlignment="Top" Height="30" Width="56"/>
                             <Label Content="Bemerkungen:" HorizontalAlignment="Left" Margin="350,185,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.971,4.298" Height="26" Width="86"/>
-                            <TextBox x:Name="text" HorizontalAlignment="Left" Height="53" Margin="441,185,0,0" TextWrapping="Wrap" Text="z.B Bitte in 50er Paketen versenden" VerticalAlignment="Top" Width="207" IsReadOnly="False" />
+                            <TextBox x:Name="text" HorizontalAlignment="Left" Height="53" Margin="441,185,0,0" TextWrapping="Wrap" Text="z.B Bitte in 50er Paketen versenden" VerticalAlignment="Top" Width="207" IsReadOnly="False" GotFocus="TextBox_GotFocus" LostFocus="TextBox2_LostFocus"/>
                             <Label Content="Kopf:" HorizontalAlignment="Left" Height="30" Margin="15,135,0,0" VerticalAlignment="Top" Width="112"/>
                             <ComboBox x:Name="cbkopf" IsEditable="true" SelectedValuePath="Content" IsReadOnly="true" HorizontalAlignment="Left" Margin="135,135,0,0" VerticalAlignment="Top" Width="140" Height="26" SelectionChanged="Cbkopf_SelectionChanged" >
                                 <ComboBoxItem Content="--Bitte auswählen--" IsEnabled="False"/>
@@ -79,11 +79,11 @@
                             <Label Content="Schraubenlänge:" HorizontalAlignment="Left" Height="30" Margin="350,35,0,0" VerticalAlignment="Top" Width="112"/>
                             <Label Content="Gewindelänge:" HorizontalAlignment="Left" Height="30" Margin="350,85,0,0" VerticalAlignment="Top" Width="112" RenderTransformOrigin="0.147,-1.628"/>
                             <Label Content="mm" HorizontalAlignment="Left" Height="30" Margin="609,35,0,0" VerticalAlignment="Top" Width="39" RenderTransformOrigin="1.504,1.219"/>
-                            <TextBox x:Name="txt_len" MaxLength="3" HorizontalAlignment="Left" Height="26" Margin="535,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="69" UndoLimit="99" TextChanged="TextBox_TextChanged"/>
-                            <TextBox x:Name="txt_gewlen" MaxLength="3" HorizontalAlignment="Left" Height="26" Margin="535,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="69" UndoLimit="99" TextChanged="TextBox_TextChanged"/>
+                            <TextBox x:Name="txt_len" MaxLength="3" HorizontalAlignment="Left" Height="26" Margin="535,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="69" UndoLimit="99" TextChanged="TextBox_TextChanged" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+                            <TextBox x:Name="txt_gewlen" MaxLength="3" HorizontalAlignment="Left" Height="26" Margin="535,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="69" UndoLimit="99" TextChanged="TextBox_TextChanged" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
                             <Label Content="mm" HorizontalAlignment="Left" Height="30" Margin="610,85,0,0" VerticalAlignment="Top" Width="39" RenderTransformOrigin="1.504,1.219"/>
                             <Label Content="Menge" HorizontalAlignment="Left" Height="26" Margin="350,135,0,0" VerticalAlignment="Top" Width="112"/>
-                            <TextBox x:Name="txt_menge" MaxLength="5" HorizontalAlignment="Left" Height="26" Margin="535,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="69" UndoLimit="99" TextChanged="TextBox_TextChanged"/>
+                            <TextBox x:Name="txt_menge" MaxLength="5" HorizontalAlignment="Left" Height="26" Margin="535,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="69" UndoLimit="99" TextChanged="TextBox_TextChanged" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
                             <Button x:Name="Btnauswahl" Content="Auswahl speichern" HorizontalAlignment="Left" Height="20" Margin="534,275,0,0" VerticalAlignment="Top" Width="114" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Click="Btnauswahl_Click"/>
                         </Grid>
                     </Border>
@@ -127,13 +127,17 @@
                     <CheckBox x:Name="check4" Content="" HorizontalAlignment="Left" Margin="59,95,0,0" VerticalAlignment="Top" Grid.Row="1"/>
                     <CheckBox x:Name="check5" Content="" HorizontalAlignment="Left" Margin="59,159,0,0" VerticalAlignment="Top" Grid.Row="1"/>
                     <Button Content="zum Warenkorb" HorizontalAlignment="Left" Height="23" Margin="707,155,0,0" VerticalAlignment="Top" Width="92" Click="btnwarenkorb_Click" Grid.Row="1" Grid.Column="2"/>
-                    <DataGrid x:Name="myDataGrid" Grid.Column="2" HorizontalAlignment="Left" Height="255" Margin="136,121,0,0" VerticalAlignment="Top" Width="547" Grid.RowSpan="2" SelectionChanged="DataGrid_SelectionChanged" AutoGenerateColumns="False" ItemsSource="{Binding DataGridItems}" IsReadOnly="True">
+                    <DataGrid x:Name="myDataGrid" Grid.Column="2" HorizontalAlignment="Left" Height="255" Margin="136,121,0,0" VerticalAlignment="Top" Width="547" Grid.RowSpan="2" SelectionChanged="DataGrid_SelectionChanged" ItemsSource="{Binding DataGridItems}" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header ="Schraube" Width="*" Binding="{Binding Schraube}"/>
-                            <DataGridTextColumn Header ="Gewinde " Width="*" Binding="{Binding Gewinde}"/>
-                            <DataGridTextColumn Header=" Kopf" Width="*" Binding="{Binding Kopf}"/>
-                            <DataGridTextColumn Header=" Länge" Width="*" Binding="{Binding Länge}"/>
-                            <DataGridTextColumn Header=" Gewindelänge" Width="*" Binding="{Binding Gewindelänge}"/>
+                            <DataGridTextColumn Header ="Schraube" Binding="{Binding Schraube}"/>
+                            <DataGridTextColumn Header=" Material" Binding="{Binding Material}"/>
+                            <DataGridTextColumn Header=" Festigkeit" Width="*" Binding="{Binding Festigkeit}"/>
+                            <DataGridTextColumn Header=" Kopf" Binding="{Binding Kopf}"/>
+                            <DataGridTextColumn Header ="Gewinde " Binding="{Binding Gewinde}"/>
+                            <DataGridTextColumn Header ="Typ " Binding="{Binding Typ}"/>
+                            <DataGridTextColumn Header=" Länge" Binding="{Binding Länge}"/>
+                            <DataGridTextColumn Header=" Gewindelänge" Binding="{Binding Gewindelänge}"/>
+                            <DataGridTextColumn Header=" Menge" Binding="{Binding Menge}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -189,9 +193,7 @@
                     <TextBox TextAlignment="Center" x:Name="gpreis5txt" HorizontalAlignment="Left" Height="54" Margin="460.167,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True" Grid.Column="1"/>
                     <TextBox TextAlignment="Center" x:Name="gesamtpreistxt" HorizontalAlignment="Left" Height="54" Margin="460.167,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True" Grid.Column="1"/>
                     <TextBox TextAlignment="Center" x:Name="gpreis3txt" HorizontalAlignment="Left" Height="54" Margin="460.167,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox x:Name="txtkunde" MaxLength="10" HorizontalAlignment="Left" Height="26" Margin="742.167,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Grid.Column="1" TextChanged="TextBox_TextChanged"/>
-                    <Label Content="Kundennummer:" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="627,226,0,0" VerticalAlignment="Top" Width="110"/>
-                    <Button x:Name="btn_Catia" Content="Catia Erstellen" Grid.Column="1" HorizontalAlignment="Left" Height="42" Margin="600,345,0,0" VerticalAlignment="Top" Width="130" Click="Button_Click"/>
+                    <Button x:Name="btn_Catia" Content="Catia Erstellen" Grid.Column="1" HorizontalAlignment="Left" Height="42" Margin="742,214,0,0" VerticalAlignment="Top" Width="130" Click="Button_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>
@@ -215,10 +217,10 @@
             <Grid>
                 <Label Content="Legen Sie ein Kundenkonto an um alle Funktionen von Schraubengott nutzen zu können." HorizontalAlignment="Left" Height="30" Margin="36,33,0,0" VerticalAlignment="Top" Width="644"/>
                 <Label Content="Registrieren" HorizontalAlignment="Left" Height="46" Margin="56,113,0,0" VerticalAlignment="Top" Width="131" FontSize="16"/>
-                <Label Content="Name, Vorname:" HorizontalAlignment="Left" Height="30" Margin="56,178,0,0" VerticalAlignment="Top" Width="122"/>
+                <Label Content="Name, Vorname:" HorizontalAlignment="Left" Height="30" Margin="56,178,0,0" VerticalAlignment="Top" Width="122" />
                 <Label Content="Email:" HorizontalAlignment="Left" Height="30" Margin="500,213,0,0" VerticalAlignment="Top" Width="122"/>
                 <Label Content="Bitte füllen Sie alle Felder aus." HorizontalAlignment="Left" Height="30" Margin="36,63,0,0" VerticalAlignment="Top" Width="644"/>
-                <TextBox x:Name="txtname" HorizontalAlignment="Left" Height="30" Margin="192,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232"/>
+                <TextBox x:Name="txtname" HorizontalAlignment="Left" Height="30" Margin="192,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TextChanged="LogTxtName"/>
                 <TextBox x:Name="email" HorizontalAlignment="Left" Height="30" Margin="636,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
                 <Image HorizontalAlignment="Left" Height="161" Margin="580,10,0,0" VerticalAlignment="Top" Width="245" Source="Logo.png" RenderTransformOrigin="0.553,0.496"/>
                 <Button x:Name="kontoerstellen" Content="Konto erstellen" HorizontalAlignment="Left" Height="25" Margin="192,360,0,0" VerticalAlignment="Top" Width="103" Click="kontoerstellen_Click"/>
