@@ -34,7 +34,7 @@ namespace Schraubengott
         Random nummer = new Random();
         int bestellnummer;
 
-        string kundennummer;
+        int kundennummer;
         
 
         LinkedList datenbank = new LinkedList(); //Kunendatenbank wird erstellt
@@ -49,10 +49,12 @@ namespace Schraubengott
             }
             Schraube a = new Schraube();
 
+            kundennummer = 1004; //Kundennr auf 1004 festlegen, weil schon 3 einträge existieren
 
-            datenbank.AddNodToFront(1001, "hallo123"); // Datenbankeinträge
-            datenbank.AddNodToFront(1002, "hallo456");
-            datenbank.AddNodToFront(1003, "hallo789");
+
+            datenbank.AddNodToFront(1001, "hallo123", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1"); // Datenbankeinträge
+            datenbank.AddNodToFront(1002, "hallo456", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1");
+            datenbank.AddNodToFront(1003, "hallo789", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1");
 
 
 
@@ -92,15 +94,23 @@ namespace Schraubengott
         
         private void RegistrierenBtn_Click() //muss noch an den Button geknüpft werden
         {
-            String name = txtname.TextChanged;
+            
+            String name =txtname.Text;
+            String firma = txtfirma.Text;
+            String email = txtemail.Text;
+            String plz =txtplz.Text ;
+            String str =txtstrasse.Text ;
+            String password = passwortbox2.Password;
+
+
+            datenbank.AddNodToFront(kundennummer, password, name, firma, email, plz, str);
+            kundennummer++;
+
         }
         
         #region "Registrierfenster"
 
-        private void LogTxtName()
-        {
-            
-        }
+        
 
 
         #endregion
@@ -630,14 +640,14 @@ namespace Schraubengott
         private void Btnexcel_Click(object sender, RoutedEventArgs e)
         {
             bool senden = false;
-            ExelControl.ExelContoll_aufrufen(Feld_anpassen(feld), senden, bestellnummer, kundennummer);
+            ExelControl.ExelContoll_aufrufen(Feld_anpassen(feld), senden, bestellnummer, kundennummer.ToString()) ;
         }
 
         public void Btnangebot_Click(object sender, RoutedEventArgs e)
         {
             bool senden = true;
 
-            ExelControl.ExelContoll_aufrufen(Feld_anpassen(feld), senden, bestellnummer, kundennummer);
+            ExelControl.ExelContoll_aufrufen(Feld_anpassen(feld), senden, bestellnummer, kundennummer.ToString());
             MessageBox.Show("Angebot wurde erfolgreich abgesendet!", "Bestellt", MessageBoxButton.OK);
         }
 
@@ -745,36 +755,53 @@ namespace Schraubengott
             gridlogin.Visibility = Visibility.Visible;
             gridregr.Visibility = Visibility.Collapsed;
             txtname.Clear();
-            firma.Clear();
-            plz.Clear();
-            strasse.Clear();
-            email.Clear();
+            txtfirma.Clear();
+            txtplz.Clear();
+            txtstrasse.Clear();
+            txtemail.Clear();
             passwortbox2.Clear();
             passwortbox3.Clear();
         }
 
         private void kontoerstellen_Click(object sender, RoutedEventArgs e)
         {
-            if (passwortbox2 != passwortbox3)
+            if (passwortbox2.Password!=passwortbox3.Password)
             {
                 MessageBox.Show("Passwörter stimmen nicht überein.", "Passwort falsch", MessageBoxButton.OK, MessageBoxImage.Error);
+
+
+
+                return;             //Wenn Passwörter sind nicht identisch, a gleichen Punkt wie vorher
+
             }
-            if (txtname.Text == ""|| firma.Text == "" || plz.Text == "" || strasse.Text == "" || plz.Text == "" || email.Text == "" || passwortbox2.Password == "" || passwortbox3.Password == "")
+            if (txtname.Text == ""|| txtfirma.Text == "" || txtplz.Text == "" || txtstrasse.Text == "" || txtplz.Text == "" || txtemail.Text == "" || passwortbox2.Password == "" || passwortbox3.Password == "")
             {
                 MessageBox.Show("Mindestens ein Feld wurde nicht ausgefüllt!", "Fehlende Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
+                String name = txtname.Text;                                 //Alle Eingaben werden in einem Listeneintrag der Liste hinzugefügt
+                String firma = txtfirma.Text;
+                String email = txtemail.Text;
+                String plz = txtplz.Text;
+                String str = txtstrasse.Text;
+                String password = passwortbox2.Password;
+
+
+                datenbank.AddNodToFront(kundennummer, password, name, firma, email, plz, str);
+                kundennummer++;
+
+
                 gridregr.Visibility = Visibility.Collapsed;
                 logo1.Visibility = Visibility.Visible;
                 tabcontrol.Visibility = Visibility.Visible;
                 MessageBox.Show("Ihr Kundenkonto wurde angelegt.\n\nIhre Kundennummer:" + kundennummer, "Erfolgreich Registriert", MessageBoxButton.OK);
                 ausloggen.Visibility = Visibility.Visible;
                 txtname.Clear();
-                firma.Clear();
-                plz.Clear();
-                strasse.Clear();
-                email.Clear();
+                txtfirma.Clear();
+                txtplz.Clear();
+                txtstrasse.Clear();
+                txtemail.Clear();
                 passwortbox2.Clear();
                 passwortbox3.Clear();
             }

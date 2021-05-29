@@ -11,9 +11,9 @@ namespace Schraubengott
         public int count = 0; //Countetr, um immer zu wissen, wie viele Elemente in der liste sind
         LinkedListElement head;
 
-        public void AddNodToFront(int kundennr, String pass)
+        public void AddNodToFront(int kundennr, String password, String name, String firma, String email, String plz, String str)
         {
-            LinkedListElement node = new LinkedListElement(kundennr, pass);
+            LinkedListElement node = new LinkedListElement(kundennr, password,name,firma,email,plz,str);
             node.next = head;
             head = node;
             count++;
@@ -66,15 +66,25 @@ namespace Schraubengott
         public String name;
         public String firmenName;
         public String adresse;
-        public int postleitzahl;
+        public String postleitzahl;
+        public String email;
 
 
         public LinkedListElement next;
 
-        public LinkedListElement(int kundennr, String password)
+
+
+        public LinkedListElement(int kundennr, String password, String name, String firma, String email, String plz, String str)
         {
             this.kundennr = kundennr;
             this.password = password;
+            this.name = name;
+            this.firmenName = firma;
+            this.email = email;
+            this.adresse = str;
+            this.postleitzahl = plz;
+
+
             next = null;
         }
         public String getpassword()
