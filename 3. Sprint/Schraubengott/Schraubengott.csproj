@@ -169,6 +169,15 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+    <COMReference Include="GenKwe">
+      <Guid>{00B6EC0E-BCFE-11D2-9B5B-006094EB7ECA}</Guid>
+      <VersionMajor>0</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
     <COMReference Include="INFITF">
       <Guid>{14F197B2-0771-11D1-A5B1-00A0C9575177}</Guid>
       <VersionMajor>0</VersionMajor>
@@ -207,6 +216,15 @@
     </COMReference>
     <COMReference Include="PARTITF">
       <Guid>{D8431606-E4B5-11D1-A5D3-00A0C95752ED}</Guid>
+      <VersionMajor>0</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="PROCESSITF">
+      <Guid>{DFB0B450-52DF-11D2-BEBF-006094198597}</Guid>
       <VersionMajor>0</VersionMajor>
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>

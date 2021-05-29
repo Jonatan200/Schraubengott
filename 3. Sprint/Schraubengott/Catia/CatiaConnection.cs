@@ -434,34 +434,61 @@ namespace Schraubengott
 
         internal void Zeichnungsableitung()
         {
-
-            DrawingDocument drawingDokument1 = (DrawingDocument)hsp_catiaApp.Documents.NewFrom(@"C:\Users\jonat\Documents\GitHub\Schraubengott\3. Sprint\Schraubengott\Catia\A4_V.CATDrawing");
-
-            //drawingDokument1 = (DrawingDocument) hsp_catiaApp.ActiveDocument;
+            #region Erste Ansicht einfügen
+            Documents dokuments1 = hsp_catiaApp.Documents;
+            DrawingDocument drawingDokument1 = (DrawingDocument)dokuments1.NewFrom(@"C:\Users\jonat\Documents\GitHub\Schraubengott\3. Sprint\Schraubengott\Catia\A4_V.CATDrawing");
+           
             DrawingSheets drawingSheets1 = drawingDokument1.Sheets;
             DrawingSheet drawingSheet1 = drawingSheets1.Item("A4_Zeichnungsrahmen");
             DrawingViews drawingViews1 = drawingSheet1.Views;
             DrawingView drawingView1 = drawingViews1.Add("AutomaticNaming");
 
-        // bis hierhin funktioniert 
 
             DrawingViewGenerativeLinks drawingViewGenerativeLinks1 = drawingView1.GenerativeLinks;
             DrawingViewGenerativeBehavior drawingViewGenerativeBehavior1 = drawingView1.GenerativeBehavior;
 
-            Documents catDokuments1 = (Documents) hsp_catiaApp.Documents;  //Eventuell unnötig 
-            PartDocument partDocument1 = (PartDocument) catDokuments1.Item("Part1.CATPart");
-            object product1 = partDocument1.GetItem("Part1");
-            drawingViewGenerativeBehavior1.Document = (INFITF.Application) product1;
-            drawingViewGenerativeBehavior1.DefineFrontView(0, 0, 0, 0, 0, 0);
-            drawingView1.x = 114;
-            drawingView1.y = 187;
+            PartDocument partDocument1 = (PartDocument) dokuments1.Item("Part1.CATPart");
+            ProductStructureTypeLib.Product product1 = (ProductStructureTypeLib.Product) partDocument1.GetItem("Part1");
+            drawingViewGenerativeBehavior1.Document =  product1;
+            drawingViewGenerativeBehavior1.DefineFrontView(0, 0, 1, 1, 0, 0);
+            drawingView1.x = 105;
+            drawingView1.y = 185;
             drawingView1.Scale = 1;
             drawingViewGenerativeBehavior1 = drawingView1.GenerativeBehavior;
             drawingViewGenerativeBehavior1.Update();
             drawingView1.Activate();
-
+            #endregion
 
             
+            DrawingView drawingView2 = drawingViews1.Add("AutomaticNaming");
+            DrawingViewGenerativeBehavior drawingViewGenerativeBehavior2 = drawingView2.GenerativeBehavior;
+            drawingViewGenerativeBehavior2.DefineProjectionView(drawingViewGenerativeBehavior1, CatProjViewType.catTopView);
+            drawingViewGenerativeLinks1 = (DrawingViewGenerativeLinks) drawingView2.GenerativeLinks;
+            DrawingViewGenerativeLinks drawingViewGenerativeLinks2 = drawingView1.GenerativeLinks;
+            drawingViewGenerativeLinks2.CopyLinksTo(drawingViewGenerativeLinks1);
+            drawingView2.x = 108;
+            drawingView2.y = 92;
+
+            double double1 = drawingView1.Scale;
+            drawingView2.Scale = 1;
+            drawingViewGenerativeBehavior2 = drawingView2.GenerativeBehavior;
+            drawingViewGenerativeBehavior2.Update();
+            
+            //fest an erster Zkizze ausrichten 
+            drawingView2.ReferenceView = drawingView1;
+            drawingView2.AlignedWithReferenceView();
+
+
+            drawingDokument1 = (DrawingDocument) hsp_catiaApp.ActiveDocument;
+            drawingSheets1 = (DrawingSheets)drawingDokument1.Sheets;
+            drawingSheet1 = drawingSheets1.Item("A4_Zechnungsrahmen");
+            drawingView1 = (DrawingView)drawingSheet1.Views;
+   
+            DrawingDimensions drawingdimensions1 = (DrawingDimensions) drawingViews1.Item("Vorderansicht");
+            DrawingDimension drawingDemension1 = drawingdimensions1.Item("Bemaßung.1");
+            bool bollean1 = drawingDemension1.Forshortened;
+            
+
         }
 
     }
