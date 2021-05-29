@@ -14,7 +14,7 @@ namespace Schraubengott
 {
     class CatiaConnection
     {
-       
+     
         INFITF.Application hsp_catiaApp;
         INFITF.Documents catDokuments1;
         MECMOD.PartDocument hsp_catiaPartDoc;
@@ -31,14 +31,13 @@ namespace Schraubengott
         Sketch skizze_tasche;
 
 
-
-
-
+        
         #region catiastart 
         public bool CATIALaeuft()
         {
             try
             {
+                //"Abfngen" der Laufenden CATIA 
                 object catiaObject = System.Runtime.InteropServices.Marshal.GetActiveObject(
                     "CATIA.Application");
                 hsp_catiaApp = (INFITF.Application)catiaObject;
@@ -77,6 +76,7 @@ namespace Schraubengott
             HybridBody catHybridBody1;
             try
             {
+               // "Abfangen" des geometrischen Sets 
                 catHybridBody1 = catHybridbodys1.Item("Geometrisches Set.1");
             }
             catch (Exception)
@@ -87,10 +87,10 @@ namespace Schraubengott
             //Geometrisches Set Benennen 
             catHybridBody1.set_Name("Schraube Außensechskannt");
 
-            //Skizze erstellen 
+            //Typ Skizzen definieren 
              sketches_Schraube = catHybridBody1.HybridSketches;
 
-            // Ebene festlegen ? 
+            // Referenz für die Skizze festlgen  
             OriginElements catoriginElements = hsp_catiaPartDoc.Part.OriginElements;
             Reference catRef1 = (Reference)catoriginElements.PlaneYZ;
             
@@ -111,8 +111,10 @@ namespace Schraubengott
 
             part_Schraube.InWorkObject = part_Schraube.MainBody;
             
-            hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;
+            // hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;   eventuell überflüssig 
             hsp_catiaSkizze.set_Name("Zylinder");
+
+            // Bearbeitungsumgebung der Skizze Öffnen 
             Factory2D catfactory2D1 = hsp_catiaSkizze.OpenEdition();
 
             Circle2D Zylinder1 = catfactory2D1.CreateClosedCircle(0, 0, 0.5 * arr[0].durchmesser);
@@ -123,8 +125,9 @@ namespace Schraubengott
        
         internal void ErzeugeZylinder(Schraube [] arr)
         {
-
+            //Referenz für den Volumenkörper aus Skizze übernehmen 
             Reference RefMySchaft = part_Schraube.CreateReferenceFromObject(hsp_catiaSkizze);
+            //Volumenkörper erstellen 
             schaft = shapefac.AddNewPadFromRef(RefMySchaft, Convert.ToDouble(arr[0].laenge));
             schaft.set_Name("Zylinder");
             hsp_catiaPartDoc.Part.Update();
@@ -138,6 +141,7 @@ namespace Schraubengott
         #region Gewinde
         internal void ErzeugeGewindeFeature(Schraube [] arr)
         {
+            //Referenzen für das Gewinde Festlegen
             Reference RefMantelfläche = part_Schraube.CreateReferenceFromBRepName("RSur:(Face:(Brp:(Pad.1;0:(Brp:(Sketch.1;1)));None:();Cf11:());WithTemporaryBody;WithoutBuildError;WithSelectingFeatureSupport;MFBRepVersion_CXR15)", schaft);
             Reference RefFrontfläche = part_Schraube.CreateReferenceFromBRepName("RSur:(Face:(Brp:(Pad.1;2);None:();Cf11:());WithTemporaryBody;WithoutBuildError;WithSelectingFeatureSupport;MFBRepVersion_CXR15)", schaft);
 
@@ -145,11 +149,11 @@ namespace Schraubengott
 
             PARTITF.Thread thread1 = shapefac.AddNewThreadWithOutRef();
             thread1.Side = CatThreadSide.catRightSide;
-            thread1.Diameter = arr[0].durchmesser;
-            thread1.Depth = arr[0].gewindelaenge;
-            thread1.Pitch = arr[0].gewindesteigung;
-            thread1.LateralFaceElement = RefMantelfläche;
-            thread1.LimitFaceElement = RefFrontfläche;
+            thread1.Diameter = arr[0].durchmesser;          //Gewindedurchmesser
+            thread1.Depth = arr[0].gewindelaenge;           //Gewindelänge
+            thread1.Pitch = arr[0].gewindesteigung;         //Gewindesteigung 
+            thread1.LateralFaceElement = RefMantelfläche;   //Mantelfäache als Referenz 
+            thread1.LimitFaceElement = RefFrontfläche;      //Startelement 
 
 
             part_Schraube.Update();
@@ -185,15 +189,20 @@ namespace Schraubengott
         {
             hybridshapefac = (HybridShapeFactory) part_Schraube.HybridShapeFactory;
 
+            // Skizze für Gewindeprofiel 
             Sketch gewinde = Gewindeskizze(arr);
 
+            // "Rotationsachse" festlegen
             HybridShapeDirection HelixDir = hybridshapefac.AddNewDirectionByCoord(1, 0, 0);
             Reference RefHelxDir = part_Schraube.CreateReferenceFromObject(HelixDir);
 
+            //Startpunkt festlegen 
             HybridShapePointCoord Helixstartpunkt = hybridshapefac.AddNewPointCoord(0, 0, 0.5 * arr[0].durchmesser);
             Reference RefHelixstartpunkt = part_Schraube.CreateReferenceFromObject(Helixstartpunkt);
 
+            //Helix Erstellen 
             HybridShapeHelix Helix = hybridshapefac.AddNewHelix(RefHelxDir, false, RefHelixstartpunkt, arr[0].gewindesteigung, arr[0].gewindelaenge - 2, false, 0, 0, false);
+                                                                    // Drehrichtung, Startpunkt             Steigung                Höhe             Drehrichtung  Anfangswinkel ...
 
             Reference RefHelix = part_Schraube.CreateReferenceFromObject(Helix);
             Reference RefGewinde = part_Schraube.CreateReferenceFromObject(gewinde);
@@ -201,11 +210,12 @@ namespace Schraubengott
             part_Schraube.Update();
 
             part_Schraube.InWorkObject = body_Schraube;
-// Verundung noch einfügen 
 
 
             OriginElements catoriginElements = this.part_Schraube.OriginElements;
             Reference RefPlanezx = (Reference) catoriginElements.PlaneZX;
+
+            //Rille erzeugen 
 
             Slot GewindeRille = shapefac.AddNewSlotFromRef(RefGewinde, RefHelix);
 
@@ -223,9 +233,11 @@ namespace Schraubengott
         
         private Sketch Gewindeskizze(Schraube [] arr)
         {
+            // Referenzen für Skizze festlegen 
             OriginElements catoriginElements = part_Schraube.OriginElements;
             Reference RefPlanezx = (Reference)catoriginElements.PlaneZX;
 
+            //Neue Skizze erstellen 
             Sketch Skizze_gewinde = sketches_Schraube.Add(RefPlanezx);
             part_Schraube.InWorkObject = Skizze_gewinde;
             Skizze_gewinde.set_Name("Gewinde");
@@ -242,6 +254,9 @@ namespace Schraubengott
 
             double zRadius =0.5 * (arr[0].kerndurchmesser + arr[0].gewinderundung);
             double xRadius = 0;
+
+
+            // Geometrie zeichnen 
 
             Factory2D catfactory2D2 = Skizze_gewinde.OpenEdition();
 
@@ -271,8 +286,6 @@ namespace Schraubengott
             gewindeRundung.StartPoint = geweindepunkt2;
 
 
-
-
             Skizze_gewinde.CloseEdition();
 
             return Skizze_gewinde;
@@ -281,17 +294,17 @@ namespace Schraubengott
 
         #endregion
 
-
-                     
-
+        #region Kopf
         internal void ErstelleSkizzeKopf(Schraube[] arr)
         {
 
             part_Schraube.InWorkObject = body_Schraube;
 
+            //Referenz für Skizze (Auf oberseite des Zylinders) 
             OriginElements catoriginElements = hsp_catiaPartDoc.Part.OriginElements;
             Reference ref_Kopf = part_Schraube.CreateReferenceFromName("Selection_RSur:(Face:(Brp:(Pad.1;2);None:();Cf11:());Slot.1_ResultOUT;Z0;G8251)");
-
+            
+            // neue Zkizze erstellen 
             skizze_kopf = sketches_Schraube.Add(ref_Kopf);
             skizze_kopf.set_Name("Kopf");
             // Ebene festlegen ? 
@@ -303,10 +316,12 @@ namespace Schraubengott
 
         internal void ZkizzeKopf(Schraube [] arr)
         {
+            //Skizze für den Kopf öffnen 
             part_Schraube.InWorkObject = skizze_kopf;
             skizze_kopf.set_Name("Kopf");
             Factory2D shapefac = skizze_kopf.OpenEdition();
 
+            // je nach gewählten kopfty die richtige Geometrie Zeichnen     
             if (arr[0].typ == "Außensechskant")
             {
                 SechseckZeichnen(arr, skizze_kopf);
@@ -315,7 +330,6 @@ namespace Schraubengott
             {
                 Circle2D Zylinder1 = shapefac.CreateClosedCircle(0, 0, 0.5 * arr[0].kopfdurchmesser);
             }
-
 
             skizze_kopf.CloseEdition();
             hsp_catiaPartDoc.Part.Update();
@@ -385,10 +399,10 @@ namespace Schraubengott
 
         internal void ErzeugeKopf(Schraube [] arr)
         {
-            //double schraubenkopfhöhe = Convert.ToDouble(arr[0].kopfhöhe);
             hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;
             ShapeFactory shapFac = (ShapeFactory)hsp_catiaPartDoc.Part.ShapeFactory;
 
+            // Volumenkörper ertsellen 
             Pad pad_Kopf = shapFac.AddNewPad(skizze_kopf, arr[0].kopfhöhe);
             pad_Kopf.set_Name("Kopf");
             hsp_catiaPartDoc.Part.Update();
@@ -396,20 +410,17 @@ namespace Schraubengott
 
         internal void ZkizzeTasche(Schraube [] arr)
         {
+            //Referenzen für Skizze festlegen (Auf Schraubenkopf) 
             part_Schraube.InWorkObject = body_Schraube;
             OriginElements catoriginElements = hsp_catiaPartDoc.Part.OriginElements;
-            
             Reference ref_tasche = part_Schraube.CreateReferenceFromName("Selection_RSur:(Face:(Brp:(Pad.2;2);None:();Cf11:());Pad.2_ResultOUT;Z0;G8251)");
-
+            //Skizze erzeugen 
             skizze_tasche = sketches_Schraube.Add(ref_tasche);
             skizze_tasche.set_Name("Tasche Innensechskannt");
-            // Ebene festlegen ? 
-
+           
             hsp_catiaPartDoc.Part.Update();
-
-
-            // Inensechskannt Zeichnen 
-
+            
+            // Sechseck auf Skizze Zeichnen 
             part_Schraube.InWorkObject = skizze_tasche;
             Factory2D shapefac2 = skizze_tasche.OpenEdition();
 
@@ -426,46 +437,56 @@ namespace Schraubengott
         {
             hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;
             ShapeFactory shapFac2 = (ShapeFactory)hsp_catiaPartDoc.Part.ShapeFactory;
-
+            // Tasche aus Skizze erzeugen 
             Pocket pocket_innensechskannt = shapFac2.AddNewPocket(skizze_tasche, 0.5 * arr[0].kopfhöhe);
             pocket_innensechskannt.set_Name("Innensechskannt");
             hsp_catiaPartDoc.Part.Update();
         }
+        #endregion
 
         internal void Zeichnungsableitung()
         {
             #region Erste Ansicht einfügen
+
+            //Neues Dokument aus Vorlage erstellen 
             Documents dokuments1 = hsp_catiaApp.Documents;
             DrawingDocument drawingDokument1 = (DrawingDocument)dokuments1.NewFrom(@"C:\Users\jonat\Documents\GitHub\Schraubengott\3. Sprint\Schraubengott\Catia\A4_V.CATDrawing");
            
+            //Neues Zeichenblatt 
             DrawingSheets drawingSheets1 = drawingDokument1.Sheets;
             DrawingSheet drawingSheet1 = drawingSheets1.Item("A4_Zeichnungsrahmen");
+            //Neue Zeichenansicht (Frontansicht)
             DrawingViews drawingViews1 = drawingSheet1.Views;
             DrawingView drawingView1 = drawingViews1.Add("AutomaticNaming");
-
-
             DrawingViewGenerativeLinks drawingViewGenerativeLinks1 = drawingView1.GenerativeLinks;
             DrawingViewGenerativeBehavior drawingViewGenerativeBehavior1 = drawingView1.GenerativeBehavior;
 
+            //Verbinden der Schraube mit der Zeichnung 
             PartDocument partDocument1 = (PartDocument) dokuments1.Item("Part1.CATPart");
             ProductStructureTypeLib.Product product1 = (ProductStructureTypeLib.Product) partDocument1.GetItem("Part1");
             drawingViewGenerativeBehavior1.Document =  product1;
             drawingViewGenerativeBehavior1.DefineFrontView(0, 0, 1, 1, 0, 0);
+           // Positionierung der Ansicht auf Zeichenblatt 
             drawingView1.x = 105;
             drawingView1.y = 185;
             drawingView1.Scale = 1;
+
             drawingViewGenerativeBehavior1 = drawingView1.GenerativeBehavior;
             drawingViewGenerativeBehavior1.Update();
             drawingView1.Activate();
             #endregion
 
-            
+            // 2. Zeichenansicht erstellen (Draufsicht)
             DrawingView drawingView2 = drawingViews1.Add("AutomaticNaming");
             DrawingViewGenerativeBehavior drawingViewGenerativeBehavior2 = drawingView2.GenerativeBehavior;
+
+            //Projektion der ersten Ansicht in Ansicht einfügen 
             drawingViewGenerativeBehavior2.DefineProjectionView(drawingViewGenerativeBehavior1, CatProjViewType.catTopView);
             drawingViewGenerativeLinks1 = (DrawingViewGenerativeLinks) drawingView2.GenerativeLinks;
             DrawingViewGenerativeLinks drawingViewGenerativeLinks2 = drawingView1.GenerativeLinks;
             drawingViewGenerativeLinks2.CopyLinksTo(drawingViewGenerativeLinks1);
+
+            //Position der 2. Ansicht
             drawingView2.x = 108;
             drawingView2.y = 92;
 
@@ -474,20 +495,25 @@ namespace Schraubengott
             drawingViewGenerativeBehavior2 = drawingView2.GenerativeBehavior;
             drawingViewGenerativeBehavior2.Update();
             
-            //fest an erster Zkizze ausrichten 
+            //2. Skizze fest an erster Zkizze ausrichten 
             drawingView2.ReferenceView = drawingView1;
             drawingView2.AlignedWithReferenceView();
 
 
+
+            //Versuch einer Bemaßung 
             drawingDokument1 = (DrawingDocument) hsp_catiaApp.ActiveDocument;
             drawingSheets1 = (DrawingSheets)drawingDokument1.Sheets;
-            drawingSheet1 = drawingSheets1.Item("A4_Zechnungsrahmen");
-            drawingView1 = (DrawingView)drawingSheet1.Views;
+            drawingSheet1 = drawingSheets1.Item("A4_Zeichnungsrahmen");
+            drawingViews1 = (DrawingViews)drawingSheet1.Views;
    
             DrawingDimensions drawingdimensions1 = (DrawingDimensions) drawingViews1.Item("Vorderansicht");
             DrawingDimension drawingDemension1 = drawingdimensions1.Item("Bemaßung.1");
             bool bollean1 = drawingDemension1.Forshortened;
-            
+
+            Sketch sketch1 = (Sketch)drawingViews1.GetItem("Draufsicht");
+            Factory2D factory2D1 = sketch1.OpenEdition();
+            sketch1.CloseEdition();
 
         }
 
