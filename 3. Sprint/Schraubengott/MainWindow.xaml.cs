@@ -92,28 +92,9 @@ namespace Schraubengott
         }
 
         
-        private void RegistrierenBtn_Click() //muss noch an den Button geknüpft werden
-        {
-            
-            String name =txtname.Text;
-            String firma = txtfirma.Text;
-            String email = txtemail.Text;
-            String plz =txtplz.Text ;
-            String str =txtstrasse.Text ;
-            String password = passwortbox2.Password;
-
-
-            datenbank.AddNodToFront(kundennummer, password, name, firma, email, plz, str);
-            kundennummer++;
-
-        }
+      
         
-        #region "Registrierfenster"
-
         
-
-
-        #endregion
 
         private void Cbmat_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {           
@@ -692,27 +673,7 @@ namespace Schraubengott
             CatiaControl.Catia_Starten(feld);
         }
 
-        //private void btn_einloogen()//was passiert, wenn man den Button einloggen drückt
-        //{
-        //    int kundnennr = ConvertToInt32(txtKundenNR.TextChanged);
-        //    String password = txtPassword.TextChanged;
-
-        //    if (namevonliste.Search(kundennr == ture)
-        //    {
-        //        //dann gehts hier weiter. Vielleicht eine private Methode aufrufen. Dann kann man nicht versehendlich weiter kommen
-        //        WeiterGehts(kundennr);
-        //    }
-        //    else
-        //    {
-        //        //Messagebox mit "Kundennummer nicht gefunden
-
-        //        return;
-        //    }
-        //}
-        //private void WeiterGehts()
-        //{
-        //    // if password ist richtig, dann gehts noch mal weiter
-        //}
+       
 
         #endregion
 
@@ -721,6 +682,7 @@ namespace Schraubengott
 
         }
 
+        #region "login"
         private void login_Click(object sender, RoutedEventArgs e)
         {
 
@@ -814,6 +776,8 @@ namespace Schraubengott
             gridlogin.Visibility = Visibility.Visible;
             logo1.Visibility = Visibility.Collapsed;
         }
+
+        #endregion
 
 
         public void CreateDataTable()
