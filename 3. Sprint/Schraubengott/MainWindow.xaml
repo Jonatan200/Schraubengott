@@ -127,17 +127,17 @@
                     <CheckBox x:Name="check4" Content="" HorizontalAlignment="Left" Margin="59,95,0,0" VerticalAlignment="Top" Grid.Row="1"/>
                     <CheckBox x:Name="check5" Content="" HorizontalAlignment="Left" Margin="59,159,0,0" VerticalAlignment="Top" Grid.Row="1"/>
                     <Button Content="zum Warenkorb" HorizontalAlignment="Left" Height="23" Margin="707,155,0,0" VerticalAlignment="Top" Width="92" Click="btnwarenkorb_Click" Grid.Row="1" Grid.Column="2"/>
-                    <DataGrid x:Name="myDataGrid" Grid.Column="2" HorizontalAlignment="Left" Height="255" Margin="136,121,0,0" VerticalAlignment="Top" Width="547" Grid.RowSpan="2" SelectionChanged="DataGrid_SelectionChanged" ItemsSource="{Binding DataGridItems}" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" >
+                    <DataGrid x:Name="myDataGrid" AutoGenerateColumns="False" Grid.Column="2" HorizontalAlignment="Left" Height="255" Margin="136,121,0,0" VerticalAlignment="Top" Width="547" Grid.RowSpan="2" SelectionChanged="DataGrid_SelectionChanged" ItemsSource="{Binding CreateDataTable}" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header ="Schraube" Binding="{Binding Schraube}"/>
-                            <DataGridTextColumn Header=" Material" Binding="{Binding Material}"/>
-                            <DataGridTextColumn Header=" Festigkeit" Width="*" Binding="{Binding Festigkeit}"/>
-                            <DataGridTextColumn Header=" Kopf" Binding="{Binding Kopf}"/>
-                            <DataGridTextColumn Header ="Gewinde " Binding="{Binding Gewinde}"/>
-                            <DataGridTextColumn Header ="Typ " Binding="{Binding Typ}"/>
-                            <DataGridTextColumn Header=" Länge" Binding="{Binding Länge}"/>
-                            <DataGridTextColumn Header=" Gewindelänge" Binding="{Binding Gewindelänge}"/>
-                            <DataGridTextColumn Header=" Menge" Binding="{Binding Menge}"/>
+                            <DataGridTextColumn Header ="Schraube"/>
+                            <DataGridTextColumn Header=" Material" />
+                            <DataGridTextColumn Header=" Festigkeit" Width="*" />
+                            <DataGridTextColumn Header=" Kopf" />
+                            <DataGridTextColumn Header ="Gewinde " />
+                            <DataGridTextColumn Header ="Typ " />
+                            <DataGridTextColumn Header=" Länge" />
+                            <DataGridTextColumn Header=" Gewindelänge"/>
+                            <DataGridTextColumn Header=" Menge" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

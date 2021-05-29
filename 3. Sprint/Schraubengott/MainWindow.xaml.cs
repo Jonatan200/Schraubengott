@@ -25,7 +25,6 @@ namespace Schraubengott
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly ViewModel viewModel;
 
         Schraube[] feld = new Schraube[5];      //Array vom Typ Schraube erstellen
         int nr = 0;                             //Variable für den Index des Feldes Schraube
@@ -73,41 +72,7 @@ namespace Schraubengott
 
             // Bestellnummer 
             bestellnummer = nummer.Next(10000000, 99999999);
-
-            this.viewModel = new ViewModel
-            {
-                DataGridItems = new List<DataGridItem>()
-                {
-
-                    new DataGridItem
-                    {
-                        Schraube= "Schraube 1",
-                        Material= "V2A",
-                        Festigkeit= "bla",
-                        Kopf= "Außensechskant",
-                        Gewinde = "M8",
-                        Typ="Feingewinde",
-                        Länge= 100,
-                        Gewindelänge = 50,
-                        Menge=500,
-                    },
-                    new DataGridItem
-                    {
-                        Schraube= "Schraube 2",
-                        Material= "V2A",
-                        Festigkeit= "bla",
-                        Kopf= "Außensechskant",
-                        Gewinde = "M8",
-                        Typ="Feingewinde",
-                        Länge= 100,
-                        Gewindelänge = 50,
-                        Menge=500,
-                    }
-                }
-            };
-            this.DataContext = this.viewModel;
-
-
+ 
         }
         #region "alle Elemente"
 
@@ -250,6 +215,7 @@ namespace Schraubengott
         {
 
 
+
             #region Fehlermeldung bei Falscheingaben"
 
             if (feld[nr].gewinde == "")
@@ -321,6 +287,8 @@ namespace Schraubengott
             Laengetxt.Text = ("Länge" + "\n\n\n" + feld[0].laenge + "\n\n\n" + feld[1].laenge + "\n\n\n" + feld[2].laenge + "\n\n\n" + feld[3].laenge + "\n\n\n" + feld[4].laenge);
             gewlentxt.Text = ("Gewindelänge" + "\n\n" + feld[0].gewindelaenge + "\n\n\n" + feld[1].gewindelaenge + "\n\n\n" + feld[2].gewindelaenge + "\n\n\n" + feld[3].gewindelaenge + "\n\n\n" + feld[4].gewindelaenge);
             mengetxt.Text = ("Menge" + "\n\n\n" + feld[0].menge + "\n\n\n" + feld[1].menge + "\n\n\n" + feld[2].menge + "\n\n\n" + feld[3].menge + "\n\n\n" + feld[4].menge);
+
+
 
             //Berechnungen für die ausgewählte Schraube           
             feld[nr].Berechnen();
