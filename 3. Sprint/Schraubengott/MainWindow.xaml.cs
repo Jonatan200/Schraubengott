@@ -124,6 +124,22 @@ namespace Schraubengott
             }
         }
 
+        
+        private void RegistrierenBtn_Click() //muss noch an den Button geknüpft werden
+        {
+            //String name = Logtxtname.TextChanged;
+        }
+        
+        #region "Registrierfenster"
+
+        private void LogTxtName()
+        {
+            
+        }
+
+
+        #endregion
+
         private void Cbmat_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {           
             //ComboBoxItems für Festigkeitsklasse werden abhängig von dem Material erstellt
