@@ -127,7 +127,7 @@ namespace Schraubengott
         
         private void RegistrierenBtn_Click() //muss noch an den Button geknüpft werden
         {
-            //String name = Logtxtname.TextChanged;
+            String name = txtname.TextChanged;//
         }
         
         #region "Registrierfenster"
