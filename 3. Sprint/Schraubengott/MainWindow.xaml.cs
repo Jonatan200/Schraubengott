@@ -223,17 +223,27 @@ namespace Schraubengott
             else if (Convert.ToInt32(txt_len.Text) < 5 || Convert.ToInt32(txt_len.Text) > 150)
             {
                 MessageBox.Show("Eingaben für Länge außerhalb des möglichen Wertebereichs.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;//wenn len kleiner als 5 wird Methode beendet
+                return;//wenn len kleiner als 5 oder größer als 150 wird Methode beendet
             }
             else if (Convert.ToInt32(txt_gewlen.Text) < 5 || Convert.ToInt32(txt_gewlen.Text) > 150)
             {
                 MessageBox.Show("Eingaben für Gewindelänge außerhalb des möglichen Wertebereichs.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;//wenn Gewlen kleiner als 5 wird Methode beendet
+                return;//wenn Gewlen kleiner als 5 oder größer als 150 wird Methode beendet
             }
             else if (Convert.ToInt32(txt_len.Text) < Convert.ToInt32(txt_gewlen.Text))
             {
                 MessageBox.Show("Eingaben für Länge und Gewindelänge sind nicht kompatibel.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;//wenn Gewlen größer als Len wird Methode beendet
+            }
+            else if (cbgewinde.SelectedValue.ToString() == "M4" && Convert.ToInt32(txt_gewlen.Text) > 100)
+            {
+                MessageBox.Show("Eingaben für Länge außerhalb des möglichen Wertebereichs.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;//wenn M4 und len größer als 100 wird Methode beendet
+            }
+            else if (cbgewinde.SelectedValue.ToString() == "M5" && Convert.ToInt32(txt_gewlen.Text) > 100)
+            {
+                MessageBox.Show("Eingaben für Länge außerhalb des möglichen Wertebereichs.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;//wenn M5 und len größer als 100 wird Methode beendet
             }
 
             if (cbfk.SelectedItem == null)
