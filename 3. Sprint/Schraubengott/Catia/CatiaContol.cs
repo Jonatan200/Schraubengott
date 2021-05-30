@@ -24,41 +24,45 @@ namespace Schraubengott
                 {
                     System.Threading.Thread.Sleep(5000);// 5 Sekunden Wartezeit
 
-                    // Öffne ein neues Part
-                    cc.ErzeugePart();
-
-
-                    //Zylinder
-
-                    cc.SkizzeZylinderErstellen();      // Erstelle eine Skizze
-                
-                    cc.ZkizzeZylinder(arr);         // Generiere ein Profil
-
-                    cc.ErzeugeZylinder(arr);        // Extrudiere Balken
-
-                    cc.ErzeugeGewindehelix(arr);
-
-                    // 
-                    //cc.ErzeugeGewindeFeature(arr);
-
-
-                    cc.ErstelleSkizzeKopf(arr);       //Erstelle Skizze für den Kopf 
-
-                    cc.ZkizzeKopf(arr);
-
-                    cc.ErzeugeKopf(arr);           //Extrudiere Kopf
-
-                    if (arr[0].typ == "Innensechskant")
+                    for (int i = 0;  i < arr.Length;  i++)
                     {
-                        cc.ZkizzeTasche(arr);
+                        // Öffne ein neues Part
+                        cc.ErzeugePart(i);
 
-                        cc.TascheErzeugen(arr);
-                        
+
+                        //Zylinder
+
+                        cc.SkizzeZylinderErstellen();      // Erstelle eine Skizze
+
+                        cc.ZkizzeZylinder(arr, i);         // Generiere ein Profil
+
+                        cc.ErzeugeZylinder(arr, i);        // Extrudiere Balken
+
+                        cc.ErzeugeGewindehelix(arr, i);
+
+                        // 
+                        //cc.ErzeugeGewindeFeature(arr);
+
+
+                        cc.ErstelleSkizzeKopf(arr);       //Erstelle Skizze für den Kopf 
+
+                        cc.ZkizzeKopf(arr ,i);
+
+                        cc.ErzeugeKopf(arr,i);           //Extrudiere Kopf
+
+                        if (arr[i].typ == "Innensechskant")
+                        {
+                            cc.ZkizzeTasche(arr ,i);
+
+                            cc.TascheErzeugen(arr, i);
+
+                        }
+
+                        cc.Zeichnungsableitung();
+
+                        cc.ErzeugeFase();
                     }
-
-                    cc.Zeichnungsableitung();
-
-                    cc.ErzeugeFase();
+                   
                 }
                 else
                 {

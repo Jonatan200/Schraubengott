@@ -680,7 +680,7 @@ namespace Schraubengott
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            CatiaControl.Catia_Starten(feld);
+            CatiaControl.Catia_Starten(Feld_anpassen(feld));
         }
 
        
