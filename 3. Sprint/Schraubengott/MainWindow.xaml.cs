@@ -74,7 +74,7 @@ namespace Schraubengott
 
             // Bestellnummer 
             bestellnummer = nummer.Next(10000000, 99999999);
- 
+
         }
       
 
@@ -205,8 +205,6 @@ namespace Schraubengott
         private void Btnauswahl_Click(object sender, RoutedEventArgs e)
         {
 
-
-
             #region Fehlermeldung bei Falscheingaben"
 
             if (feld[nr].gewinde == "")
@@ -293,7 +291,7 @@ namespace Schraubengott
 
             //Berechnungen für die ausgewählte Schraube           
             feld[nr].Berechnen();
-
+            CreateDataTable();
             MessageBox.Show("Die aktuelle Konfiguration wurde in die Übersicht hinzugefügt.", "Konfiguration gespeichert", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
@@ -796,21 +794,22 @@ namespace Schraubengott
 
         public void CreateDataTable()
         {
+
             System.Data.DataTable dt = new DataTable("MyTable");
             dt.Columns.Add("Schraube", typeof(string));
             dt.Columns.Add("Material", typeof(string));
             dt.Columns.Add("Festigkeit", typeof(string));
             dt.Columns.Add("Kopf", typeof(string));
-            dt.Columns.Add("Gewinde", typeof(int));
-            dt.Columns.Add("Typ", typeof(int));
+            dt.Columns.Add("Gewinde", typeof(string));
+            dt.Columns.Add("Typ", typeof(string));
             dt.Columns.Add("Länge", typeof(int));
             dt.Columns.Add("Gewindelänge", typeof(int));
             dt.Columns.Add("Menge", typeof(int));
             for (int i = 0; i < feld.Length; i++)
             {
-                dt.Rows.Add("Schraube" + i, feld[i].material, feld[i].festigkeit, feld[i].typ, feld[i].gewinde, feld[i].laenge, feld[i].gewindelaenge, feld[i].menge);
+                dt.Rows.Add("Schraube "+ i, Convert.ToString(feld[i].material), feld[i].festigkeit, feld[i].typ, feld[i].gewinde, feld[i].laenge, feld[i].gewindelaenge, feld[i].menge);
             }
-            
+            myDataGrid.DataContext = dt;
         }
 
         private void txt_len_GotFocus(object sender, RoutedEventArgs e)
