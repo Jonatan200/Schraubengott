@@ -468,13 +468,15 @@ namespace Schraubengott
             drawingViewGenerativeBehavior1.DefineFrontView(0, 0, 1, 1, 0, 0);
            // Positionierung der Ansicht auf Zeichenblatt 
             drawingView1.x = 105;
-            drawingView1.y = 185;
+            drawingView1.y = 190;
             drawingView1.Scale = 1;
 
             drawingViewGenerativeBehavior1 = drawingView1.GenerativeBehavior;
             drawingViewGenerativeBehavior1.Update();
             drawingView1.Activate();
             #endregion
+
+
 
             // 2. Zeichenansicht erstellen (Draufsicht)
             DrawingView drawingView2 = drawingViews1.Add("AutomaticNaming");
@@ -488,7 +490,7 @@ namespace Schraubengott
 
             //Position der 2. Ansicht
             drawingView2.x = 108;
-            drawingView2.y = 92;
+            drawingView2.y = 90;
 
             double double1 = drawingView1.Scale;
             drawingView2.Scale = 1;
@@ -514,6 +516,31 @@ namespace Schraubengott
             Sketch sketch1 = (Sketch)drawingViews1.GetItem("Draufsicht");
             Factory2D factory2D1 = sketch1.OpenEdition();
             sketch1.CloseEdition();
+
+
+
+
+
+            //Versuch Textfelder 
+
+            DrawingViews drawingViews3 = drawingSheet1.Views;
+            DrawingView drawingView3 = drawingViews3.Add("Textfeld");
+            DrawingViewGenerativeLinks drawingViewGenerativeLinks3 = drawingView3.GenerativeLinks;
+            DrawingViewGenerativeBehavior drawingViewGenerativeBehavior3 = drawingView3.GenerativeBehavior;
+
+            //Verbinden der Schraube mit der Zeichnung 
+            drawingViewGenerativeBehavior3.DefineFrontView(0, 0, 1, 1, 0, 0);
+            // Positionierung der Ansicht auf Zeichenblatt 
+            drawingView1.x = 105;
+            drawingView1.y = 190;
+            drawingView1.Scale = 1;
+
+            drawingViewGenerativeBehavior3 = drawingView3.GenerativeBehavior;
+            drawingViewGenerativeBehavior3.Update();
+            drawingView1.Activate();
+
+            DrawingTexts texts1 = drawingView3.Texts;
+            DrawingText text1 = texts1.Add("Test", 100, 100);
 
         }
 
