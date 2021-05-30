@@ -277,18 +277,6 @@ namespace Schraubengott
             feld[nr].bemerkung = text.Text.ToString();
             #endregion
 
-            //Die Werte den Objekts Schraube werden in der Übersichtstabelle übernommen
-            Materialtxt.Text = ("Material" + "\n\n\n" + feld[0].material + "\n\n\n" + feld[1].material + "\n\n\n" + feld[2].material + "\n\n\n" + feld[3].material + "\n\n\n" + feld[4].material);
-            Festtxt.Text = ("Festigkeit" + "\n\n\n" + feld[0].festigkeit + "\n\n\n" + feld[1].festigkeit + "\n\n\n" + feld[2].festigkeit + "\n\n\n" + feld[3].festigkeit + "\n\n\n" + feld[4].festigkeit);
-            Kopftxt.Text = ("Kopf" + "\n\n\n" + feld[0].typ + "\n\n\n" + feld[1].typ + "\n\n\n" + feld[2].typ + "\n\n\n" + feld[3].typ + "\n\n\n" + feld[4].typ);
-            Gewindetxt.Text = ("Gewinde" + "\n\n" + feld[0].gewinde + "\n\n\n" + feld[1].gewinde + "\n\n\n" + feld[2].gewinde + "\n\n\n" + feld[3].gewinde + "\n\n\n" + feld[4].gewinde);
-            Typtxt.Text = ("Typ" + "\n\n\n" + feld[0].gewindeart + "\n\n\n" + feld[1].gewindeart + "\n\n\n" + feld[2].gewindeart + "\n\n\n" + feld[3].gewindeart + "\n\n\n" + feld[4].gewindeart);
-            Laengetxt.Text = ("Länge" + "\n\n\n" + feld[0].laenge + "\n\n\n" + feld[1].laenge + "\n\n\n" + feld[2].laenge + "\n\n\n" + feld[3].laenge + "\n\n\n" + feld[4].laenge);
-            gewlentxt.Text = ("Gewindelänge" + "\n\n" + feld[0].gewindelaenge + "\n\n\n" + feld[1].gewindelaenge + "\n\n\n" + feld[2].gewindelaenge + "\n\n\n" + feld[3].gewindelaenge + "\n\n\n" + feld[4].gewindelaenge);
-            mengetxt.Text = ("Menge" + "\n\n\n" + feld[0].menge + "\n\n\n" + feld[1].menge + "\n\n\n" + feld[2].menge + "\n\n\n" + feld[3].menge + "\n\n\n" + feld[4].menge);
-
-
-
             //Berechnungen für die ausgewählte Schraube           
             feld[nr].Berechnen();
             CreateDataTable();
@@ -807,7 +795,7 @@ namespace Schraubengott
             dt.Columns.Add("Menge", typeof(int));
             for (int i = 0; i < feld.Length; i++)
             {
-                dt.Rows.Add("Schraube "+ i, Convert.ToString(feld[i].material), feld[i].festigkeit, feld[i].typ, feld[i].gewinde, feld[i].laenge, feld[i].gewindelaenge, feld[i].menge);
+                dt.Rows.Add("Schraube "+ i, feld[i].material, feld[i].festigkeit, feld[i].typ, feld[i].gewinde, feld[i].gewindeart, feld[i].laenge, feld[i].gewindelaenge, feld[i].menge);
             }
             myDataGrid.DataContext = dt;
         }
