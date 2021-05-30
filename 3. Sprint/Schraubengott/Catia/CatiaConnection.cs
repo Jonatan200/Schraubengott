@@ -517,6 +517,10 @@ namespace Schraubengott
             Factory2D factory2D1 = sketch1.OpenEdition();
             sketch1.CloseEdition();
 
+
+
+
+
             //Versuch Textfelder 
 
             DrawingViews drawingViews3 = drawingSheet1.Views;
@@ -537,6 +541,8 @@ namespace Schraubengott
 
             DrawingTexts texts1 = drawingView3.Texts;
             DrawingText text1 = texts1.Add("Test", 100, 100);
+
         }
+
     }
 }
