@@ -748,7 +748,7 @@ namespace Schraubengott
                 String password = passwortbox2.Password;
 
 
-                datenbank.AddNodToFront(kundennummer, password, name, firma, email, plz, str);
+                datenbank.AddNodToBack(kundennummer, password, name, firma, email, plz, str);
                 kundennummer++;
 
 
