@@ -52,9 +52,9 @@ namespace Schraubengott
             kundennummer = 1004; //Kundennr auf 1004 festlegen, weil schon 3 einträge existieren
 
 
-            datenbank.AddNodToFront(1001, "hallo123", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1"); // Datenbankeinträge
-            datenbank.AddNodToFront(1002, "hallo456", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1");
-            datenbank.AddNodToFront(1003, "hallo789", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1");
+            datenbank.AddNodToBack(1001, "hallo123", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1"); // Datenbankeinträge
+            datenbank.AddNodToBack(1002, "hallo456", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1");
+            datenbank.AddNodToBack(1003, "hallo789", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1");
 
 
 
@@ -749,6 +749,7 @@ namespace Schraubengott
 
 
                 datenbank.AddNodToBack(kundennummer, password, name, firma, email, plz, str);
+                
                 
 
 

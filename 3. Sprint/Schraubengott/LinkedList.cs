@@ -23,11 +23,20 @@ namespace Schraubengott
             LinkedListElement node = new LinkedListElement(kundennr, password, name, firma, email, plz, str);
 
             LinkedListElement runner = head;
-            while (runner.next != null)
+            if (runner == null)
             {
-                runner = runner.next;
+                head = node;
             }
-            runner.next = node;
+            else
+            {
+                while (runner.next != null)
+                {
+                    runner = runner.next;
+                }
+                runner.next = node;
+
+            }
+           
 
 
         }
