@@ -22,7 +22,7 @@ namespace Schraubengott
                 // Finde Catia Prozess
                 if (cc.CATIALaeuft())
                 {
-                    System.Threading.Thread.Sleep(5000);
+                    System.Threading.Thread.Sleep(5000);// 5 Sekunden Wartezeit
 
                     // Öffne ein neues Part
                     cc.ErzeugePart();
