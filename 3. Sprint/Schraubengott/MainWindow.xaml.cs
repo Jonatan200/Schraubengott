@@ -758,8 +758,8 @@ namespace Schraubengott
                 tabcontrol.Visibility = Visibility.Visible;
                 MessageBox.Show("Ihr Kundenkonto wurde angelegt.\n\nIhre Kundennummer:" + kundennummer, "Erfolgreich Registriert", MessageBoxButton.OK);
 
-                kundennummer++;//Kundennummer wird erst hier um eins erhöht, damit in der Messagebox die richtige Zahl steht
-                                //Kundennummer wird einfach immer erhöht, wenn ein neuer Eintrag in die Liste gemacht wurde
+                kundennummer++;     //Kundennummer wird erst hier um eins erhöht, damit in der Messagebox die richtige Zahl steht
+                                    //Kundennummer wird einfach immer erhöht, wenn ein neuer Eintrag in die Liste gemacht wurde
 
                 ausloggen.Visibility = Visibility.Visible;
                 txtname.Clear();
