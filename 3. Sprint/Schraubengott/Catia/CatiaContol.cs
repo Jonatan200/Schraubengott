@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.Threading;
 
 namespace Schraubengott
 {
@@ -71,7 +73,9 @@ namespace Schraubengott
 
         public static void Catia_Starten(Schraube[] arr)
         {
-            new CatiaControl(arr);
+            Process.Start("C:\\Program Files\\Dassault Systemes\\B28\\win_b64\\code\\bin\\CATSTART.exe");
+            Thread.Sleep(20000);
+            new CatiaControl(arr);       
         }
     }
 }

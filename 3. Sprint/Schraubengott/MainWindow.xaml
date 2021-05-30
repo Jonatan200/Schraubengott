@@ -12,7 +12,7 @@
             <ColumnDefinition Width="782*"/>
         </Grid.ColumnDefinitions>
         <Button Name="Btnexit" Content="Exit" HorizontalAlignment="Left" Height="22" Margin="904.333,555,0,0" VerticalAlignment="Top" Width="92" Grid.Column="1" Click="Btnexit_Click" />
-        <TabControl x:Name="tabcontrol" Visibility="Collapsed" Grid.Column="1" HorizontalAlignment="Left" Height="447" Margin="27.333,26,0,0" VerticalAlignment="Top" Width="954">
+        <TabControl x:Name="tabcontrol" Visibility="Visible" Grid.Column="1" HorizontalAlignment="Left" Height="447" Margin="27.333,26,0,0" VerticalAlignment="Top" Width="954">
             <TabItem x:Name="tab_konfig" Header="Konfigurator" Height="22" Margin="-2,-2,-2.5,0" VerticalAlignment="Top">
                 <Grid x:Name="grid0" RenderTransformOrigin="0.426,0.462">
                     <Grid.ColumnDefinitions>
@@ -199,7 +199,7 @@
         </TabControl>
         <Label Content="Fynn Kummer | Jonathan Rietig | Lars Bohling | Malte Klarmann" HorizontalAlignment="Left" Height="29" Margin="10,571,0,0" VerticalAlignment="Top" Width="481" Grid.ColumnSpan="2"/>
         <Image x:Name="logo1" Visibility="Collapsed" Grid.Column="1" HorizontalAlignment="Left" Height="153" Margin="410.333,478,0,-21" VerticalAlignment="Top" Width="214" Source="Logo.png" RenderTransformOrigin="-0.274,0.063"/>
-        <Border x:Name="gridlogin" Visibility="Visible" BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="404" Margin="150.333,88,0,0" VerticalAlignment="Top" Width="733">
+        <Border x:Name="gridlogin" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="404" Margin="150.333,88,0,0" VerticalAlignment="Top" Width="733">
             <Grid >
                 <TextBox x:Name="txtkundennr" HorizontalAlignment="Left" Height="30" Margin="228,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" RenderTransformOrigin="0.917,0.583" TextChanged="TextBox_TextChanged"/>
                 <Label Content="Login" HorizontalAlignment="Left" Height="36" Margin="94,101,0,0" VerticalAlignment="Top" Width="111" FontSize="16"/>
