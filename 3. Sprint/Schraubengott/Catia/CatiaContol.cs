@@ -74,7 +74,7 @@ namespace Schraubengott
 
         public static void Catia_Starten(Schraube[] arr)
         {
-            Process.Start("C:\\Program Files\\Dassault Systemes\\B28\\win_b64\\code\\bin\\CATSTART.exe");
+            Process.Start("CNEXT.exe");
             Thread.Sleep(20000);
             new CatiaControl(arr);       
         }
