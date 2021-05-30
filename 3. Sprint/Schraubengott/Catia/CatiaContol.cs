@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Diagnostics;
-using System.Threading;
 
 namespace Schraubengott
 {
@@ -16,19 +15,18 @@ namespace Schraubengott
         {
             try
             {
-
                 CatiaConnection cc = new CatiaConnection();
 
                 // Finde Catia Prozess
                 if (cc.CATIALaeuft())
                 {
+                    System.Windows.MessageBox.Show("CATIA Part wird erstellt.", "", MessageBoxButton.OK); 
                     System.Threading.Thread.Sleep(5000);// 5 Sekunden Wartezeit
 
                     for (int i = 0;  i < arr.Length;  i++)
                     {
                         // Öffne ein neues Part
                         cc.ErzeugePart(i);
-
 
                         //Zylinder
 
@@ -66,20 +64,18 @@ namespace Schraubengott
                 }
                 else
                 {
-                    // Console.WriteLine("Laufende Catia Application nicht gefunden");
+                    Process.Start("CNEXT.exe");
+                    System.Windows.MessageBox.Show("CATIA wird gestartet. Nach dem Start können CATIA Parts erstellt werden.", "", MessageBoxButton.OK);
                 }
             }
             catch (Exception ex)
             {
                 // MessageBox.Show(ex.Message, "Exception aufgetreten");
-            }
-              
+            }              
         }
 
         public static void Catia_Starten(Schraube[] arr)
-        {
-            Process.Start("CNEXT.exe");
-            Thread.Sleep(20000);
+        {          
             new CatiaControl(arr);       
         }
     }

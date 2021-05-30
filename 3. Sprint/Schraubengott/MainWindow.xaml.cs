@@ -18,6 +18,7 @@ using System.Net.Mail;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Data;
 
+
 namespace Schraubengott
 {
     /// <summary>
@@ -74,7 +75,6 @@ namespace Schraubengott
 
             // Bestellnummer 
             bestellnummer = nummer.Next(10000000, 99999999);
-
         }
       
 
@@ -90,11 +90,6 @@ namespace Schraubengott
                 return;
             }
         }
-
-        
-      
-        
-        
 
         private void Cbmat_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {           
@@ -666,16 +661,14 @@ namespace Schraubengott
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            CatiaControl.Catia_Starten(Feld_anpassen(feld));
-        }
-
-       
-
-       
-
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            if(feld[0].material == null && feld[1].material == null && feld[2].material == null && feld[3].material == null && feld[4].material == null)
+            {
+                MessageBox.Show("Es ist keine Schraube ausgewählt.", "", MessageBoxButton.OK);
+            }
+            else
+            {
+                CatiaControl.Catia_Starten(Feld_anpassen(feld));
+            }
         }
 
         #region "login"
@@ -779,7 +772,6 @@ namespace Schraubengott
 
         #endregion
 
-
         public void CreateDataTable()
         {
 
@@ -798,11 +790,6 @@ namespace Schraubengott
                 dt.Rows.Add("Schraube "+ i, feld[i].material, feld[i].festigkeit, feld[i].typ, feld[i].gewinde, feld[i].gewindeart, feld[i].laenge, feld[i].gewindelaenge, feld[i].menge);
             }
             myDataGrid.DataContext = dt;
-        }
-
-        private void txt_len_GotFocus(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

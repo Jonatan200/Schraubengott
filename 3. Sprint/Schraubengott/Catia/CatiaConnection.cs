@@ -10,6 +10,7 @@ using PARTITF;
 using HybridShapeTypeLib;
 using DRAFTINGITF;
 
+
 namespace Schraubengott
 {
     class CatiaConnection
