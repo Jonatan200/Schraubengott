@@ -35,6 +35,8 @@ namespace Schraubengott
         #region catiastart 
         public bool CATIALaeuft()
         {
+            System.Threading.Thread.Sleep(5000); //5 Sekunden Wartezeit
+
             try
             {
                 //"Abfngen" der Laufenden CATIA 
