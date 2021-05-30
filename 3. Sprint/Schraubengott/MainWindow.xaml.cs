@@ -25,7 +25,7 @@ namespace Schraubengott
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        
         Schraube[] feld = new Schraube[5];      //Array vom Typ Schraube erstellen
         int nr = 0;                             //Variable für den Index des Feldes Schraube
         int new_screw_int = 1;                  //Varibale für Neue Schraube Button und Combobox mit Schraubenauswahl
@@ -76,7 +76,7 @@ namespace Schraubengott
             bestellnummer = nummer.Next(10000000, 99999999);
  
         }
-        #region "alle Elemente"
+      
 
         private void Btnexit_Click(object sender, RoutedEventArgs e)
         {
@@ -680,12 +680,12 @@ namespace Schraubengott
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            CatiaControl.Catia_Starten(feld);
+            CatiaControl.Catia_Starten(Feld_anpassen(feld));
         }
 
        
 
-        #endregion
+       
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
