@@ -18,6 +18,28 @@ namespace Schraubengott
             head = node;
             count++;
         }
+        public void AddNodToBack(int kundennr, String password, String name, String firma, String email, String plz, String str)
+        {
+            LinkedListElement node = new LinkedListElement(kundennr, password, name, firma, email, plz, str);
+
+            LinkedListElement runner = head;
+            if (runner == null)
+            {
+                head = node;
+            }
+            else
+            {
+                while (runner.next != null)
+                {
+                    runner = runner.next;
+                }
+                runner.next = node;
+
+            }
+           
+
+
+        }
         public void PrintList()// nur zum Testen, kommt später wech
         {
 

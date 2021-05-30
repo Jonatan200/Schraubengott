@@ -52,9 +52,9 @@ namespace Schraubengott
             kundennummer = 1004; //Kundennr auf 1004 festlegen, weil schon 3 einträge existieren
 
 
-            datenbank.AddNodToFront(1001, "hallo123", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1"); // Datenbankeinträge
-            datenbank.AddNodToFront(1002, "hallo456", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1");
-            datenbank.AddNodToFront(1003, "hallo789", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1");
+            datenbank.AddNodToBack(1001, "hallo123", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1"); // Datenbankeinträge
+            datenbank.AddNodToBack(1002, "hallo456", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1");
+            datenbank.AddNodToBack(1003, "hallo789", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1");
 
 
 
@@ -223,17 +223,27 @@ namespace Schraubengott
             else if (Convert.ToInt32(txt_len.Text) < 5 || Convert.ToInt32(txt_len.Text) > 150)
             {
                 MessageBox.Show("Eingaben für Länge außerhalb des möglichen Wertebereichs.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;//wenn len kleiner als 5 wird Methode beendet
+                return;//wenn len kleiner als 5 oder größer als 150 wird Methode beendet
             }
             else if (Convert.ToInt32(txt_gewlen.Text) < 5 || Convert.ToInt32(txt_gewlen.Text) > 150)
             {
                 MessageBox.Show("Eingaben für Gewindelänge außerhalb des möglichen Wertebereichs.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;//wenn Gewlen kleiner als 5 wird Methode beendet
+                return;//wenn Gewlen kleiner als 5 oder größer als 150 wird Methode beendet
             }
             else if (Convert.ToInt32(txt_len.Text) < Convert.ToInt32(txt_gewlen.Text))
             {
                 MessageBox.Show("Eingaben für Länge und Gewindelänge sind nicht kompatibel.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;//wenn Gewlen größer als Len wird Methode beendet
+            }
+            else if (cbgewinde.SelectedValue.ToString() == "M4" && Convert.ToInt32(txt_gewlen.Text) > 100)
+            {
+                MessageBox.Show("Eingaben für Länge außerhalb des möglichen Wertebereichs.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;//wenn M4 und len größer als 100 wird Methode beendet
+            }
+            else if (cbgewinde.SelectedValue.ToString() == "M5" && Convert.ToInt32(txt_gewlen.Text) > 100)
+            {
+                MessageBox.Show("Eingaben für Länge außerhalb des möglichen Wertebereichs.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;//wenn M5 und len größer als 100 wird Methode beendet
             }
 
             if (cbfk.SelectedItem == null)
@@ -748,14 +758,20 @@ namespace Schraubengott
                 String password = passwortbox2.Password;
 
 
-                datenbank.AddNodToFront(kundennummer, password, name, firma, email, plz, str);
-                kundennummer++;
+                datenbank.AddNodToBack(kundennummer, password, name, firma, email, plz, str);
+                
+                
+
 
 
                 gridregr.Visibility = Visibility.Collapsed;
                 logo1.Visibility = Visibility.Visible;
                 tabcontrol.Visibility = Visibility.Visible;
                 MessageBox.Show("Ihr Kundenkonto wurde angelegt.\n\nIhre Kundennummer:" + kundennummer, "Erfolgreich Registriert", MessageBoxButton.OK);
+
+                kundennummer++;     //Kundennummer wird erst hier um eins erhöht, damit in der Messagebox die richtige Zahl steht
+                                    //Kundennummer wird einfach immer erhöht, wenn ein neuer Eintrag in die Liste gemacht wurde
+
                 ausloggen.Visibility = Visibility.Visible;
                 txtname.Clear();
                 txtfirma.Clear();
