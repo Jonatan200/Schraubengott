@@ -107,17 +107,14 @@
                             <GradientStop Color="#FFDDE0E4" Offset="0.626"/>
                         </RadialGradientBrush>
                     </Grid.Background>
-                    <TextBox x:Name="Schraubetxt" TextAlignment="Center" HorizontalAlignment="Left" Height="383" Margin="10,16,0,0" TextWrapping="Wrap" Text="Schraube&#xA;&#xD;&#xA;&#xA;Schraube 1&#xA;&#xA;Schraube 2&#xA;&#xA;Schraube 3&#xA;&#xA;Schraube 4&#xA;&#xA;Schraube 5" VerticalAlignment="Top" Width="75" FontSize="16" IsReadOnly="True" Grid.RowSpan="2"/>
-                    <CheckBox x:Name="check1" Content="" HorizontalAlignment="Left" Margin="59,106,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.403,0.865"/>
-                    <CheckBox x:Name="check2" Content="" HorizontalAlignment="Left" Margin="59,169,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="check3" Content="" HorizontalAlignment="Left" Margin="59,31,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-                    <CheckBox x:Name="check4" Content="" HorizontalAlignment="Left" Margin="59,95,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-                    <CheckBox x:Name="check5" Content="" HorizontalAlignment="Left" Margin="59,159,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-                    <Button Content="zum Warenkorb" HorizontalAlignment="Left" Height="23" Margin="707,155,0,0" VerticalAlignment="Top" Width="92" Click="btnwarenkorb_Click" Grid.Row="1" Grid.Column="2"/>
-                    <DataGrid x:Name="myDataGrid" HorizontalAlignment="Left" Height="383" Margin="85,16,0,0" VerticalAlignment="Top" Width="735" Grid.RowSpan="2" SelectionChanged="DataGrid_SelectionChanged" ItemsSource="{Binding}" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" Grid.ColumnSpan="3" FontSize="20" >
-                        <DataGrid.Columns>
-                            <DataGridCheckBoxColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="zum Warenkorb" IsReadOnly="False"/>
-                        </DataGrid.Columns>
+                    <CheckBox x:Name="check1" Content="" HorizontalAlignment="Left" Margin="648,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.403,0.865" Grid.Column="2"/>
+                    <CheckBox x:Name="check2" Content="" HorizontalAlignment="Left" Margin="648,75,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                    <CheckBox x:Name="check3" Content="" HorizontalAlignment="Left" Margin="648,105,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                    <CheckBox x:Name="check4" Content="" HorizontalAlignment="Left" Margin="648,135,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                    <CheckBox x:Name="check5" Content="" HorizontalAlignment="Left" Margin="648,164,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                    <Button Content="zum Warenkorb" HorizontalAlignment="Left" Height="23" Margin="721,182,0,0" VerticalAlignment="Top" Width="92" Click="btnwarenkorb_Click" Grid.Row="1" Grid.Column="2"/>
+                    <DataGrid x:Name="Datagrid1" HorizontalAlignment="Left" Height="417" VerticalAlignment="Top" Width="751" Grid.RowSpan="2" SelectionChanged="DataGrid_SelectionChanged" ItemsSource="{Binding}" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" Grid.ColumnSpan="3" FontSize="20" >
+
                     </DataGrid>
                 </Grid>
 

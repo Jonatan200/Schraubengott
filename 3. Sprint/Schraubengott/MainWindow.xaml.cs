@@ -275,6 +275,7 @@ namespace Schraubengott
             //Berechnungen für die ausgewählte Schraube           
             feld[nr].Berechnen();
             CreateDataTable();
+
             MessageBox.Show("Die aktuelle Konfiguration wurde in die Übersicht hinzugefügt.", "Konfiguration gespeichert", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
@@ -774,7 +775,6 @@ namespace Schraubengott
 
         public void CreateDataTable()
         {
-
             System.Data.DataTable dt = new DataTable("MyTable");
             dt.Columns.Add("Schraube", typeof(string));
             dt.Columns.Add("Material", typeof(string));
@@ -789,12 +789,14 @@ namespace Schraubengott
             {
                 dt.Rows.Add("Schraube "+ (i+1), feld[i].material, feld[i].festigkeit, feld[i].typ, feld[i].gewinde, feld[i].gewindeart, feld[i].laenge, feld[i].gewindelaenge, feld[i].menge);
             }
-            myDataGrid.DataContext = dt;
+            Datagrid1.DataContext = dt;
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
+
+
     }
 }
