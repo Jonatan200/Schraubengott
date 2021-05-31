@@ -36,14 +36,14 @@ namespace Schraubengott
         #region catiastart 
         public bool CATIALaeuft()
         {
-            System.Threading.Thread.Sleep(5000); //5 Sekunden Wartezeit
-
+            
             try
             {
                 //"Abfngen" der Laufenden CATIA 
                 object catiaObject = System.Runtime.InteropServices.Marshal.GetActiveObject(
                     "CATIA.Application");
                 hsp_catiaApp = (INFITF.Application)catiaObject;
+
                 return true;
             }
             catch (Exception)
