@@ -787,9 +787,14 @@ namespace Schraubengott
             dt.Columns.Add("Menge", typeof(int));
             for (int i = 0; i < feld.Length; i++)
             {
-                dt.Rows.Add("Schraube "+ i, feld[i].material, feld[i].festigkeit, feld[i].typ, feld[i].gewinde, feld[i].gewindeart, feld[i].laenge, feld[i].gewindelaenge, feld[i].menge);
+                dt.Rows.Add("Schraube "+ (i+1), feld[i].material, feld[i].festigkeit, feld[i].typ, feld[i].gewinde, feld[i].gewindeart, feld[i].laenge, feld[i].gewindelaenge, feld[i].menge);
             }
             myDataGrid.DataContext = dt;
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
