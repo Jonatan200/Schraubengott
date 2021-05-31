@@ -126,8 +126,10 @@ namespace Schraubengott
         void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox box = sender as TextBox;
-            box.Text = string.Empty;
-            box.GotFocus -= TextBox_GotFocus;
+            if (box.Text == "0" || box.Text == "z.B Bitte in 50er Paketen versenden")
+            {
+                box.Text = string.Empty;
+            }
         }
         void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -135,7 +137,6 @@ namespace Schraubengott
             if (box.Text.Trim().Equals(string.Empty))
             {
                 box.Text = "0";
-                box.GotFocus += TextBox_GotFocus;
             }
         }
        
@@ -145,7 +146,6 @@ namespace Schraubengott
             if (box.Text.Trim().Equals(string.Empty))
             {
                 box.Text = "z.B Bitte in 50er Paketen versenden";
-                box.GotFocus += TextBox_GotFocus;
             }
         }
 
@@ -436,6 +436,7 @@ namespace Schraubengott
         private void New_screw_Click(object sender, RoutedEventArgs e)
         {
             //neue Schraube wird erstellt und alle Auswahlen werden aus Default zurückgesetzt
+            text.Text = "z.B Bitte in 50er Paketen versenden";
             cbfk.SelectedIndex = 0;
             cbgewinde.SelectedIndex = 0;
             cbkopf.SelectedIndex = 0;
@@ -671,6 +672,7 @@ namespace Schraubengott
                 CatiaControl.Catia_Starten(Feld_anpassen(feld));
             }
         }
+
 
         #region "login"
         private void login_Click(object sender, RoutedEventArgs e)
