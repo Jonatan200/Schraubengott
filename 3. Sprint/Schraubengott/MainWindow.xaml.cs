@@ -497,6 +497,8 @@ namespace Schraubengott
             #endregion
 
             #region "Die Werte des ausgewälten Objekts werden im Warenkorb gespeichert"
+            CreateDataTable2();
+
             if (check1.IsChecked == true)
             {
                 menge1txt.Text = feld[0].menge.ToString();
@@ -773,7 +775,7 @@ namespace Schraubengott
 
         #endregion
 
-        public void CreateDataTable()
+        public void CreateDataTable()//Datatable wird erzeugt und zugewiesen
         {
             System.Data.DataTable dt = new DataTable("MyTable");
             dt.Columns.Add("Schraube", typeof(string));
@@ -791,12 +793,67 @@ namespace Schraubengott
             }
             Datagrid1.DataContext = dt;
         }
+        public void CreateDataTable2()//Datatable2 wird erzeugt und zugewiesen
+        {
+            System.Data.DataTable dt2 = new DataTable("MyTable2");
+            dt2.Columns.Add("Schraube", typeof(string));
+            dt2.Columns.Add("Menge", typeof(int));
+            dt2.Columns.Add("Gewicht", typeof(double));
+            dt2.Columns.Add("Stückpreis", typeof(double));
+            dt2.Columns.Add("Preis", typeof(double));
+
+            if (check1.IsChecked == true)
+            {
+                dt2.Rows.Add("Schraube 1", feld[0].menge, Math.Round(feld[0].masse,2), Math.Round(feld[0].stückpreis,2), Math.Round(feld[0].preis_summe, 2));
+            }
+            else if (check1.IsChecked == false)
+            {
+                dt2.Rows.Add("Schraube 1", 0,0,0,0);
+            }
+
+            if (check2.IsChecked == true)
+            {
+                dt2.Rows.Add("Schraube 2", feld[1].menge, Math.Round(feld[1].masse,2), Math.Round(feld[1].stückpreis, 2), Math.Round(feld[1].preis_summe, 2));
+            }
+            else if (check2.IsChecked == false)
+            {
+                dt2.Rows.Add("Schraube 2", 0, 0, 0, 0);
+            }
+
+            if (check3.IsChecked == true)
+            {
+                dt2.Rows.Add("Schraube 3", feld[2].menge, Math.Round(feld[2].masse, 2), Math.Round(feld[2].stückpreis, 2), Math.Round(feld[2].preis_summe, 2));
+            }
+            else if (check3.IsChecked == false)
+            {
+                dt2.Rows.Add("Schraube 3", 0, 0, 0, 0);
+            }
+
+            if (check4.IsChecked == true)
+            {
+                dt2.Rows.Add("Schraube 4", feld[3].menge, Math.Round(feld[3].masse,2), Math.Round(feld[3].stückpreis, 2), Math.Round(feld[3].preis_summe, 2));
+            }
+            else if (check4.IsChecked == false)
+            {
+                dt2.Rows.Add("Schraube 4", 0, 0, 0, 0);
+            }
+
+            if (check5.IsChecked == true)
+            {
+                dt2.Rows.Add("Schraube 5", feld[4].menge, feld[4].masse, feld[4].stückpreis, feld[4].preis_summe);
+            }
+            else if (check5.IsChecked == false)
+            {
+                dt2.Rows.Add("Schraube 5", 0, 0, 0, 0);
+            }
+
+            Datagrid2.DataContext = dt2;
+        }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
-
 
     }
 }

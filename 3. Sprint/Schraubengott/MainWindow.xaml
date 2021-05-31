@@ -170,6 +170,7 @@
                     <TextBox TextAlignment="Center" x:Name="gesamtpreistxt" HorizontalAlignment="Left" Height="54" Margin="460.167,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True" Grid.Column="1"/>
                     <TextBox TextAlignment="Center" x:Name="gpreis3txt" HorizontalAlignment="Left" Height="54" Margin="460.167,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True" Grid.Column="1"/>
                     <Button x:Name="btn_Catia" Content="Catia Erstellen" Grid.Column="1" HorizontalAlignment="Left" Height="42" Margin="742,214,0,0" VerticalAlignment="Top" Width="130" Click="Button_Click"/>
+                    <DataGrid x:Name="Datagrid2" ItemsSource="{Binding}" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" Grid.Column="1" HorizontalAlignment="Left" Height="378" Margin="595,10,0,0" VerticalAlignment="Top" Width="277" />
                 </Grid>
             </TabItem>
         </TabControl>
