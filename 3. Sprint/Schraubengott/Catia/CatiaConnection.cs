@@ -506,44 +506,28 @@ namespace Schraubengott
 
 
 
-            //Versuch einer Bemaßung 
-            drawingDokument1 = (DrawingDocument) hsp_catiaApp.ActiveDocument;
-            drawingSheets1 = (DrawingSheets)drawingDokument1.Sheets;
-            drawingSheet1 = drawingSheets1.Item("A4_Zeichnungsrahmen");
-            drawingViews1 = (DrawingViews)drawingSheet1.Views;
-   
-            DrawingDimensions drawingdimensions1 = (DrawingDimensions) drawingViews1.Item("Vorderansicht");
-            DrawingDimension drawingDemension1 = drawingdimensions1.Item("Bemaßung.1");
-            bool bollean1 = drawingDemension1.Forshortened;
-
-            Sketch sketch1 = (Sketch)drawingViews1.GetItem("Draufsicht");
-            Factory2D factory2D1 = sketch1.OpenEdition();
-            sketch1.CloseEdition();
-
-
-
-
-
             //Versuch Textfelder 
-
-            DrawingViews drawingViews3 = drawingSheet1.Views;
-            DrawingView drawingView3 = drawingViews3.Add("Textfeld");
+            
+            DrawingView drawingView3 = drawingViews1.Add("Textfeld");
             DrawingViewGenerativeLinks drawingViewGenerativeLinks3 = drawingView3.GenerativeLinks;
             DrawingViewGenerativeBehavior drawingViewGenerativeBehavior3 = drawingView3.GenerativeBehavior;
 
             //Verbinden der Schraube mit der Zeichnung 
             drawingViewGenerativeBehavior3.DefineFrontView(0, 0, 1, 1, 0, 0);
             // Positionierung der Ansicht auf Zeichenblatt 
-            drawingView1.x = 105;
-            drawingView1.y = 190;
+            drawingView3.x = 0;
+            drawingView3.y = 0;
+
+            double double2 = drawingView1.Scale;
             drawingView1.Scale = 1;
 
             drawingViewGenerativeBehavior3 = drawingView3.GenerativeBehavior;
             drawingViewGenerativeBehavior3.Update();
-            drawingView1.Activate();
-
+            
+             
             DrawingTexts texts1 = drawingView3.Texts;
-            DrawingText text1 = texts1.Add("Test", 100, 100);
+            DrawingText text1 = texts1.Add("1234", 44, 46);
+            text1.SetFontSize(0, 0, 1.9);
 
         }
 

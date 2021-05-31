@@ -604,7 +604,7 @@ namespace Schraubengott
         #region "login"
         private void login_Click(object sender, RoutedEventArgs e)
         {
-
+            kundennummer = Convert.ToInt32(txtkundennr);
 
             if(txtkundennr.Text == "" || passwortbox.Password == "" || !datenbank.check(Convert.ToInt32(txtkundennr.Text), passwortbox.Password ))// hier stimmt etwas noch nicht
             {
