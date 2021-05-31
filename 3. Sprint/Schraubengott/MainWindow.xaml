@@ -132,45 +132,15 @@
 
                         </RadialGradientBrush>
                     </Grid.Background>
-                    <TextBox TextAlignment="Center" HorizontalAlignment="Left" Height="54" Margin="10,64,0,0" TextWrapping="Wrap" Text="Schraube 1" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.ColumnSpan="2" />
-                    <TextBox TextAlignment="Center" HorizontalAlignment="Left" Height="54" Margin="10,118,0,0" TextWrapping="Wrap" Text="Schraube 2" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.ColumnSpan="2"/>
-                    <TextBox TextAlignment="Center" HorizontalAlignment="Left" Height="54" Margin="10,172,0,0" TextWrapping="Wrap" Text="Schraube 3" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.ColumnSpan="2"/>
-                    <TextBox TextAlignment="Center" HorizontalAlignment="Left" Height="54" Margin="10,226,0,0" TextWrapping="Wrap" Text="Schraube 4" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.ColumnSpan="2"/>
-                    <TextBox TextAlignment="Center" HorizontalAlignment="Left" Height="54" Margin="10,280,0,0" TextWrapping="Wrap" Text="Schraube 5" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.ColumnSpan="2"/>
-                    <TextBox TextAlignment="Center" HorizontalAlignment="Left" Height="54" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.ColumnSpan="2"/>
-                    <TextBox TextAlignment="Center" HorizontalAlignment="Left" Height="54" Margin="100.167,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="Menge" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" HorizontalAlignment="Left" Height="54" Margin="340.167,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="Stückpreis in Euro" IsReadOnly="True" Grid.Column="1"/>
                     <TextBox TextAlignment="Center" HorizontalAlignment="Left" Height="54" Margin="10,334,0,0" TextWrapping="Wrap" Text="Summe" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.ColumnSpan="2"/>
-                    <TextBox TextAlignment="Center" HorizontalAlignment="Left" Height="54" Margin="220.167,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="Gewicht in g" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="menge1txt" HorizontalAlignment="Left" Height="54" Margin="100.167,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="gew1txt" HorizontalAlignment="Left" Height="54" Margin="220.167,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="menge2txt" HorizontalAlignment="Left" Height="54" Margin="100.167,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="menge3txt" HorizontalAlignment="Left" Height="54" Margin="100.167,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="menge4txt" HorizontalAlignment="Left" Height="54" Margin="100.167,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="menge5txt" HorizontalAlignment="Left" Height="54" Margin="100.167,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
                     <TextBox TextAlignment="Center" x:Name="summemengetxt" HorizontalAlignment="Left" Height="54" Margin="100.167,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="gew2txt" HorizontalAlignment="Left" Height="54" Margin="220.167,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="gew3txt" HorizontalAlignment="Left" Height="54" Margin="220.167,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="gew4txt" HorizontalAlignment="Left" Height="54" Margin="220.167,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="gew5txt" HorizontalAlignment="Left" Height="54" Margin="220.167,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
                     <TextBox TextAlignment="Center" x:Name="summegewtxt" HorizontalAlignment="Left" Height="54" Margin="220.167,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="preis1txt" HorizontalAlignment="Left" Height="54" Margin="340.167,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"  IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="preis2txt" HorizontalAlignment="Left" Height="54" Margin="340.167,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="preis3txt" HorizontalAlignment="Left" Height="54" Margin="340.167,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="preis4txt" HorizontalAlignment="Left" Height="54" Margin="340.167,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="preis5txt" HorizontalAlignment="Left" Height="54" Margin="340.167,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
                     <TextBox TextAlignment="Center" x:Name="summepreistxt" HorizontalAlignment="Left" Height="54" Margin="340.167,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
                     <Button x:Name="btnangebot" Content="Angebot absenden" HorizontalAlignment="Left" Height="42" Margin="742.167,280,0,0" VerticalAlignment="Top" Width="130" Click="Btnangebot_Click" Grid.Column="1"/>
                     <Button x:Name="btnexcel" Content="Excel herunterladen" HorizontalAlignment="Left" Height="42" Margin="742.167,346,0,0" VerticalAlignment="Top" Width="130" Click="Btnexcel_Click" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" HorizontalAlignment="Left" Height="54" Margin="460.167,10,0,0" TextWrapping="Wrap" Text="Preis in Euro" VerticalAlignment="Top" Width="130" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="gpreis1txt" HorizontalAlignment="Left" Height="54" Margin="460.167,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="gpreis2txt" HorizontalAlignment="Left" Height="54" Margin="460.167,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="gpreis4txt" HorizontalAlignment="Left" Height="54" Margin="460.167,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="gpreis5txt" HorizontalAlignment="Left" Height="54" Margin="460.167,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True" Grid.Column="1"/>
                     <TextBox TextAlignment="Center" x:Name="gesamtpreistxt" HorizontalAlignment="Left" Height="54" Margin="460.167,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="gpreis3txt" HorizontalAlignment="Left" Height="54" Margin="460.167,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True" Grid.Column="1"/>
                     <Button x:Name="btn_Catia" Content="Catia Erstellen" Grid.Column="1" HorizontalAlignment="Left" Height="42" Margin="742,214,0,0" VerticalAlignment="Top" Width="130" Click="Button_Click"/>
-                    <DataGrid x:Name="Datagrid2" ItemsSource="{Binding}" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" Grid.Column="1" HorizontalAlignment="Left" Height="378" Margin="595,10,0,0" VerticalAlignment="Top" Width="277" />
+                    <DataGrid x:Name="Datagrid2" ItemsSource="{Binding}" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" HorizontalAlignment="Left" Height="324" Margin="10,10,0,0" VerticalAlignment="Top" Width="610" Grid.ColumnSpan="2" FontSize="20" />
                 </Grid>
             </TabItem>
         </TabControl>

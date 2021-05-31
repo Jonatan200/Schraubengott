@@ -499,81 +499,7 @@ namespace Schraubengott
             #region "Die Werte des ausgewälten Objekts werden im Warenkorb gespeichert"
             CreateDataTable2();
 
-            if (check1.IsChecked == true)
-            {
-                menge1txt.Text = feld[0].menge.ToString();
-                gew1txt.Text = Math.Round(feld[0].gesamtgewicht, 2).ToString();
-                preis1txt.Text = Math.Round(feld[0].stückpreis, 2).ToString();
-                gpreis1txt.Text = Math.Round(feld[0].nettopreis_Summe, 2).ToString();
-            }
-            else if (check1.IsChecked == false)
-            {
-                menge1txt.Text = "0";
-                gew1txt.Text = "0";
-                preis1txt.Text = "0";
-                gpreis1txt.Text = "0";
-            }
-
-            if (check2.IsChecked == true)
-            {
-                menge2txt.Text = feld[1].menge.ToString();
-                gew2txt.Text = Math.Round(feld[1].gesamtgewicht, 2).ToString();
-                preis2txt.Text = Math.Round(feld[1].stückpreis, 2).ToString();
-                gpreis2txt.Text = Math.Round(feld[1].nettopreis_Summe, 2).ToString();
-            }
-            else if (check2.IsChecked == false)
-            {
-                menge2txt.Text = "0";
-                gew2txt.Text = "0";
-                preis2txt.Text = "0";
-                gpreis2txt.Text = "0";
-            }
-
-            if (check3.IsChecked == true)
-            {
-                menge3txt.Text = feld[2].menge.ToString();
-                gew3txt.Text = Math.Round(feld[2].gesamtgewicht, 2).ToString();
-                preis3txt.Text = Math.Round(feld[2].stückpreis, 2).ToString();
-                gpreis3txt.Text = Math.Round(feld[2].nettopreis_Summe, 2).ToString();
-            }
-            else if (check3.IsChecked == false)
-            {
-                menge3txt.Text = "0";
-                gew3txt.Text = "0";
-                preis3txt.Text = "0";
-                gpreis3txt.Text = "0";
-            }
-
-            if (check4.IsChecked == true)
-            {
-                menge4txt.Text = feld[3].menge.ToString();
-                gew4txt.Text = Math.Round(feld[3].gesamtgewicht, 2).ToString();
-                preis4txt.Text = Math.Round(feld[3].stückpreis, 2).ToString();
-                gpreis4txt.Text = Math.Round(feld[3].nettopreis_Summe, 2).ToString();
-            }
-            else if (check4.IsChecked == false)
-            {
-                menge4txt.Text = "0";
-                gew4txt.Text = "0";
-                preis4txt.Text = "0";
-                gpreis4txt.Text = "0";
-            }
-
-            if (check5.IsChecked == true)
-            {
-                menge5txt.Text = feld[4].menge.ToString();
-                gew5txt.Text = Math.Round(feld[4].gesamtgewicht, 2).ToString();
-                preis5txt.Text = Math.Round(feld[4].stückpreis, 2).ToString();
-                gpreis5txt.Text = Math.Round(feld[4].nettopreis_Summe, 2).ToString();
-            }
-            else if (check5.IsChecked == false)
-            {
-                menge5txt.Text = "0";
-                gew5txt.Text = "0";
-                preis5txt.Text = "0";
-                gpreis5txt.Text = "0";
-            }
-
+           /*
             double w1 = Convert.ToDouble(gpreis1txt.Text);
             double w2 = Convert.ToDouble(gpreis2txt.Text);
             double w3 = Convert.ToDouble(gpreis3txt.Text);
@@ -609,6 +535,7 @@ namespace Schraubengott
 
 
             summepreistxt.Text = (z1 + z2 + z3 + z4 + z5).ToString();
+           */
             #endregion
         }
 
@@ -798,9 +725,9 @@ namespace Schraubengott
             System.Data.DataTable dt2 = new DataTable("MyTable2");
             dt2.Columns.Add("Schraube", typeof(string));
             dt2.Columns.Add("Menge", typeof(int));
-            dt2.Columns.Add("Gewicht", typeof(double));
-            dt2.Columns.Add("Stückpreis", typeof(double));
-            dt2.Columns.Add("Preis", typeof(double));
+            dt2.Columns.Add("Gewicht in g", typeof(double));
+            dt2.Columns.Add("Stückpreis in Euro", typeof(double));
+            dt2.Columns.Add("Preis in Euro", typeof(double));
 
             if (check1.IsChecked == true)
             {
