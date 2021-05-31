@@ -17,27 +17,6 @@ namespace Schraubengott
             {
                 CatiaConnection cc = new CatiaConnection();
 
-                // Finde Catia Prozess
-                /*  bool laufbedingung = false;
-
-                  while(laufbedingung == false)
-                  {
-                      int z = 0,
-                      i=z++;
-                      if (z < 10)
-                      {
-                          cc.CATIALaeuft();
-                      }
-
-                      else
-                      {
-                          laufbedingung
-                      }
-
-                  }
-                */
-
-
                 bool catläuft = false;
 
                 if (cc.CATIALaeuft() == false)
@@ -58,10 +37,7 @@ namespace Schraubengott
                         {
                             System.Windows.MessageBox.Show("Ladezeit übeschritten, Bitte erneut versuchen, oder Catia manuell Starten", "");
                         }
-
-
                     }
-
                 }
                 else
                 {
@@ -89,9 +65,7 @@ namespace Schraubengott
 
                     cc.ErzeugeGewindehelix(arr, i);
 
-                    // 
                     //cc.ErzeugeGewindeFeature(arr);
-
 
                     cc.ErstelleSkizzeKopf(arr);       //Erstelle Skizze für den Kopf 
 

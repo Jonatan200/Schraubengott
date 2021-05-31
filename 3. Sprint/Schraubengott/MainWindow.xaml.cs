@@ -18,15 +18,13 @@ using System.Net.Mail;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Data;
 
-
 namespace Schraubengott
 {
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-        
+    {        
         Schraube[] feld = new Schraube[5];      //Array vom Typ Schraube erstellen
         int nr = 0;                             //Variable für den Index des Feldes Schraube
         int new_screw_int = 1;                  //Varibale für Neue Schraube Button und Combobox mit Schraubenauswahl
@@ -37,11 +35,8 @@ namespace Schraubengott
 
         int kundennummer;
         
-
         LinkedList datenbank = new LinkedList(); //Kunendatenbank wird erstellt
-
-        
-
+       
         public MainWindow()
         {
             for (int i = 0; i < feld.Length; i++)
@@ -52,17 +47,12 @@ namespace Schraubengott
 
             kundennummer = 1004; //Kundennr auf 1004 festlegen, weil schon 3 einträge existieren
 
-
             datenbank.AddNodToBack(1001, "hallo123", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1"); // Datenbankeinträge
             datenbank.AddNodToBack(1002, "hallo456", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1");
             datenbank.AddNodToBack(1003, "hallo789", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1");
 
-
-
          //   DataTable Schraubennn = CreateDataTable();
           //  myDataGrid.DataContext = Schraubennn.DefaultView;
-
-
 
             InitializeComponent();
             cmb_nr.SelectedIndex = 0;           //Combobox hat von Anfang an die erste Schraube ausgewählt
@@ -77,7 +67,6 @@ namespace Schraubengott
             bestellnummer = nummer.Next(10000000, 99999999);
         }
       
-
         private void Btnexit_Click(object sender, RoutedEventArgs e)
         {
             //Wenn Exit-Button geklickt wird, wird gefragt, ob das Fenster geschlossen werden soll. Mit klick auf ja wird die App beendet
@@ -199,9 +188,7 @@ namespace Schraubengott
 
         private void Btnauswahl_Click(object sender, RoutedEventArgs e)
         {
-
             #region Fehlermeldung bei Falscheingaben"
-
             if (feld[nr].gewinde == "")
             {
                 MessageBox.Show("Es fehlt eine Gewindeeingabe.\rBitte eine Auswahl treffen", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -277,6 +264,35 @@ namespace Schraubengott
             CreateDataTable();
 
             MessageBox.Show("Die aktuelle Konfiguration wurde in die Übersicht hinzugefügt.", "Konfiguration gespeichert", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            cbcatia.Visibility = Visibility.Visible;
+            catialbl.Content = "Schraube auswählen\num Catia Part zu\nerstellen:";
+
+            if (cmb_nr.SelectedIndex == 0)
+            {
+                cbcatia.Items.Remove("Schraube 1");
+                cbcatia.Items.Add("Schraube 1");
+            }
+            if (cmb_nr.SelectedIndex == 1)
+            {
+                cbcatia.Items.Remove("Schraube 2"); 
+                cbcatia.Items.Add("Schraube 2");
+            }
+            if (cmb_nr.SelectedIndex == 2)
+            {
+                cbcatia.Items.Remove("Schraube 3"); 
+                cbcatia.Items.Add("Schraube 3");
+            }
+            if (cmb_nr.SelectedIndex == 3)
+            {
+                cbcatia.Items.Remove("Schraube 4"); 
+                cbcatia.Items.Add("Schraube 4");
+            }
+            if (cmb_nr.SelectedIndex == 4)
+            {
+                cbcatia.Items.Remove("Schraube 5"); 
+                cbcatia.Items.Add("Schraube 5");
+            }
         }
 
         private void Cmb_nr_SelectionChanged(object sender, SelectionChangedEventArgs e)//auswahl der Schraubennummer (Index vom Feld)
@@ -592,7 +608,7 @@ namespace Schraubengott
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(feld[0].material == null && feld[1].material == null && feld[2].material == null && feld[3].material == null && feld[4].material == null)
+            if(cbcatia.SelectedItem == null)
             {
                 MessageBox.Show("Es ist keine Schraube ausgewählt.", "", MessageBoxButton.OK);
             }
@@ -606,8 +622,6 @@ namespace Schraubengott
         #region "login"
         private void login_Click(object sender, RoutedEventArgs e)
         {
-
-
             if(txtkundennr.Text == "" || passwortbox.Password == "" || !datenbank.check(Convert.ToInt32(txtkundennr.Text), passwortbox.Password ))// hier stimmt etwas noch nicht
             {
                 MessageBox.Show("Die Kundennummer oder das Passwort ist falsch", "Falsche Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -649,9 +663,6 @@ namespace Schraubengott
             if (passwortbox2.Password!=passwortbox3.Password)
             {
                 MessageBox.Show("Passwörter stimmen nicht überein.", "Passwort falsch", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-
                 return;             //Wenn Passwörter sind nicht identisch, a gleichen Punkt wie vorher
 
             }
@@ -668,13 +679,8 @@ namespace Schraubengott
                 String str = txtstrasse.Text;
                 String password = passwortbox2.Password;
 
-
                 datenbank.AddNodToBack(kundennummer, password, name, firma, email, plz, str);
-                
-                
-
-
-
+                               
                 gridregr.Visibility = Visibility.Collapsed;
                 logo1.Visibility = Visibility.Visible;
                 tabcontrol.Visibility = Visibility.Visible;
@@ -778,11 +784,5 @@ namespace Schraubengott
 
             Datagrid2.DataContext = dt2;
         }
-
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
     }
 }

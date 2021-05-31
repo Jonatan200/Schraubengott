@@ -33,7 +33,6 @@ namespace Schraubengott
         public double elastizitätsgrenze; // belegt
         public double Zugfestigkeit; //belegt
 
-
         public string material;
         public double dichte;
         public double masse;
@@ -45,7 +44,6 @@ namespace Schraubengott
         public double nettoeinzelpreis;  //belegt
 
         public string bemerkung;
-
 
         #region "Methoden für Berechnungen""
 
@@ -59,8 +57,6 @@ namespace Schraubengott
             Gewicht_berechnen();
             Festigkeit_berechnen();
             Preis_berechnen();
-
-
         }
         public void Dichte_festlegen()
         {
@@ -270,7 +266,6 @@ namespace Schraubengott
             Bestellpreis = einzelpreis * menge;
 
             // Objekt 
-
             preis_summe = Bestellpreis;
             stückpreis = einzelpreis;
             this.nettopreis_Summe = Nettobestellpreis;
@@ -426,7 +421,6 @@ namespace Schraubengott
 
                     case "M8":
                         this.gewindesteigung = 0.75;
-
                         break;
 
                     case "M10":
@@ -472,7 +466,6 @@ namespace Schraubengott
 
         public void Gewicht_berechnen()
         {
-
             this.masse = this.volumen * this.dichte;
             this.gesamtgewicht = this.masse * this.menge;
         }
@@ -525,7 +518,6 @@ namespace Schraubengott
             this.Zugfestigkeit = Rm;
         }
         #endregion
-
     }
 }
 
