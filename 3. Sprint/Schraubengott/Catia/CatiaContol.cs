@@ -80,7 +80,7 @@ namespace Schraubengott
 
                     cc.Zeichnungsableitung(screw);
 
-                    cc.ErzeugeFase();
+                    //cc.ErzeugeFase();
                 }
                     #endregion
                 
