@@ -191,6 +191,11 @@ namespace Schraubengott
 
         private void Btnauswahl_Click(object sender, RoutedEventArgs e)
         {
+
+
+
+
+
             #region Fehlermeldung bei Falscheingaben"
             if (feld[nr].gewinde == "")
             {
