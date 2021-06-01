@@ -108,9 +108,7 @@
                     <CheckBox x:Name="check4" Content="" HorizontalAlignment="Left" Margin="648,135,0,0" VerticalAlignment="Top" Grid.Column="2"/>
                     <CheckBox x:Name="check5" Content="" HorizontalAlignment="Left" Margin="648,164,0,0" VerticalAlignment="Top" Grid.Column="2"/>
                     <Button Content="zum Warenkorb" HorizontalAlignment="Left" Height="23" Margin="721,182,0,0" VerticalAlignment="Top" Width="92" Click="btnwarenkorb_Click" Grid.Row="1" Grid.Column="2"/>
-                    <DataGrid x:Name="Datagrid1" HorizontalAlignment="Left" Height="417" VerticalAlignment="Top" Width="751" Grid.RowSpan="2" ItemsSource="{Binding}" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" Grid.ColumnSpan="3" FontSize="20" Background="{x:Null}" BorderBrush="{x:Null}" >
-
-                    </DataGrid>
+                    <DataGrid x:Name="Datagrid1" HorizontalAlignment="Left" Height="202" VerticalAlignment="Top" Width="768" ItemsSource="{Binding}" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" Grid.ColumnSpan="3" FontSize="20" Background="{x:Null}" BorderBrush="{x:Null}" />
                 </Grid>
 
             </TabItem>
