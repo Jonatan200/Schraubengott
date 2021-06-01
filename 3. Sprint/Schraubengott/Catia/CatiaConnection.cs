@@ -204,7 +204,7 @@ namespace Schraubengott
             Reference RefHelixstartpunkt = part_Schraube.CreateReferenceFromObject(Helixstartpunkt);
 
             //Helix Erstellen 
-            HybridShapeHelix Helix = hybridshapefac.AddNewHelix(RefHelxDir, false, RefHelixstartpunkt, arr[i].gewindesteigung, arr[i].gewindelaenge - 2, false, 0, 0, false);
+            HybridShapeHelix Helix = hybridshapefac.AddNewHelix(RefHelxDir, false, RefHelixstartpunkt, arr[i].gewindesteigung, arr[i].gewindelaenge - 1, false, 0, 0, false);
                                                                     // Drehrichtung, Startpunkt             Steigung                Höhe             Drehrichtung  Anfangswinkel ...
 
             Reference RefHelix = part_Schraube.CreateReferenceFromObject(Helix);
@@ -447,7 +447,7 @@ namespace Schraubengott
         }
         #endregion
 
-        internal void Zeichnungsableitung()
+        internal void Zeichnungsableitung(Schraube arr)
         {
             #region Erste Ansicht einfügen
 
@@ -526,8 +526,16 @@ namespace Schraubengott
             
              
             DrawingTexts texts1 = drawingView3.Texts;
-            DrawingText text1 = texts1.Add("1234", 44, 46);
+            DrawingText text1 = texts1.Add("Kundennumme", 44, 46);
             text1.SetFontSize(0, 0, 1.9);
+
+
+            DrawingTexts texts2 = drawingView3.Texts;
+            DrawingText text2 = texts2.Add(arr.material, 44, 43);
+            text2.SetFontSize(0, 0, 1.9);
+
+
+
 
         }
 
