@@ -76,6 +76,28 @@ namespace Schraubengott
             }
             return false;
         }
+        public String[] getdata(int nummer)
+        {
+            String[] data = new String[5];
+            LinkedListElement runner = head;
+
+            while (runner != null)
+            {
+                if (runner.kundennr == nummer)
+                {
+                    data[0] = runner.kundennr.ToString();
+                    data[1] = runner.name;
+                    data[2] = runner.firmenName;
+                    data[3] = runner.adresse;
+                    data[4] = runner.email;
+
+                }
+                runner = runner.next;
+            }
+
+            return data;
+        }
+        
 
 
 
