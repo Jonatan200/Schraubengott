@@ -33,7 +33,8 @@ namespace Schraubengott
         Random nummer = new Random();
         int bestellnummer;
 
-        int kundennummer; 
+        int kundennummer;
+        int currentKdNr;
         
         LinkedList datenbank = new LinkedList(); //Kunendatenbank wird erstellt
        
@@ -602,11 +603,12 @@ namespace Schraubengott
         #region "login"
         private void login_Click(object sender, RoutedEventArgs e)
         {
-            kundennummer = Convert.ToInt32(txtkundennr);
+            
 
-            if(txtkundennr.Text == "" || passwortbox.Password == "" || !datenbank.check(Convert.ToInt32(txtkundennr.Text), passwortbox.Password ))// hier stimmt etwas noch nicht
+            if(txtkundennr.Text == "" || passwortbox.Password == "" || !datenbank.check(Convert.ToInt32(txtkundennr.Text), passwortbox.Password ))
             {
                 MessageBox.Show("Die Kundennummer oder das Passwort ist falsch", "Falsche Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
+               
             }
             else
             {
@@ -616,6 +618,7 @@ namespace Schraubengott
                 ausloggen.Visibility = Visibility.Visible;
                 txtkundennr.Clear();
                 passwortbox.Clear();
+                currentKdNr = Convert.ToInt32(txtkundennr); //Kundennummer wird auf die aktuelle gesetzt
             }
         }
 
