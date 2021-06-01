@@ -584,8 +584,12 @@ namespace Schraubengott
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (cbcatia.Visibility == Visibility.Visible)
+            if (cbcatia.Visibility == Visibility.Collapsed || cbcatia.SelectedIndex == 0)
             {
+                MessageBox.Show("Es ist keine Schraube ausgewählt.", "", MessageBoxButton.OK);
+            }
+            else
+            {               
                 switch (cbcatia.SelectedItem.ToString())
                 {
                     case "Schraube 1":
@@ -604,10 +608,6 @@ namespace Schraubengott
                         CatiaControl.Catia_Starten(feld[4]);
                         break;
                 }
-            }
-            else
-            {
-                MessageBox.Show("Es ist keine Schraube ausgewählt.", "", MessageBoxButton.OK);
             }
         }
 
