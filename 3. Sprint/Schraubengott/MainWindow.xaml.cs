@@ -514,45 +514,8 @@ namespace Schraubengott
             #endregion
 
             #region "Die Werte des ausgewälten Objekts werden im Warenkorb gespeichert"
-            CreateDataTable2();
+            CreateDataTable2(Summe());
 
-           /*
-            double w1 = Convert.ToDouble(gpreis1txt.Text);
-            double w2 = Convert.ToDouble(gpreis2txt.Text);
-            double w3 = Convert.ToDouble(gpreis3txt.Text);
-            double w4 = Convert.ToDouble(gpreis4txt.Text);
-            double w5 = Convert.ToDouble(gpreis5txt.Text);
-
-
-            gesamtpreistxt.Text = (w1 + w2 + w3 + w4 + w5).ToString();
-
-            double x1 = Convert.ToDouble(menge1txt.Text);
-            double x2 = Convert.ToDouble(menge2txt.Text);
-            double x3 = Convert.ToDouble(menge3txt.Text);
-            double x4 = Convert.ToDouble(menge4txt.Text);
-            double x5 = Convert.ToDouble(menge5txt.Text);
-
-
-            summemengetxt.Text = (x1 + x2 + x3 + x4 + x5).ToString();
-
-            double y1 = Convert.ToDouble(gew1txt.Text);
-            double y2 = Convert.ToDouble(gew2txt.Text);
-            double y3 = Convert.ToDouble(gew3txt.Text);
-            double y4 = Convert.ToDouble(gew4txt.Text);
-            double y5 = Convert.ToDouble(gew5txt.Text);
-
-
-            summegewtxt.Text = (y1 + y2 + y3 + y4 + y5).ToString();
-
-            double z1 = Convert.ToDouble(preis1txt.Text);
-            double z2 = Convert.ToDouble(preis2txt.Text);
-            double z3 = Convert.ToDouble(preis3txt.Text);
-            double z4 = Convert.ToDouble(preis4txt.Text);
-            double z5 = Convert.ToDouble(preis5txt.Text);
-
-
-            summepreistxt.Text = (z1 + z2 + z3 + z4 + z5).ToString();
-           */
             #endregion
         }
 
@@ -747,7 +710,7 @@ namespace Schraubengott
             }
             Datagrid1.DataContext = dt;
         }
-        public void CreateDataTable2()//Datatable2 wird erzeugt und zugewiesen
+        public void CreateDataTable2(double summe)//Datatable2 wird erzeugt und zugewiesen
         {
             System.Data.DataTable dt2 = new DataTable("MyTable2");
             dt2.Columns.Add("Schraube", typeof(string));
@@ -758,7 +721,7 @@ namespace Schraubengott
 
             if (check1.IsChecked == true)
             {
-                dt2.Rows.Add("Schraube 1", feld[0].menge, Math.Round(feld[0].masse,2), Math.Round(feld[0].stückpreis,2), Math.Round(feld[0].preis_summe, 2));
+                dt2.Rows.Add("Schraube 1", feld[0].menge, Math.Round(feld[0].gesamtgewicht ,2), Math.Round(feld[0].stückpreis,2), Math.Round(feld[0].preis_summe, 2));
             }
             else if (check1.IsChecked == false)
             {
@@ -767,7 +730,7 @@ namespace Schraubengott
 
             if (check2.IsChecked == true)
             {
-                dt2.Rows.Add("Schraube 2", feld[1].menge, Math.Round(feld[1].masse,2), Math.Round(feld[1].stückpreis, 2), Math.Round(feld[1].preis_summe, 2));
+                dt2.Rows.Add("Schraube 2", feld[1].menge, Math.Round(feld[1].gesamtgewicht,2), Math.Round(feld[1].stückpreis, 2), Math.Round(feld[1].preis_summe, 2));
             }
             else if (check2.IsChecked == false)
             {
@@ -776,7 +739,7 @@ namespace Schraubengott
 
             if (check3.IsChecked == true)
             {
-                dt2.Rows.Add("Schraube 3", feld[2].menge, Math.Round(feld[2].masse, 2), Math.Round(feld[2].stückpreis, 2), Math.Round(feld[2].preis_summe, 2));
+                dt2.Rows.Add("Schraube 3", feld[2].menge, Math.Round(feld[2].gesamtgewicht, 2), Math.Round(feld[2].stückpreis, 2), Math.Round(feld[2].preis_summe, 2));
             }
             else if (check3.IsChecked == false)
             {
@@ -785,7 +748,7 @@ namespace Schraubengott
 
             if (check4.IsChecked == true)
             {
-                dt2.Rows.Add("Schraube 4", feld[3].menge, Math.Round(feld[3].masse,2), Math.Round(feld[3].stückpreis, 2), Math.Round(feld[3].preis_summe, 2));
+                dt2.Rows.Add("Schraube 4", feld[3].menge, Math.Round(feld[3].gesamtgewicht,2), Math.Round(feld[3].stückpreis, 2), Math.Round(feld[3].preis_summe, 2));
             }
             else if (check4.IsChecked == false)
             {
@@ -794,18 +757,31 @@ namespace Schraubengott
 
             if (check5.IsChecked == true)
             {
-                dt2.Rows.Add("Schraube 5", feld[4].menge, feld[4].masse, feld[4].stückpreis, feld[4].preis_summe);
+                dt2.Rows.Add("Schraube 5", feld[4].menge, Math.Round(feld[4].masse,2), Math.Round(feld[4].stückpreis,2), Math.Round(feld[4].preis_summe,2));
             }
             else if (check5.IsChecked == false)
             {
                 dt2.Rows.Add("Schraube 5", 0, 0, 0, 0);
             }
 
-
-            double sum = Convert.ToDouble(dt2.Compute("SUM(Preis in Euro)", string.Empty));
-            summepreistxt.Text= Convert.ToString(sum);
+            gesamtpreistxt.Text= Convert.ToString(Math.Round(summe,2));
 
             Datagrid2.DataContext = dt2;
+        }
+
+        public double Summe()
+        {
+            double summe = 0;
+            for (int i = 0; i < feld.Length; i++)
+            {
+                if (feld[i].preis_summe != 0)
+                {
+                    summe = summe + feld[i].preis_summe ;
+                }
+                
+            }
+
+            return summe;
         }
     }
 }
