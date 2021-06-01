@@ -226,6 +226,11 @@ namespace Schraubengott
                 MessageBox.Show("Eingaben für Länge außerhalb des möglichen Wertebereichs.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;//wenn M5 und len größer als 100 wird Methode beendet
             }
+            else if (cbgewinde.SelectedIndex == 0)
+            {
+                MessageBox.Show("Es ist keine Eingabe für Gewinde getätigt worden.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             if (cbfk.SelectedItem == null)
             {
