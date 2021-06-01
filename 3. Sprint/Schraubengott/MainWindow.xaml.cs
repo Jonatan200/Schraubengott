@@ -779,10 +779,10 @@ namespace Schraubengott
             }
 
 
-            double sum = Convert.ToDouble(dt2.Compute("SUM(Preis in Euro)", string.Empty));
-            summepreistxt.Text= Convert.ToString(sum);
+            //fedouble sum = Convert.ToDouble(dt2.Compute("SUM(Preis in Euro)", string.Empty));
+            //summepreistxt.Text= Convert.ToString(sum);
 
-            Datagrid2.DataContext = dt2;
+            //Datagrid2.DataContext = dt2;
         }
     }
 }
