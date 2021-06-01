@@ -234,8 +234,7 @@ namespace Schraubengott
                 MessageBox.Show("Es ist keine Eingabe für Gewinde getätigt worden.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-
-            if (cbfk.SelectedItem == null)
+            else if (cbfk.SelectedIndex == 0)
             {
                 MessageBox.Show("Für die Festigkeitsklasse liegt keine Auswahl vor.", "Fehldend Auswahl", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;// wenn keine Festigkeitsklasse ausgewählt ist, wird die Methode beendet
