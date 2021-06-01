@@ -457,9 +457,11 @@ namespace Schraubengott
 
             //Neues Dokument aus Vorlage erstellen 
             Documents dokuments1 = hsp_catiaApp.Documents;
-            string pfad = System.IO.Path.GetFullPath("A4_V.CATDrawing");
-            DrawingDocument drawingDokument1 = (DrawingDocument)dokuments1.NewFrom(@"C:\Users\jonat\Documents\GitHub\Schraubengott\3. Sprint\Schraubengott\Catia\A4_V.CATDrawing");
+            string pfad = System.IO.Path.GetFullPath("Vorlage_HSP_Drawing.CATDrawing");
+            //DrawingDocument drawingDokument1 = (DrawingDocument)dokuments1.NewFrom(@"C:\Users\jonat\Documents\GitHub\Schraubengott\3. Sprint\Schraubengott\Catia\Vorlage_HSP_Drawing.CATDrawing");
+            
             //DrawingDocument drawingDokument1 = (DrawingDocument)dokuments1.NewFrom(pfad);
+            DrawingDocument drawingDokument1 = (DrawingDocument)dokuments1.NewFrom(pfad);
 
             //Neues Zeichenblatt 
             DrawingSheets drawingSheets1 = drawingDokument1.Sheets;
@@ -512,8 +514,8 @@ namespace Schraubengott
 
 
 
-            //Versuch Textfelder 
-            
+            #region Textfelder 
+
             DrawingView drawingView3 = drawingViews1.Add("Textfeld");
             DrawingViewGenerativeLinks drawingViewGenerativeLinks3 = drawingView3.GenerativeLinks;
             DrawingViewGenerativeBehavior drawingViewGenerativeBehavior3 = drawingView3.GenerativeBehavior;
@@ -545,6 +547,11 @@ namespace Schraubengott
             DrawingText text3 = texts2.Add(arr.material, 141, 36);
             text3.SetFontSize(0, 0, 2.2);
 
+            DrawingTexts texts4 = drawingView3.Texts;
+            DrawingText text4 = texts4.Add("56464566" ,162, 26);
+            text4.SetFontSize(0, 0, 3.5);
+
+            #endregion
         }
 
     }

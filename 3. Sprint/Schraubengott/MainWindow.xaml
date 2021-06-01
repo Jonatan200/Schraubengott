@@ -130,7 +130,9 @@
                     <TextBox TextAlignment="Center" x:Name="gesamtpreistxt" HorizontalAlignment="Left" Height="54" Margin="607,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}"/>
                     <Button x:Name="btn_Catia" Content="Catia Erstellen" Grid.Column="1" HorizontalAlignment="Left" Height="42" Margin="742,214,0,0" VerticalAlignment="Top" Width="130" Click="Button_Click"/>
                     <DataGrid x:Name="Datagrid2" ItemsSource="{Binding}" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" HorizontalAlignment="Left" Height="324" Margin="10,10,0,0" VerticalAlignment="Top" Width="757" Grid.ColumnSpan="2" FontSize="20" Background="{x:Null}" BorderBrush="{x:Null}" />
-                    <ComboBox x:Name="cbcatia" Visibility="Collapsed" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="742,144,0,0" VerticalAlignment="Top" Width="130"/>
+                    <ComboBox x:Name="cbcatia" Visibility="Collapsed" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="742,144,0,0" VerticalAlignment="Top" Width="130">
+                        <ComboBoxItem Content="--Bitte auswählen--" IsSelected="True"/>
+                    </ComboBox>
                     <Label x:Name="catialbl" Content="" Grid.Column="1" HorizontalAlignment="Left" Height="56" Margin="742,83,0,0" VerticalAlignment="Top" Width="130"/>
                 </Grid>
             </TabItem>
