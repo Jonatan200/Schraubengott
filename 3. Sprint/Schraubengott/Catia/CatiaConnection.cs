@@ -204,7 +204,11 @@ namespace Schraubengott
             Reference RefHelixstartpunkt = part_Schraube.CreateReferenceFromObject(Helixstartpunkt);
 
             //Helix Erstellen 
-            HybridShapeHelix Helix = hybridshapefac.AddNewHelix(RefHelxDir, false, RefHelixstartpunkt, arr.gewindesteigung, arr.gewindelaenge - 2, false, 0, 0, false);
+
+            HybridShapeHelix Helix = hybridshapefac.AddNewHelix(RefHelxDir, false, RefHelixstartpunkt, arr.gewindesteigung, arr.gewindelaenge - 1, false, 0, 0, false);
+
+
+
                                                                     // Drehrichtung, Startpunkt             Steigung                Höhe             Drehrichtung  Anfangswinkel ...
 
             Reference RefHelix = part_Schraube.CreateReferenceFromObject(Helix);
@@ -447,14 +451,16 @@ namespace Schraubengott
         }
         #endregion
 
-        internal void Zeichnungsableitung()
+        internal void Zeichnungsableitung(Schraube arr)
         {
             #region Erste Ansicht einfügen
 
             //Neues Dokument aus Vorlage erstellen 
             Documents dokuments1 = hsp_catiaApp.Documents;
+            string pfad = System.IO.Path.GetFullPath("A4_V.CATDrawing");
             DrawingDocument drawingDokument1 = (DrawingDocument)dokuments1.NewFrom(@"C:\Users\jonat\Documents\GitHub\Schraubengott\3. Sprint\Schraubengott\Catia\A4_V.CATDrawing");
-           
+            //DrawingDocument drawingDokument1 = (DrawingDocument)dokuments1.NewFrom(pfad);
+
             //Neues Zeichenblatt 
             DrawingSheets drawingSheets1 = drawingDokument1.Sheets;
             DrawingSheet drawingSheet1 = drawingSheets1.Item("A4_Zeichnungsrahmen");
@@ -526,8 +532,18 @@ namespace Schraubengott
             
              
             DrawingTexts texts1 = drawingView3.Texts;
-            DrawingText text1 = texts1.Add("1234", 44, 46);
-            text1.SetFontSize(0, 0, 1.9);
+            DrawingText text1 = texts1.Add("Kundennumme", 44, 46);
+            text1.SetFontSize(0, 0, 2.2);
+
+
+            DrawingTexts texts2 = drawingView3.Texts;
+            DrawingText text2 = texts2.Add(arr.typ, 141, 40.5);
+            text2.SetFontSize(0, 0, 2.2);
+
+
+            DrawingTexts texts3 = drawingView3.Texts;
+            DrawingText text3 = texts2.Add(arr.material, 141, 36);
+            text3.SetFontSize(0, 0, 2.2);
 
         }
 

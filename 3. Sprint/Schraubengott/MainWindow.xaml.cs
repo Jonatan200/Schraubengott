@@ -33,7 +33,8 @@ namespace Schraubengott
         Random nummer = new Random();
         int bestellnummer;
 
-        int kundennummer; 
+        int kundennummer;
+        int currentKdNr;
         
         LinkedList datenbank = new LinkedList(); //Kunendatenbank wird erstellt
        
@@ -227,6 +228,11 @@ namespace Schraubengott
             {
                 MessageBox.Show("Eingaben für Länge außerhalb des möglichen Wertebereichs.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;//wenn M5 und len größer als 100 wird Methode beendet
+            }
+            else if (cbgewinde.SelectedIndex == 0)
+            {
+                MessageBox.Show("Es ist keine Eingabe für Gewinde getätigt worden.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
 
             if (cbfk.SelectedItem == null)
@@ -514,6 +520,8 @@ namespace Schraubengott
                 MessageBox.Show("Es ist nichts ausgewählt.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;//wenn keine Checkbox ausgewählt, wird die Methode beendet
             }
+           
+
             #endregion
 
             #region "Die Werte des ausgewälten Objekts werden im Warenkorb gespeichert"
@@ -605,11 +613,12 @@ namespace Schraubengott
         #region "login"
         private void login_Click(object sender, RoutedEventArgs e)
         {
-            kundennummer = Convert.ToInt32(txtkundennr);
+            
 
-            if(txtkundennr.Text == "" || passwortbox.Password == "" || !datenbank.check(Convert.ToInt32(txtkundennr.Text), passwortbox.Password ))// hier stimmt etwas noch nicht
+            if(txtkundennr.Text == "" || passwortbox.Password == "" || !datenbank.check(Convert.ToInt32(txtkundennr.Text), passwortbox.Password ))
             {
                 MessageBox.Show("Die Kundennummer oder das Passwort ist falsch", "Falsche Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
+               
             }
             else
             {
@@ -619,6 +628,7 @@ namespace Schraubengott
                 ausloggen.Visibility = Visibility.Visible;
                 txtkundennr.Clear();
                 passwortbox.Clear();
+                currentKdNr = Convert.ToInt32(txtkundennr); //Kundennummer wird auf die aktuelle gesetzt
             }
         }
 

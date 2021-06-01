@@ -78,9 +78,9 @@ namespace Schraubengott
 
                     }
 
-                    cc.Zeichnungsableitung();
+                    cc.Zeichnungsableitung(screw);
 
-                    cc.ErzeugeFase();
+                    //cc.ErzeugeFase();
                 }
                     #endregion
                 
