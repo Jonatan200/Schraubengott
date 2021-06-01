@@ -33,7 +33,7 @@ namespace Schraubengott
         Random nummer = new Random();
         int bestellnummer;
 
-        int kundennummer;
+        int kundennummer; 
         
         LinkedList datenbank = new LinkedList(); //Kunendatenbank wird erstellt
        
@@ -608,7 +608,26 @@ namespace Schraubengott
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(cbcatia.SelectedItem == null)
+            switch (cbcatia.SelectedItem.ToString())
+            {
+
+                case "Schraube 1":
+
+            break;
+                case "Schraube 2":
+
+            break;
+                case "Schraube 3":
+
+            break;
+                case "Schraube 4":
+
+            break;
+                case "Schraube 5":
+
+            break;
+        }
+        if(cbcatia.SelectedItem == null)
             {
                 MessageBox.Show("Es ist keine Schraube ausgewählt.", "", MessageBoxButton.OK);
             }
