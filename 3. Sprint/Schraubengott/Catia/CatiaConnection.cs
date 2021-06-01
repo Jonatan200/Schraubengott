@@ -53,7 +53,7 @@ namespace Schraubengott
         }
 
 
-        internal void ErzeugePart(int i)
+        internal void ErzeugePart()
         {
             //Dokument erstellen
             catDokuments1 = hsp_catiaApp.Documents;
@@ -106,7 +106,7 @@ namespace Schraubengott
         }
 
 
-        internal void ZkizzeZylinder(Schraube [] arr, int i)
+        internal void ZkizzeZylinder(Schraube arr)
         {
             part_Schraube = hsp_catiaPartDoc.Part;
             Bodies bodies = part_Schraube.Bodies;
@@ -120,18 +120,18 @@ namespace Schraubengott
             // Bearbeitungsumgebung der Skizze Öffnen 
             Factory2D catfactory2D1 = hsp_catiaSkizze.OpenEdition();
 
-            Circle2D Zylinder1 = catfactory2D1.CreateClosedCircle(0, 0, 0.5 * arr[i].durchmesser);
+            Circle2D Zylinder1 = catfactory2D1.CreateClosedCircle(0, 0, 0.5 * arr.durchmesser);
 
             hsp_catiaSkizze.CloseEdition();
         }
 
        
-        internal void ErzeugeZylinder(Schraube [] arr, int i)
+        internal void ErzeugeZylinder(Schraube arr)
         {
             //Referenz für den Volumenkörper aus Skizze übernehmen 
             Reference RefMySchaft = part_Schraube.CreateReferenceFromObject(hsp_catiaSkizze);
             //Volumenkörper erstellen 
-            schaft = shapefac.AddNewPadFromRef(RefMySchaft, Convert.ToDouble(arr[i].laenge));
+            schaft = shapefac.AddNewPadFromRef(RefMySchaft, Convert.ToDouble(arr.laenge));
             schaft.set_Name("Zylinder");
             hsp_catiaPartDoc.Part.Update();
 
@@ -188,23 +188,27 @@ namespace Schraubengott
             
         }
         
-        internal void ErzeugeGewindehelix(Schraube[] arr, int i)
+        internal void ErzeugeGewindehelix(Schraube arr)
         {
             hybridshapefac = (HybridShapeFactory) part_Schraube.HybridShapeFactory;
 
             // Skizze für Gewindeprofiel 
-            Sketch gewinde = Gewindeskizze(arr, i);
+            Sketch gewinde = Gewindeskizze(arr);
 
             // "Rotationsachse" festlegen
             HybridShapeDirection HelixDir = hybridshapefac.AddNewDirectionByCoord(1, 0, 0);
             Reference RefHelxDir = part_Schraube.CreateReferenceFromObject(HelixDir);
 
             //Startpunkt festlegen 
-            HybridShapePointCoord Helixstartpunkt = hybridshapefac.AddNewPointCoord(0, 0, 0.5 * arr[i].durchmesser);
+            HybridShapePointCoord Helixstartpunkt = hybridshapefac.AddNewPointCoord(0, 0, 0.5 * arr.durchmesser);
             Reference RefHelixstartpunkt = part_Schraube.CreateReferenceFromObject(Helixstartpunkt);
 
             //Helix Erstellen 
-            HybridShapeHelix Helix = hybridshapefac.AddNewHelix(RefHelxDir, false, RefHelixstartpunkt, arr[i].gewindesteigung, arr[i].gewindelaenge - 2, false, 0, 0, false);
+
+            HybridShapeHelix Helix = hybridshapefac.AddNewHelix(RefHelxDir, false, RefHelixstartpunkt, arr[i].gewindesteigung, arr[i].gewindelaenge - 1, false, 0, 0, false);
+
+
+
                                                                     // Drehrichtung, Startpunkt             Steigung                Höhe             Drehrichtung  Anfangswinkel ...
 
             Reference RefHelix = part_Schraube.CreateReferenceFromObject(Helix);
@@ -234,7 +238,7 @@ namespace Schraubengott
 
         }
         
-        private Sketch Gewindeskizze(Schraube [] arr, int i)
+        private Sketch Gewindeskizze(Schraube arr)
         {
             // Referenzen für Skizze festlegen 
             OriginElements catoriginElements = part_Schraube.OriginElements;
@@ -247,15 +251,15 @@ namespace Schraubengott
 
 
             //Koordinaten Für gewindezkizze berechnen 
-            double zInnen = 0.5 * arr[i].kerndurchmesser + arr[i].gewinderundung - Math.Sin((30 * Math.PI) / 180) * arr[i].gewinderundung;
-            double xInnen = Math.Cos((30 * Math.PI) / 180) * arr[i].gewinderundung;
+            double zInnen = 0.5 * arr.kerndurchmesser + arr.gewinderundung - Math.Sin((30 * Math.PI) / 180) * arr.gewinderundung;
+            double xInnen = Math.Cos((30 * Math.PI) / 180) * arr.gewinderundung;
 
 
-            double zAußen = 0.5 * arr[i].durchmesser;
-            double xAußen = 2 * 0.1875 * arr[i].gewindesteigung;
+            double zAußen = 0.5 * arr.durchmesser;
+            double xAußen = 2 * 0.1875 * arr.gewindesteigung;
             
 
-            double zRadius =0.5 * (arr[i].kerndurchmesser + arr[i].gewinderundung);
+            double zRadius =0.5 * (arr.kerndurchmesser + arr.gewinderundung);
             double xRadius = 0;
 
 
@@ -283,7 +287,7 @@ namespace Schraubengott
             linieUnten.StartPoint = geweindepunkt4;
             linieUnten.EndPoint = geweindepunkt1;
 
-            Circle2D gewindeRundung = catfactory2D2.CreateCircle(zRadius, xRadius, arr[i].gewinderundung, 0, 0);
+            Circle2D gewindeRundung = catfactory2D2.CreateCircle(zRadius, xRadius, arr.gewinderundung, 0, 0);
             gewindeRundung.CenterPoint = geweindepunkt5;
             gewindeRundung.EndPoint = geweindepunkt1;
             gewindeRundung.StartPoint = geweindepunkt2;
@@ -298,7 +302,7 @@ namespace Schraubengott
         #endregion
 
         #region Kopf
-        internal void ErstelleSkizzeKopf(Schraube[] arr)
+        internal void ErstelleSkizzeKopf(Schraube arr)
         {
 
             part_Schraube.InWorkObject = body_Schraube;
@@ -317,7 +321,7 @@ namespace Schraubengott
 
         }
 
-        internal void ZkizzeKopf(Schraube [] arr, int i)
+        internal void ZkizzeKopf(Schraube arr)
         {
             //Skizze für den Kopf öffnen 
             part_Schraube.InWorkObject = skizze_kopf;
@@ -325,13 +329,13 @@ namespace Schraubengott
             Factory2D shapefac = skizze_kopf.OpenEdition();
 
             // je nach gewählten kopfty die richtige Geometrie Zeichnen     
-            if (arr[i].typ == "Außensechskant")
+            if (arr.typ == "Außensechskant")
             {
-                SechseckZeichnen(arr, skizze_kopf,i);
+                SechseckZeichnen(arr, skizze_kopf);
             }
             else
             {
-                Circle2D Zylinder1 = shapefac.CreateClosedCircle(0, 0, 0.5 * arr[i].kopfdurchmesser);
+                Circle2D Zylinder1 = shapefac.CreateClosedCircle(0, 0, 0.5 * arr.kopfdurchmesser);
             }
 
             skizze_kopf.CloseEdition();
@@ -339,11 +343,11 @@ namespace Schraubengott
         }
 
 
-        internal void SechseckZeichnen(Schraube[] arr, Sketch skizze, int i)
+        internal void SechseckZeichnen(Schraube arr, Sketch skizze)
         {
 
 
-            double schlüsselweite = 0.5 * Convert.ToDouble(arr[i].schluesselbreite);
+            double schlüsselweite = 0.5 * Convert.ToDouble(arr.schluesselbreite);
             double außenkreisSchraubenkopf = schlüsselweite / (Math.Sqrt(3) / 2);
 
             
@@ -400,18 +404,18 @@ namespace Schraubengott
         }
 
 
-        internal void ErzeugeKopf(Schraube [] arr, int i)
+        internal void ErzeugeKopf(Schraube arr)
         {
             hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;
             ShapeFactory shapFac = (ShapeFactory)hsp_catiaPartDoc.Part.ShapeFactory;
 
             // Volumenkörper ertsellen 
-            Pad pad_Kopf = shapFac.AddNewPad(skizze_kopf, arr[i].kopfhöhe);
+            Pad pad_Kopf = shapFac.AddNewPad(skizze_kopf, arr.kopfhöhe);
             pad_Kopf.set_Name("Kopf");
             hsp_catiaPartDoc.Part.Update();
         }
 
-        internal void ZkizzeTasche(Schraube [] arr, int i)
+        internal void ZkizzeTasche(Schraube arr)
         {
             //Referenzen für Skizze festlegen (Auf Schraubenkopf) 
             part_Schraube.InWorkObject = body_Schraube;
@@ -427,7 +431,7 @@ namespace Schraubengott
             part_Schraube.InWorkObject = skizze_tasche;
             Factory2D shapefac2 = skizze_tasche.OpenEdition();
 
-            SechseckZeichnen(arr,skizze_tasche, i);
+            SechseckZeichnen(arr,skizze_tasche);
 
             skizze_tasche.CloseEdition();
             hsp_catiaPartDoc.Part.Update();
@@ -436,18 +440,18 @@ namespace Schraubengott
             
         }
 
-        internal void TascheErzeugen(Schraube[] arr, int i)
+        internal void TascheErzeugen(Schraube arr)
         {
             hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;
             ShapeFactory shapFac2 = (ShapeFactory)hsp_catiaPartDoc.Part.ShapeFactory;
             // Tasche aus Skizze erzeugen 
-            Pocket pocket_innensechskannt = shapFac2.AddNewPocket(skizze_tasche, 0.5 * arr[i].kopfhöhe);
+            Pocket pocket_innensechskannt = shapFac2.AddNewPocket(skizze_tasche, 0.5 * arr.kopfhöhe);
             pocket_innensechskannt.set_Name("Innensechskannt");
             hsp_catiaPartDoc.Part.Update();
         }
         #endregion
 
-        internal void Zeichnungsableitung()
+        internal void Zeichnungsableitung(Schraube arr)
         {
             #region Erste Ansicht einfügen
 
@@ -526,8 +530,16 @@ namespace Schraubengott
             
              
             DrawingTexts texts1 = drawingView3.Texts;
-            DrawingText text1 = texts1.Add("1234", 44, 46);
+            DrawingText text1 = texts1.Add("Kundennumme", 44, 46);
             text1.SetFontSize(0, 0, 1.9);
+
+
+            DrawingTexts texts2 = drawingView3.Texts;
+            DrawingText text2 = texts2.Add(arr.material, 44, 43);
+            text2.SetFontSize(0, 0, 1.9);
+
+
+
 
         }
 

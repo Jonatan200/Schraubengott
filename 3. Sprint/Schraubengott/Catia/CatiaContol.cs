@@ -11,7 +11,7 @@ namespace Schraubengott
 {
      internal class CatiaControl
      {
-        CatiaControl(Schraube[] arr)
+        CatiaControl(Schraube screw)
         {
             try
             {
@@ -49,44 +49,41 @@ namespace Schraubengott
                 #region Methodenaufrufe
                 //System.Windows.MessageBox.Show("CATIA Part wird erstellt.", "", MessageBoxButton.OK);
 
-
-                for (int i = 0; i < arr.Length; i++)
-                {
                     // Öffne ein neues Part
-                    cc.ErzeugePart(i);
+                    cc.ErzeugePart();
 
                     //Zylinder
 
                     cc.SkizzeZylinderErstellen();      // Erstelle eine Skizze
 
-                    cc.ZkizzeZylinder(arr, i);         // Generiere ein Profil
+                    cc.ZkizzeZylinder(screw);         // Generiere ein Profil
 
-                    cc.ErzeugeZylinder(arr, i);        // Extrudiere Balken
+                    cc.ErzeugeZylinder(screw);        // Extrudiere Balken
 
-                    cc.ErzeugeGewindehelix(arr, i);
+                    cc.ErzeugeGewindehelix(screw);
 
                     //cc.ErzeugeGewindeFeature(arr);
 
-                    cc.ErstelleSkizzeKopf(arr);       //Erstelle Skizze für den Kopf 
+                    cc.ErstelleSkizzeKopf(screw);       //Erstelle Skizze für den Kopf 
 
-                    cc.ZkizzeKopf(arr, i);
+                    cc.ZkizzeKopf(screw);
 
-                    cc.ErzeugeKopf(arr, i);           //Extrudiere Kopf
+                    cc.ErzeugeKopf(screw);           //Extrudiere Kopf
 
-                    if (arr[i].typ == "Innensechskant")
+                    if (screw.typ == "Innensechskant")
                     {
-                        cc.ZkizzeTasche(arr, i);
+                        cc.ZkizzeTasche(screw);
 
-                        cc.TascheErzeugen(arr, i);
+                        cc.TascheErzeugen(screw);
 
                     }
 
-                    cc.Zeichnungsableitung();
+                    cc.Zeichnungsableitung(screw);
 
                     cc.ErzeugeFase();
                 }
                     #endregion
-                }
+                
             }
             catch (Exception ex)
             {
@@ -94,7 +91,7 @@ namespace Schraubengott
             }              
         }
 
-        public static void Catia_Starten(Schraube[] arr)
+        public static void Catia_Starten(Schraube arr)
         {          
             new CatiaControl(arr);       
         }
