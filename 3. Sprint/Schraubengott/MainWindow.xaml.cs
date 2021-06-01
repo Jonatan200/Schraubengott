@@ -608,32 +608,30 @@ namespace Schraubengott
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            switch (cbcatia.SelectedItem.ToString())
+            if (cbcatia.Visibility == Visibility.Visible)
             {
-
-                case "Schraube 1":
-
-            break;
-                case "Schraube 2":
-
-            break;
-                case "Schraube 3":
-
-            break;
-                case "Schraube 4":
-
-            break;
-                case "Schraube 5":
-
-            break;
-        }
-        if(cbcatia.SelectedItem == null)
-            {
-                MessageBox.Show("Es ist keine Schraube ausgewählt.", "", MessageBoxButton.OK);
+                switch (cbcatia.SelectedItem.ToString())
+                {
+                    case "Schraube 1":
+                        CatiaControl.Catia_Starten(feld[0]);
+                        break;
+                    case "Schraube 2":
+                        CatiaControl.Catia_Starten(feld[1]);
+                        break;
+                    case "Schraube 3":
+                        CatiaControl.Catia_Starten(feld[2]);
+                        break;
+                    case "Schraube 4":
+                        CatiaControl.Catia_Starten(feld[3]);
+                        break;
+                    case "Schraube 5":
+                        CatiaControl.Catia_Starten(feld[4]);
+                        break;
+                }
             }
             else
             {
-                CatiaControl.Catia_Starten(Feld_anpassen(feld));
+                MessageBox.Show("Es ist keine Schraube ausgewählt.", "", MessageBoxButton.OK);
             }
         }
 
