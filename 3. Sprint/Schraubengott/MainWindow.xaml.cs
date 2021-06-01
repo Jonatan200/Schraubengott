@@ -227,7 +227,7 @@ namespace Schraubengott
                 return;//wenn M5 und len größer als 100 wird Methode beendet
             }
 
-            if (cbfk.SelectedIndex==0)
+            if (cbfk.SelectedItem == null)
             {
                 MessageBox.Show("Für die Festigkeitsklasse liegt keine Auswahl vor.", "Fehldend Auswahl", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;// wenn keine Festigkeitsklasse ausgewählt ist, wird die Methode beendet
