@@ -33,7 +33,7 @@ namespace Schraubengott
         Random nummer = new Random();
         int bestellnummer;
 
-        int kundennummer;
+        int kundennummer; 
         
         LinkedList datenbank = new LinkedList(); //Kunendatenbank wird erstellt
        
@@ -578,23 +578,29 @@ namespace Schraubengott
                 newfeld[s] = new Schraube();
             }
 
-            switch (cbcatia.SelectedItem.ToString())
+            if (check1.IsChecked == true)
             {
-                case "Schraube 1":
-                    newfeld[0] = feld[0];
-                    break;
-                case "Schraube 2":
-                    newfeld[1] = feld[1];
-                    break;
-                case "Schraube 3":
-                    newfeld[2] = feld[2];
-                    break;
-                case "Schraube 4":
-                    newfeld[3] = feld[3];
-                    break;
-                case "Schraube 5":
-                    newfeld[4] = feld[4];
-                    break;
+                newfeld[0] = feld[0];
+            }
+
+            if (check2.IsChecked == true)
+            {
+                newfeld[1] = feld[1];
+            }
+
+            if (check3.IsChecked == true)
+            {
+                newfeld[2] = feld[2];
+            }
+
+            if (check4.IsChecked == true)
+            {
+                newfeld[3] = feld[3];
+            }
+
+            if (check5.IsChecked == true)
+            {
+                newfeld[4] = feld[4];
             }
 
             return newfeld;
@@ -602,7 +608,26 @@ namespace Schraubengott
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(cbcatia.SelectedItem == null)
+            switch (cbcatia.SelectedItem.ToString())
+            {
+
+                case "Schraube 1":
+
+            break;
+                case "Schraube 2":
+
+            break;
+                case "Schraube 3":
+
+            break;
+                case "Schraube 4":
+
+            break;
+                case "Schraube 5":
+
+            break;
+        }
+        if(cbcatia.SelectedItem == null)
             {
                 MessageBox.Show("Es ist keine Schraube ausgewählt.", "", MessageBoxButton.OK);
             }
