@@ -227,7 +227,7 @@ namespace Schraubengott
                 return;//wenn M5 und len größer als 100 wird Methode beendet
             }
 
-            if (cbfk.SelectedItem == null)
+            if (cbfk.SelectedIndex==0)
             {
                 MessageBox.Show("Für die Festigkeitsklasse liegt keine Auswahl vor.", "Fehldend Auswahl", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;// wenn keine Festigkeitsklasse ausgewählt ist, wird die Methode beendet
@@ -512,6 +512,8 @@ namespace Schraubengott
                 MessageBox.Show("Es ist nichts ausgewählt.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;//wenn keine Checkbox ausgewählt, wird die Methode beendet
             }
+           
+
             #endregion
 
             #region "Die Werte des ausgewälten Objekts werden im Warenkorb gespeichert"
