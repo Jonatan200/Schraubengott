@@ -723,7 +723,7 @@ namespace Schraubengott
 
             if (check1.IsChecked == true)
             {
-                dt2.Rows.Add("Schraube 1", feld[0].menge, Math.Round(feld[0].masse,2), Math.Round(feld[0].stückpreis,2), Math.Round(feld[0].preis_summe, 2));
+                dt2.Rows.Add("Schraube 1", feld[0].menge, Math.Round(feld[0].gesamtgewicht ,2), Math.Round(feld[0].stückpreis,2), Math.Round(feld[0].preis_summe, 2));
             }
             else if (check1.IsChecked == false)
             {
@@ -732,7 +732,7 @@ namespace Schraubengott
 
             if (check2.IsChecked == true)
             {
-                dt2.Rows.Add("Schraube 2", feld[1].menge, Math.Round(feld[1].masse,2), Math.Round(feld[1].stückpreis, 2), Math.Round(feld[1].preis_summe, 2));
+                dt2.Rows.Add("Schraube 2", feld[1].menge, Math.Round(feld[1].gesamtgewicht,2), Math.Round(feld[1].stückpreis, 2), Math.Round(feld[1].preis_summe, 2));
             }
             else if (check2.IsChecked == false)
             {
@@ -741,7 +741,7 @@ namespace Schraubengott
 
             if (check3.IsChecked == true)
             {
-                dt2.Rows.Add("Schraube 3", feld[2].menge, Math.Round(feld[2].masse, 2), Math.Round(feld[2].stückpreis, 2), Math.Round(feld[2].preis_summe, 2));
+                dt2.Rows.Add("Schraube 3", feld[2].menge, Math.Round(feld[2].gesamtgewicht, 2), Math.Round(feld[2].stückpreis, 2), Math.Round(feld[2].preis_summe, 2));
             }
             else if (check3.IsChecked == false)
             {
@@ -750,7 +750,7 @@ namespace Schraubengott
 
             if (check4.IsChecked == true)
             {
-                dt2.Rows.Add("Schraube 4", feld[3].menge, Math.Round(feld[3].masse,2), Math.Round(feld[3].stückpreis, 2), Math.Round(feld[3].preis_summe, 2));
+                dt2.Rows.Add("Schraube 4", feld[3].menge, Math.Round(feld[3].gesamtgewicht,2), Math.Round(feld[3].stückpreis, 2), Math.Round(feld[3].preis_summe, 2));
             }
             else if (check4.IsChecked == false)
             {
