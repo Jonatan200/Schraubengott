@@ -108,8 +108,7 @@
                     <CheckBox x:Name="check4" Content="" HorizontalAlignment="Left" Margin="648,135,0,0" VerticalAlignment="Top" Grid.Column="2"/>
                     <CheckBox x:Name="check5" Content="" HorizontalAlignment="Left" Margin="648,164,0,0" VerticalAlignment="Top" Grid.Column="2"/>
                     <Button Content="zum Warenkorb" HorizontalAlignment="Left" Height="23" Margin="721,182,0,0" VerticalAlignment="Top" Width="92" Click="btnwarenkorb_Click" Grid.Row="1" Grid.Column="2"/>
-                    <DataGrid x:Name="Datagrid1" HorizontalAlignment="Left" Height="417" VerticalAlignment="Top" Width="751" Grid.RowSpan="2" ItemsSource="{Binding}" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" Grid.ColumnSpan="3" FontSize="20" >
-                    </DataGrid>
+                    <DataGrid x:Name="Datagrid1" HorizontalAlignment="Left" Height="202" VerticalAlignment="Top" Width="768" ItemsSource="{Binding}" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" Grid.ColumnSpan="3" FontSize="20" Background="{x:Null}" BorderBrush="{x:Null}" />
                 </Grid>
 
             </TabItem>
@@ -125,15 +124,12 @@
                             <GradientStop Color="#FFDDE0E4" Offset="0.626"/>
                         </RadialGradientBrush>
                     </Grid.Background>
-                    <TextBox TextAlignment="Center" HorizontalAlignment="Left" Height="54" Margin="10,334,0,0" TextWrapping="Wrap" Text="Summe" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.ColumnSpan="2"/>
-                    <TextBox TextAlignment="Center" x:Name="summemengetxt" HorizontalAlignment="Left" Height="54" Margin="100.167,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="summegewtxt" HorizontalAlignment="Left" Height="54" Margin="220.167,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="summepreistxt" HorizontalAlignment="Left" Height="54" Margin="340.167,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.Column="1"/>
+                    <TextBox TextAlignment="Center" HorizontalAlignment="Left" Height="54" Margin="10,334,0,0" TextWrapping="Wrap" Text="Summe" VerticalAlignment="Top" Width="120" IsReadOnly="True" Grid.ColumnSpan="2" BorderBrush="{x:Null}" Background="{x:Null}"/>
                     <Button x:Name="btnangebot" Content="Angebot absenden" HorizontalAlignment="Left" Height="42" Margin="742.167,280,0,0" VerticalAlignment="Top" Width="130" Click="Btnangebot_Click" Grid.Column="1"/>
                     <Button x:Name="btnexcel" Content="Excel herunterladen" HorizontalAlignment="Left" Height="42" Margin="742.167,346,0,0" VerticalAlignment="Top" Width="130" Click="Btnexcel_Click" Grid.Column="1"/>
-                    <TextBox TextAlignment="Center" x:Name="gesamtpreistxt" HorizontalAlignment="Left" Height="54" Margin="460.167,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True" Grid.Column="1"/>
+                    <TextBox TextAlignment="Center" x:Name="gesamtpreistxt" HorizontalAlignment="Left" Height="54" Margin="607,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsReadOnly="True" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}"/>
                     <Button x:Name="btn_Catia" Content="Catia Erstellen" Grid.Column="1" HorizontalAlignment="Left" Height="42" Margin="742,214,0,0" VerticalAlignment="Top" Width="130" Click="Button_Click"/>
-                    <DataGrid x:Name="Datagrid2" ItemsSource="{Binding}" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" HorizontalAlignment="Left" Height="324" Margin="10,10,0,0" VerticalAlignment="Top" Width="610" Grid.ColumnSpan="2" FontSize="20" />
+                    <DataGrid x:Name="Datagrid2" ItemsSource="{Binding}" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" HorizontalAlignment="Left" Height="324" Margin="10,10,0,0" VerticalAlignment="Top" Width="757" Grid.ColumnSpan="2" FontSize="20" Background="{x:Null}" BorderBrush="{x:Null}" />
                     <ComboBox x:Name="cbcatia" Visibility="Collapsed" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="742,144,0,0" VerticalAlignment="Top" Width="130"/>
                     <Label x:Name="catialbl" Content="" Grid.Column="1" HorizontalAlignment="Left" Height="56" Margin="742,83,0,0" VerticalAlignment="Top" Width="130"/>
                 </Grid>
