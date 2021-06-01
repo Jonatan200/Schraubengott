@@ -113,6 +113,7 @@ namespace Schraubengott
             cbfk.SelectedIndex = 0;
         }
 
+        #region "Zurücksetzen der Leerfunktion von Textboxen"
         void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox box = sender as TextBox;
@@ -138,13 +139,14 @@ namespace Schraubengott
                 box.Text = "z.B Bitte in 50er Paketen versenden";
             }
         }
+        #endregion
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox a_textBox = (TextBox)sender;
             string a_newText = string.Empty;
 
-            //In den Textboxen für Menge, Schrauben- und Gewindelänge können nur Zahlen eingegeben werden
+            //In der Textbox können nur Zahlen eingegeben werden
             for (int i = 0; i < a_textBox.Text.Length; i++)
             {
                 if (Regex.IsMatch(a_textBox.Text[i].ToString(), "^[0-9]+$"))
@@ -190,10 +192,23 @@ namespace Schraubengott
         private void Btnauswahl_Click(object sender, RoutedEventArgs e)
         {
             #region Fehlermeldung bei Falscheingaben"
-            if (feld[nr].gewinde == "")
+
+            if (cbfk.SelectedIndex == 0)
             {
-                MessageBox.Show("Es fehlt eine Gewindeeingabe.\rBitte eine Auswahl treffen", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;// wenn keine Gewindeeingabe, wird die Methode beendet
+                MessageBox.Show("Es ist kein Eingabe für Festigkeit getätigt worden.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (cbkopf.SelectedIndex == 0)
+            {
+                MessageBox.Show("Es ist kein Eingabe für Kopf getätigt worden.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (cbgewinde.SelectedIndex == 0)
+            {
+                MessageBox.Show("Es ist keine Eingabe für Gewinde getätigt worden.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
 
             if (txt_len.Text == "" || txt_gewlen.Text == "")
@@ -215,8 +230,15 @@ namespace Schraubengott
             {
                 MessageBox.Show("Eingaben für Länge und Gewindelänge sind nicht kompatibel.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;//wenn Gewlen größer als Len wird Methode beendet
+            }            
+      
+            if (txt_menge.Text.ToString() == "" || txt_menge.Text.ToString() == "0")
+            {
+                MessageBox.Show("Es wurde keine Eingabe für die Menge gemacht.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
-            else if (cbgewinde.SelectedValue.ToString() == "M4" && Convert.ToInt32(txt_gewlen.Text) > 100)
+
+            if (cbgewinde.SelectedValue.ToString() == "M4" && Convert.ToInt32(txt_gewlen.Text) > 100)
             {
                 MessageBox.Show("Eingaben für Länge außerhalb des möglichen Wertebereichs.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;//wenn M4 und len größer als 100 wird Methode beendet
@@ -225,23 +247,6 @@ namespace Schraubengott
             {
                 MessageBox.Show("Eingaben für Länge außerhalb des möglichen Wertebereichs.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;//wenn M5 und len größer als 100 wird Methode beendet
-            }
-            else if (cbgewinde.SelectedIndex == 0)
-            {
-                MessageBox.Show("Es ist keine Eingabe für Gewinde getätigt worden.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            if (cbfk.SelectedItem == null)
-            {
-                MessageBox.Show("Für die Festigkeitsklasse liegt keine Auswahl vor.", "Fehldend Auswahl", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;// wenn keine Festigkeitsklasse ausgewählt ist, wird die Methode beendet
-            }
-
-            if (txt_menge.Text.ToString() == "" || txt_menge.Text.ToString() == "0")
-            {
-                MessageBox.Show("Es wurde keine Eingabe für die Menge gemacht.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
             }
             #endregion
 
