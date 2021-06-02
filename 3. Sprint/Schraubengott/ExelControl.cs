@@ -73,7 +73,6 @@ namespace Schraubengott
             mySheet.Cells[31, 1] = "";
             mySheet.Cells[32, 1] = "Elastizitätsgrenze (N/mm²)";
             mySheet.Cells[33, 1] = "Zugfestigkeit (N/mm²)";
-
             #endregion
 
             // Listenformat einführen 
@@ -124,7 +123,6 @@ namespace Schraubengott
 
             mySheet.Cells[18, 6] = Math.Round(summe, 2);
 
-
             // Zellenbreite an Text anpassen 
             for (int i = 1; i < 9; i++)
             {
@@ -139,7 +137,6 @@ namespace Schraubengott
 
                 Emailsenden(bestellnummer, kundennummer);
             }
-
         }
 
         public static void Emailsenden(int bestellnummer, string Kundennummer)
@@ -179,5 +176,4 @@ namespace Schraubengott
             mailClient.Send(Mail);
         }
     }
-
 }
