@@ -2,47 +2,44 @@
 
 # Schraubengott
 
-Das Von Griffendor It-Solutions entwickelte Schraubendimensionierungsprogramm soll einen einfachen Dimensionierungs- und Bestellvorgang verschiedenster Schrauben ermöglichen.
+Das von Griffindor It-Solutions entwickelte Schraubendimensionierungsprogramm soll einen einfachen Dimensionierungs- und Bestellvorgang verschiedenster Schrauben ermÃ¶glichen.
 
-Das vorliegende Programm bietet dabei eine solide Grundlage für ein anwenderfreundliches Programm mit einem breiten Spektrum an wichtigen Funktionen, die eine praktische Nutzung möglich machen sollen.
-So schützt Beispielsweise ein mit einer Liste aller Kunden verknüpftes Einlogfenster for unauthorisierten Zugriffen. Zudem ermöglicht ein E-Mailclient das direkte Versenden einer Bestellung.
-Außerdem ermöglicht das Programm dem Kunden das Sichern der Schrauben in Form einer automatisch gernerierten Excel oder als Catia-Modell inclusive Zeichnungsableitung. 
+Das vorliegende Programm bietet dabei eine solide Grundlage fÃ¼r ein anwenderfreundliches Programm, mit einem breiten Spektrum an wichtigen Funktionen, die eine praktische Nutzung mÃ¶glich machen sollen.
+So schÃ¼tzt beispielsweise ein mit einer Liste aller Kunden verknÃ¼pftes Login-Fenster vor unauthorisierten Zugriffen. Zudem ermÃ¶glicht ein E-Mailclient das direkte Versenden einer Bestellung.
+AuÃŸerdem ermÃ¶glicht das Programm dem Kunden das Sichern der Schrauben, in Form einer automatisch gernerierten Excel oder als Catia-Modell, inclusive Zeichnungsableitung. 
 
-Da es sich bei dem Programm um ein Prototypen handelt ist der Umfang der Funktionen zurzeit eingeschrenk. Beispielsweise beschrenken sich die konfigurierbaren Schrauben auf Metrische Schrauben mit einem 
-Außen- bzw. Innensechskannt. Außerdem können derzeit maximal 5 Schrauben gleichzeitig erstellt werden . Zudem fehlen kundenspeziefische Elemente, wie eine Online-Datenbank , in der die Zugangsdaten zum Einloggen gespeichert werden können. 
+Da es sich bei dem Programm um ein Prototypen handelt, ist der Umfang der Funktionen zurzeit eingeschrÃ¤nkt. Beispielsweise beschrÃ¤nken sich die konfigurierbaren Schrauben auf AuÃŸen- bzw. Innensechskant Schrauben mit Metrischem Gewinde. AuÃŸerdem kÃ¶nnen derzeit maximal 5 Schrauben gleichzeitig erstellt werden. Zudem fehlen kundenspeziefische Elemente, wie eine Online-Datenbank, in der die Zugangsdaten zum Einloggen gespeichert werden kÃ¶nnen. 
 
 
 
 ## Aufbau und Nutzung des Programms 
 
-Das Programm ist grundlegend aus drei Ansichten aufgebaut. Nach dem Einloggen öffnet sich standartmäßig eine Konfigurationsseite, auf der Schrauben durch Auswählen der gewünschten Parameter erstellt werden können. 
-Sandartmäßig ist die 1. Schraube ausgewählt. Um eine weitere Schraube zu Konfigurieren muss diese zunächst über den Button "Neue Schreube erstellen" erzeugt werden. Anschließend wird diese Schraube automatisch ausgewählt. 
-Um die Konvigurationen zu Speichern muss der Button "Auswahl Speichern" betätigt werden. Nun werden die Daten der Schrauben auch auf der 2. Seite angezeigt. Um nachträglich eine Schraube zu veändern muss die jeweilige Schraube  
-oberhalb des Konfigurators ausgewählt werden. Anschließend ist es wichtig, die Änderungen durch erneutes drücken des Knopfes "Auswahl Speichern" zu sichern. 
+Das Programm ist grundlegend aus drei Ansichten aufgebaut. Nach dem Einloggen Ã¶ffnet sich standardmÃ¤ÃŸig eine Konfigurationsseite, auf der Schrauben durch AuswÃ¤hlen der gewÃ¼nschten Parameter erstellt werden kÃ¶nnen. 
+StandardmÃ¤ÃŸig ist die 1. Schraube ausgewÃ¤hlt. Um eine weitere Schraube zu konfigurieren, muss diese zunÃ¤chst Ã¼ber den Button "Neue Schraube erstellen" erzeugt werden. AnschlieÃŸend wird diese Schraube automatisch ausgewÃ¤hlt. 
+Um die Konfigurationen zu speichern muss der Button "Auswahl Speichern" betÃ¤tigt werden. Nun werden die Daten der Schrauben auch auf der 2. Seite angezeigt. Um nachtrÃ¤glich eine Schraube zu verÃ¤ndern muss die jeweilige Schraube oberhalb des Konfigurators ausgewÃ¤hlt werden. AnschlieÃŸend ist es wichtig, die Ã„nderungen durch erneutes DrÃ¼cken des Knopfes "Auswahl Speichern" zu sichern. 
 
-Über die oben angezeigten Tabs kann man nun in die Übersicht wechseln, in der alle konfigurierten Schrauben aufgelistet sind. Durch setzen der Häkchen an den gewünschten Schrauben und betätigen des Knopfes " zum Warenkorb" können die Schrauben 
-in den Warenkorb gelegt werden. Auch diese Auswahl kann nachträglich geändert werden 
+Ãœber die oben angezeigten Tabs kann man nun in die Ãœbersicht wechseln, in der alle konfigurierten Schrauben aufgelistet sind. Durch setzen der HÃ¤kchen an den gewÃ¼nschten Schrauben und betÃ¤tigen des Knopfes " zum Warenkorb" kÃ¶nnen die Schrauben 
+in den Warenkorb gelegt werden. Auch diese Auswahl kann nachtrÃ¤glich geÃ¤ndert werden. 
 
-Der dritte Tab stellt den Warenkorb da. Hier werden alle ausgewählten Schrauben inklusieve Preis und Gewicht angezeigt. Zudem kann von hier aus eine Excel-Übersicht generiert, das Angebot versendet oder das Catia-Medell erstellt werden. Um ein Catia-Modell 
-zu erstellen muss zunächst die jeweilige schraube ausgewählt werden, ehe über "Catia Erstellen" der Vorgang abgeschlossen werden kann. 
+Der dritte Tab stellt den Warenkorb da. Hier werden alle ausgewÃ¤hlten Schrauben inklusive Preis und Gewicht angezeigt. Zudem kann von hier aus eine Excel-Ãœbersicht generiert, das Angebot versendet oder das Catia-Modell erstellt werden. Um ein Catia-Modell zu erstellen muss zunÃ¤chst die jeweilige Schraube ausgewÃ¤hlt werden, ehe Ã¼ber "Catia Erstellen" der Vorgang abgeschlossen werden kann. 
 
-Um das Programm zu schließen kann entweder der Knopf "Exit" oder das Rote Kreuz in der oberen rechten Ecke genutzt werden. !! Achtung: durch Schließen des Programms werden alle Konfigurationen gelöscht !! 
+Um das Programm zu schlieÃŸen kann entweder der Knopf "Exit" oder das Rote Kreuz in der oberen rechten Ecke genutzt werden. !! Achtung: durch SchlieÃŸen des Programms werden alle Konfigurationen gelÃ¶scht !! 
 
 
 
 ## Nutzng des Software 
-Um die Software einwandfrei nutzen zu können müssen einige Vorgaben gegeben sein 
-	*	Die Nutzung des Emailklients setzt eine bestehende Verbindung zum Internet vorraus 
-	*	Um die Catia-Anwendung nutzen zu können muss Catia V5 (getsetet mit V5-6R2018) interliert und die Funktionen "Hybridkonstruktion ermöglichen" und "Geometrisches Set Erzeugen" aktiviert sein 
+Um die Software einwandfrei nutzen zu kÃ¶nnen mÃ¼ssen einige Vorgaben gegeben sein 
+	*	Die Nutzung des Emailclients setzt eine bestehende Verbindung zum Internet vorraus 
+	*	Um die Catia-Anwendung nutzen zu kÃ¶nnen muss Catia V5 (getestet mit V5-6R2018) installiert und die Funktionen "Hybridkonstruktion ermÃ¶glichen" und "geometrisches Set erzeugen" aktiviert sein 
 
 
 
-## Weiterentwicklung des Programms 
+## Weiterentwicklung des Programmes 
  
-Eine umfangreiche Weiterentwicklung des Programms durch Griffendor IT-Solutions ist derzeit nicht Geplant. Da das Programm über eine MIT-Lizenz lizensiert ist ist allerdings jedem die Verwendung und weiterentwicklung des Programms gestettet. 
-Dabei auftretende mängel oder durch das Programm entstehende Schäden liegen ncht in der Verantwortung von Griffendor IT-Solutions. 
+Eine umfangreiche Weiterentwicklung des Programmes durch Griffindor IT-Solutions ist derzeit nicht geplant. Da das Programm Ã¼ber eine MIT-Lizenz lizensiert ist, ist allerdings jedem die Verwendung und Weiterentwicklung des Programms gestattet. 
+Dabei auftretende MÃ¤ngel oder durch das Programm entstehende SchÃ¤den liegen ncht in der Verantwortung von Griffindor IT-Solutions. 
 
-Für die Catia-Api werden Folgende Catia-Bibleotheken benötigt:
+FÃ¼r die Catia-Api werden Folgende Catia-Bibliotheken benÃ¶tigt:
 	*	Interop.HybridShapeTypeLib
 	*	Interop.INFITF
 	*	Interop.MECMOD
