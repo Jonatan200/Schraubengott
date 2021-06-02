@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using System.Net.Mail;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Data;
+using System.Diagnostics;
 
 namespace Schraubengott
 {
@@ -278,6 +279,7 @@ namespace Schraubengott
             //Berechnungen für die ausgewählte Schraube           
             feld[nr].Berechnen();
             CreateDataTable();
+            tab_1.Visibility = Visibility.Visible;
 
             MessageBox.Show("Die aktuelle Konfiguration wurde in die Übersicht hinzugefügt.", "Konfiguration gespeichert", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -309,6 +311,8 @@ namespace Schraubengott
                 cbcatia.Items.Remove("Schraube 5"); 
                 cbcatia.Items.Add("Schraube 5");
             }
+
+            tabcontrol.SelectedIndex = 1;
         }
 
         private void Cmb_nr_SelectionChanged(object sender, SelectionChangedEventArgs e)//auswahl der Schraubennummer (Index vom Feld)
@@ -533,7 +537,8 @@ namespace Schraubengott
 
             #region "Die Werte des ausgewälten Objekts werden im Warenkorb gespeichert"
             CreateDataTable2(Summe());
-
+            tab_2.Visibility = Visibility.Visible;
+            tabcontrol.SelectedIndex = 2;
             #endregion
         }
 
@@ -708,9 +713,40 @@ namespace Schraubengott
 
         private void ausloggen_Click(object sender, RoutedEventArgs e)
         {
+            //Alle Einstellungen zurücksetzen
             tabcontrol.Visibility = Visibility.Collapsed;
             gridlogin.Visibility = Visibility.Visible;
             logo1.Visibility = Visibility.Collapsed;
+            cbcatia.Visibility = Visibility.Collapsed;
+            cbcatia.Items.Clear();
+            cbcatia.Items.Add("--Bitte auswählen--");
+            tab_1.Visibility = Visibility.Collapsed;
+            tab_2.Visibility = Visibility.Collapsed;
+            tabcontrol.SelectedIndex = 0;
+            check1.IsChecked = false;
+            check2.IsChecked = false;
+            check3.IsChecked = false;
+            check4.IsChecked = false;
+            check5.IsChecked = false;
+            cbfk.SelectedIndex = 0;
+            cbgewinde.SelectedIndex = 0;
+            cbkopf.SelectedIndex = 0;
+            cbmat.SelectedIndex = 0;
+            txt_gewlen.Text = "";
+            txt_len.Text = "";
+            txt_menge.Text = "";
+            gewartcheck.IsChecked = false;
+            cmb_nr.SelectedIndex = 0;
+            screw2.Visibility = Visibility.Collapsed;
+            screw3.Visibility = Visibility.Collapsed;
+            screw4.Visibility = Visibility.Collapsed;
+            screw5.Visibility = Visibility.Collapsed;
+            new_screw_int = 1;
+
+            for (int i = 0; i < feld.Length; i++)
+            {
+                feld[i] = new Schraube();         // Array wird mit Objekten gefüllt
+            }
         }
 
         #endregion
