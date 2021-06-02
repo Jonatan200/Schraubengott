@@ -534,7 +534,7 @@ namespace Schraubengott
             
 
             DrawingTexts texts1 = drawingView3.Texts;
-            DrawingText text1 = texts1.Add(kundendaten[0], 44, 46);
+            DrawingText text1 = texts1.Add(kundendaten[0], 44, 46.5);
             text1.SetFontSize(0, 0, 2.2);
 
 
@@ -555,7 +555,7 @@ namespace Schraubengott
             string anschrift = kundendaten[2] + "\n" + kundendaten[3] + "\n" + kundendaten[4];
 
             DrawingTexts texts5 = drawingView3.Texts;
-            DrawingText text5 = texts5.Add(anschrift, 24, 41);
+            DrawingText text5 = texts5.Add(anschrift, 21.5, 43);
             text5.SetFontSize(0, 0, 2.2);
 
 
