@@ -78,7 +78,7 @@ namespace Schraubengott
         }
         public String[] getdata(int nummer)
         {
-            String[] data = new String[5];
+            String[] data = new String[6];
             LinkedListElement runner = head;
 
             while (runner != null)
@@ -89,7 +89,8 @@ namespace Schraubengott
                     data[1] = runner.name;
                     data[2] = runner.firmenName;
                     data[3] = runner.adresse;
-                    data[4] = runner.email;
+                    data[4] = runner.postleitzahl;
+                    data[5] = runner.email;
 
                 }
                 runner = runner.next;
