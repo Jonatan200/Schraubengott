@@ -2,28 +2,28 @@
 
 # Schraubengott
 
-Das Von Griffendor It-Solutions Entwickelte Schraubendimensionierungsprogramm soll einen einfachen Dimensionierungs- und Bestellvorgang verschiedenster Schrauben ermöglichen.
+Das Von Griffendor It-Solutions entwickelte Schraubendimensionierungsprogramm soll einen einfachen Dimensionierungs- und Bestellvorgang verschiedenster Schrauben ermöglichen.
 
-Das Vorliegende Programm bietet dabei eine soliede Grundlage für ein anwenderfreundliches Program mit einem breiten Spektrum an wichtigen Funktionen, die eine Praktische nutzung möglich machen sollen.
-So schützt Beispielsweise ein mit einer Liste aller Kunden Ferknüpftes Einlogfenster for unauthorisierten Zugriffen. Zudem ermöglicht ein E-Mailclient das direkte Versenden einer Bestellung.
-Zudem ermöglicht das Programm dem Kunden das Sichern der Schrauben in form einer Automatisch gernerierten Excel oder als Catia-Modell inclusive Zeichnungsableitung. 
+Das vorliegende Programm bietet dabei eine solide Grundlage für ein anwenderfreundliches Programm mit einem breiten Spektrum an wichtigen Funktionen, die eine praktische Nutzung möglich machen sollen.
+So schützt Beispielsweise ein mit einer Liste aller Kunden verknüpftes Einlogfenster for unauthorisierten Zugriffen. Zudem ermöglicht ein E-Mailclient das direkte Versenden einer Bestellung.
+Außerdem ermöglicht das Programm dem Kunden das Sichern der Schrauben in Form einer automatisch gernerierten Excel oder als Catia-Modell inclusive Zeichnungsableitung. 
 
-Da es sich bei dem Programm um ein Prototypen handelt ist der Umfang der Funktionen zurzeit noch eingeschrenk. Beispielsweise beschrenken sich die konfigurierbaren Schrauben auf Metrische Schreuben mit einem 
-Außen- bzw. Innensechskannt. Außerdem können derzeit maximal 5 Schrauben gleichzeitig erstellt werden könen. Außerdem fehlen Kundenspeziefische Elemente, wie eine Online-Datenbank , in der die Zugangsdaten zum Einloggen gespeichert werden können. 
+Da es sich bei dem Programm um ein Prototypen handelt ist der Umfang der Funktionen zurzeit eingeschrenk. Beispielsweise beschrenken sich die konfigurierbaren Schrauben auf Metrische Schrauben mit einem 
+Außen- bzw. Innensechskannt. Außerdem können derzeit maximal 5 Schrauben gleichzeitig erstellt werden . Zudem fehlen kundenspeziefische Elemente, wie eine Online-Datenbank , in der die Zugangsdaten zum Einloggen gespeichert werden können. 
 
 
 
 ## Aufbau und Nutzung des Programms 
 
-Das Programm ist Grundlegend aus drei Ansichten aufgebaut. NAch dem Einloggen öffnet sich standartmäßig eine Konfigurationsseite, auf der Schrauben durch Auswählen der gewünschten Parameter erstellt werden können. 
+Das Programm ist grundlegend aus drei Ansichten aufgebaut. Nach dem Einloggen öffnet sich standartmäßig eine Konfigurationsseite, auf der Schrauben durch Auswählen der gewünschten Parameter erstellt werden können. 
 Sandartmäßig ist die 1. Schraube ausgewählt. Um eine weitere Schraube zu Konfigurieren muss diese zunächst über den Button "Neue Schreube erstellen" erzeugt werden. Anschließend wird diese Schraube automatisch ausgewählt. 
-Um die Konvigurationen zu Speichern muss der Button "Auswahl Speichern" betätigt werden. Nun werden die Daten der Schrauben auch auf der 2. Seite Angezeigt. Um nachträglich eine Schraube zu veändern muss die jeweilige Schraube in der 
-Oberhalb der Konfiguration ausgewählt werden. Anschließend ist es wichtig, die Änderungen durch erneutes drücken des Knopfes "Auswahl Speichern" zu sichern. 
+Um die Konvigurationen zu Speichern muss der Button "Auswahl Speichern" betätigt werden. Nun werden die Daten der Schrauben auch auf der 2. Seite angezeigt. Um nachträglich eine Schraube zu veändern muss die jeweilige Schraube  
+oberhalb des Konfigurators ausgewählt werden. Anschließend ist es wichtig, die Änderungen durch erneutes drücken des Knopfes "Auswahl Speichern" zu sichern. 
 
-Über die oben angezeigten Tabs kann man nun in die Übersicht wechseln, in der alle Konfigurierten schrauben aufgelistet sind. Durch setzen der Häkchen an den Gewünschten Schrauben und betätigen des Knopfes " zum Warenkorb" können die Schrauben 
+Über die oben angezeigten Tabs kann man nun in die Übersicht wechseln, in der alle konfigurierten Schrauben aufgelistet sind. Durch setzen der Häkchen an den gewünschten Schrauben und betätigen des Knopfes " zum Warenkorb" können die Schrauben 
 in den Warenkorb gelegt werden. Auch diese Auswahl kann nachträglich geändert werden 
 
-Der dritte Tab stellt den Warenkorb da. Hier werden alle ausgewählten Schrauben inklusieve Preis und gewicht angezeigt. Zudem kann von hier aus eine Exel-Übersicht generiert, das Angebot versendet oder das Catia-Medell erstellt werden. Um ein Catia-Modell 
+Der dritte Tab stellt den Warenkorb da. Hier werden alle ausgewählten Schrauben inklusieve Preis und Gewicht angezeigt. Zudem kann von hier aus eine Excel-Übersicht generiert, das Angebot versendet oder das Catia-Medell erstellt werden. Um ein Catia-Modell 
 zu erstellen muss zunächst die jeweilige schraube ausgewählt werden, ehe über "Catia Erstellen" der Vorgang abgeschlossen werden kann. 
 
 Um das Programm zu schließen kann entweder der Knopf "Exit" oder das Rote Kreuz in der oberen rechten Ecke genutzt werden. !! Achtung: durch Schließen des Programms werden alle Konfigurationen gelöscht !! 
