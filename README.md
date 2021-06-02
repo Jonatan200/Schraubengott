@@ -12,7 +12,7 @@ Da es sich bei dem Programm um ein Prototypen handelt, ist der Umfang der Funkti
 
 
 
-## Aufbau und Nutzung des Programms 
+## Aufbau und Nutzung des Programmes 
 
 Das Programm ist grundlegend aus drei Ansichten aufgebaut. Nach dem Einloggen öffnet sich standardmäßig eine Konfigurationsseite, auf der Schrauben durch Auswählen der gewünschten Parameter erstellt werden können. 
 Standardmäßig ist die 1. Schraube ausgewählt. Um eine weitere Schraube zu konfigurieren, muss diese zunächst über den Button "Neue Schraube erstellen" erzeugt werden. Anschließend wird diese Schraube automatisch ausgewählt. 
