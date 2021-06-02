@@ -451,7 +451,7 @@ namespace Schraubengott
         }
         #endregion
 
-        internal void Zeichnungsableitung(Schraube arr)
+        internal void Zeichnungsableitung(Schraube arr, int bestellnummer, string[] kundendaten)
         {
             #region Erste Ansicht einfügen
 
@@ -532,9 +532,9 @@ namespace Schraubengott
             drawingViewGenerativeBehavior3 = drawingView3.GenerativeBehavior;
             drawingViewGenerativeBehavior3.Update();
             
-             
+
             DrawingTexts texts1 = drawingView3.Texts;
-            DrawingText text1 = texts1.Add("Kundennumme", 44, 46);
+            DrawingText text1 = texts1.Add(kundendaten[0], 44, 46);
             text1.SetFontSize(0, 0, 2.2);
 
 
@@ -548,8 +548,16 @@ namespace Schraubengott
             text3.SetFontSize(0, 0, 2.2);
 
             DrawingTexts texts4 = drawingView3.Texts;
-            DrawingText text4 = texts4.Add("56464566" ,162, 26);
+            DrawingText text4 = texts4.Add(bestellnummer.ToString(), 162, 26);
             text4.SetFontSize(0, 0, 3.5);
+
+
+            string anschrift = kundendaten[2] + "\n" + kundendaten[3] + "\n" + kundendaten[4];
+
+            DrawingTexts texts5 = drawingView3.Texts;
+            DrawingText text5 = texts5.Add(anschrift, 22, 40);
+            text5.SetFontSize(0, 0, 2.2);
+
 
             #endregion
         }
