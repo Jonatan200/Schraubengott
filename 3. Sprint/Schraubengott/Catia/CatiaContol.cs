@@ -11,7 +11,7 @@ namespace Schraubengott
 {
      internal class CatiaControl
      {
-        CatiaControl(Schraube screw)
+        CatiaControl(Schraube screw, int bestellnummer, string[] kundendaten)
         {
             try
             {
@@ -24,9 +24,9 @@ namespace Schraubengott
                     Process.Start("CNEXT.exe");
                     //System.Windows.MessageBox.Show("CATIA wird gestartet. Nach dem Start können CATIA Parts erstellt werden.", "", MessageBoxButton.OK);
 
-                    for (int c = 0; c < 5; c++)
+                    for (int c = 0; c < 15; c++)
                     {
-                        System.Threading.Thread.Sleep(5000); //5 Sekunden Wartezeit#
+                        System.Threading.Thread.Sleep(2000); //5 Sekunden Wartezeit#
 
                         if (cc.CATIALaeuft())
                         {
@@ -78,7 +78,7 @@ namespace Schraubengott
 
                     }
 
-                    cc.Zeichnungsableitung(screw);
+                    cc.Zeichnungsableitung(screw, bestellnummer, kundendaten);
 
                     //cc.ErzeugeFase();
                 }
@@ -91,9 +91,9 @@ namespace Schraubengott
             }              
         }
 
-        public static void Catia_Starten(Schraube arr)
+        public static void Catia_Starten(Schraube arr, int bestellnummer, string[] kundendaten )
         {          
-            new CatiaControl(arr);       
+            new CatiaControl(arr, bestellnummer, kundendaten);       
         }
     }
 }

@@ -589,6 +589,8 @@ namespace Schraubengott
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            string[] kundendaten = datenbank.getdata(kundennummer);
+
             if (cbcatia.Visibility == Visibility.Collapsed || cbcatia.SelectedIndex == 0)
             {
                 MessageBox.Show("Es ist keine Schraube ausgewählt.", "", MessageBoxButton.OK);
@@ -598,19 +600,19 @@ namespace Schraubengott
                 switch (cbcatia.SelectedItem.ToString())
                 {
                     case "Schraube 1":
-                        CatiaControl.Catia_Starten(feld[0]);
+                        CatiaControl.Catia_Starten(feld[0],bestellnummer,kundendaten);
                         break;
                     case "Schraube 2":
-                        CatiaControl.Catia_Starten(feld[1]);
+                        CatiaControl.Catia_Starten(feld[1],bestellnummer, kundendaten);
                         break;
                     case "Schraube 3":
-                        CatiaControl.Catia_Starten(feld[2]);
+                        CatiaControl.Catia_Starten(feld[2],bestellnummer,kundendaten);
                         break;
                     case "Schraube 4":
-                        CatiaControl.Catia_Starten(feld[3]);
+                        CatiaControl.Catia_Starten(feld[3],bestellnummer, kundendaten);
                         break;
                     case "Schraube 5":
-                        CatiaControl.Catia_Starten(feld[4]);
+                        CatiaControl.Catia_Starten(feld[4],bestellnummer, kundendaten);
                         break;
                 }
             }
