@@ -589,7 +589,7 @@ namespace Schraubengott
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string[] kundendaten = datenbank.getdata(1001);
+            string[] kundendaten = datenbank.getdata(currentKdNr);
 
             if (cbcatia.Visibility == Visibility.Collapsed || cbcatia.SelectedIndex == 0)
             {
