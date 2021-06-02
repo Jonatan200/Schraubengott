@@ -555,7 +555,7 @@ namespace Schraubengott
             string anschrift = kundendaten[2] + "\n" + kundendaten[3] + "\n" + kundendaten[4];
 
             DrawingTexts texts5 = drawingView3.Texts;
-            DrawingText text5 = texts5.Add(anschrift, 22, 40);
+            DrawingText text5 = texts5.Add(anschrift, 24, 41);
             text5.SetFontSize(0, 0, 2.2);
 
 

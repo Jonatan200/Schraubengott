@@ -589,7 +589,7 @@ namespace Schraubengott
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string[] kundendaten = datenbank.getdata(kundennummer);
+            string[] kundendaten = datenbank.getdata(1001);
 
             if (cbcatia.Visibility == Visibility.Collapsed || cbcatia.SelectedIndex == 0)
             {
@@ -635,9 +635,10 @@ namespace Schraubengott
                 logo1.Visibility = Visibility.Visible;
                 tabcontrol.Visibility = Visibility.Visible;
                 ausloggen.Visibility = Visibility.Visible;
+
+                currentKdNr = Convert.ToInt32(txtkundennr.Text); //Kundennummer wird auf die aktuelle gesetzt
                 txtkundennr.Clear();
                 passwortbox.Clear();
-                currentKdNr = Convert.ToInt32(txtkundennr); //Kundennummer wird auf die aktuelle gesetzt
             }
         }
 
