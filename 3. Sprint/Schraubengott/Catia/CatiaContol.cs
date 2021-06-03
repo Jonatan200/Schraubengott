@@ -13,8 +13,7 @@ namespace Schraubengott
      {
         CatiaControl(Schraube screw, int bestellnummer, string[] kundendaten)
         {
-            try
-            {
+                        
                 CatiaConnection cc = new CatiaConnection();
 
                 bool catläuft = false;
@@ -33,7 +32,7 @@ namespace Schraubengott
                             catläuft = true;
                             break;
                         }
-                        if (c == 5)
+                        if (c == 15)
                         {
                             System.Windows.MessageBox.Show("Ladezeit übeschritten, Bitte erneut versuchen, oder Catia manuell Starten", "");
                         }
@@ -84,11 +83,12 @@ namespace Schraubengott
                 }
                     #endregion
                 
-            }
-            catch (Exception ex)
+         
+            /*catch (Exception ex)
             {
-                // MessageBox.Show(ex.Message, "Exception aufgetreten");
-            }              
+                System.Windows.MessageBox.Show(ex.Message, "Exception aufgetreten");
+            }     
+            */
         }
 
         public static void Catia_Starten(Schraube arr, int bestellnummer, string[] kundendaten )

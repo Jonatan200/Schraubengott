@@ -495,16 +495,14 @@ namespace Schraubengott
 
             //Projektion der ersten Ansicht in Ansicht einfügen 
             drawingViewGenerativeBehavior2.DefineProjectionView(drawingViewGenerativeBehavior1, CatProjViewType.catTopView);
-            drawingViewGenerativeLinks1 = (DrawingViewGenerativeLinks) drawingView2.GenerativeLinks;
-            DrawingViewGenerativeLinks drawingViewGenerativeLinks2 = drawingView1.GenerativeLinks;
-            drawingViewGenerativeLinks2.CopyLinksTo(drawingViewGenerativeLinks1);
+            DrawingViewGenerativeLinks drawingViewGenerativeLinks2 = (DrawingViewGenerativeLinks) drawingView2.GenerativeLinks;
+            drawingViewGenerativeLinks1.CopyLinksTo(drawingViewGenerativeLinks2);
 
             //Position der 2. Ansicht
             drawingView2.x = 108;
             drawingView2.y = 90;
-
-            double double1 = drawingView1.Scale;
             drawingView2.Scale = 1;
+
             drawingViewGenerativeBehavior2 = drawingView2.GenerativeBehavior;
             drawingViewGenerativeBehavior2.Update();
             
@@ -517,16 +515,13 @@ namespace Schraubengott
             #region Textfelder 
 
             DrawingView drawingView3 = drawingViews1.Add("Textfeld");
-            DrawingViewGenerativeLinks drawingViewGenerativeLinks3 = drawingView3.GenerativeLinks;
+            DrawingViewGenerativeLinks drawingViewGenerativeLinks4 = drawingView3.GenerativeLinks;
             DrawingViewGenerativeBehavior drawingViewGenerativeBehavior3 = drawingView3.GenerativeBehavior;
 
-            //Verbinden der Schraube mit der Zeichnung 
-            drawingViewGenerativeBehavior3.DefineFrontView(0, 0, 1, 1, 0, 0);
+            
             // Positionierung der Ansicht auf Zeichenblatt 
             drawingView3.x = 0;
             drawingView3.y = 0;
-
-            double double2 = drawingView1.Scale;
             drawingView1.Scale = 1;
 
             drawingViewGenerativeBehavior3 = drawingView3.GenerativeBehavior;
