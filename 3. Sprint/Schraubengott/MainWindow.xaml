@@ -49,7 +49,7 @@
                             <ComboBox Name="cbfk" IsEditable="true" SelectedValuePath="Content" IsReadOnly="true"   HorizontalAlignment="Left" Height="26" Margin="135,85,0,0" VerticalAlignment="Top" Width="140" MaxDropDownHeight="60">
                                 <ComboBoxItem Content="--Bitte auswählen--" IsEnabled="False"/>
                             </ComboBox>
-                            <CheckBox x:Name="gewartcheck" Content="Feingewinde" HorizontalAlignment="Left" Margin="188,226,0,0" VerticalAlignment="Top" Height="16" Width="87" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+                            <CheckBox x:Name="gewartcheck" Content="Feingewinde" HorizontalAlignment="Left" Margin="188,226,0,0" VerticalAlignment="Top" Height="16" Width="87"/>
                             <ComboBox x:Name="cbgewinde" IsEditable="true" SelectedValuePath="Content" IsReadOnly="true" HorizontalAlignment="Left" Margin="135,185,0,0" VerticalAlignment="Top" Width="140" Height="26" >
                                 <ComboBoxItem Content="--Bitte auswählen--" IsEnabled="False"/>
                                 <ComboBoxItem Content="M4" HorizontalAlignment="Left" Width="118"/>
