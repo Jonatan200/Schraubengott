@@ -92,7 +92,7 @@ namespace Schraubengott
             OriginElements catoriginElements = hsp_catiaPartDoc.Part.OriginElements;
             Reference catRef1 = (Reference)catoriginElements.PlaneYZ;
             
-            //Zkizze in YZ Ebene hizufügen 
+            //Skizze in YZ Ebene hizufügen 
              hsp_catiaSkizze = sketches_Schraube.Add(catRef1);
 
             ErzeugeAchsensystem();
@@ -100,7 +100,7 @@ namespace Schraubengott
             hsp_catiaPartDoc.Part.Update();
         }
 
-        internal void ZkizzeZylinder(Schraube arr)
+        internal void SkizzeZylinder(Schraube arr)
         {
             part_Schraube = hsp_catiaPartDoc.Part;
             Bodies bodies = part_Schraube.Bodies;
@@ -227,7 +227,7 @@ namespace Schraubengott
             part_Schraube.InWorkObject = Skizze_gewinde;
             Skizze_gewinde.set_Name("Gewinde");
 
-            //Koordinaten Für gewindezkizze berechnen 
+            //Koordinaten Für gewindeSkizze berechnen 
             double zInnen = 0.5 * arr.kerndurchmesser + arr.gewinderundung - Math.Sin((30 * Math.PI) / 180) * arr.gewinderundung;
             double xInnen = Math.Cos((30 * Math.PI) / 180) * arr.gewinderundung;
 
@@ -280,7 +280,7 @@ namespace Schraubengott
             OriginElements catoriginElements = hsp_catiaPartDoc.Part.OriginElements;
             Reference ref_Kopf = part_Schraube.CreateReferenceFromName("Selection_RSur:(Face:(Brp:(Pad.1;2);None:();Cf11:());Slot.1_ResultOUT;Z0;G8251)");
             
-            // neue Zkizze erstellen 
+            // neue Skizze erstellen 
             skizze_kopf = sketches_Schraube.Add(ref_Kopf);
             skizze_kopf.set_Name("Kopf");
             // Ebene festlegen ? 
@@ -288,7 +288,7 @@ namespace Schraubengott
            hsp_catiaPartDoc.Part.Update();
         }
 
-        internal void ZkizzeKopf(Schraube arr)
+        internal void SkizzeKopf(Schraube arr)
         {
             //Skizze für den Kopf öffnen 
             part_Schraube.InWorkObject = skizze_kopf;
@@ -375,7 +375,7 @@ namespace Schraubengott
             hsp_catiaPartDoc.Part.Update();
         }
 
-        internal void ZkizzeTasche(Schraube arr)
+        internal void SkizzeTasche(Schraube arr)
         {
             //Referenzen für Skizze festlegen (Auf Schraubenkopf) 
             part_Schraube.InWorkObject = body_Schraube;
@@ -460,7 +460,7 @@ namespace Schraubengott
             drawingViewGenerativeBehavior2 = drawingView2.GenerativeBehavior;
             drawingViewGenerativeBehavior2.Update();
             
-            //2. Skizze fest an erster Zkizze ausrichten 
+            //2. Skizze fest an erster Skizze ausrichten 
             drawingView2.ReferenceView = drawingView1;
             drawingView2.AlignedWithReferenceView();
 

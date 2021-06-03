@@ -53,18 +53,18 @@ namespace Schraubengott
 
                     //Zylinder
                     cc.SkizzeZylinderErstellen();      // Erstelle eine Skizze
-                    cc.ZkizzeZylinder(screw);         // Generiere ein Profil
+                    cc.SkizzeZylinder(screw);         // Generiere ein Profil
                     cc.ErzeugeZylinder(screw);        // Extrudiere Balken
                     cc.ErzeugeGewindehelix(screw);
 
                     //cc.ErzeugeGewindeFeature(arr);
                     cc.ErstelleSkizzeKopf(screw);       //Erstelle Skizze für den Kopf 
-                    cc.ZkizzeKopf(screw);
+                    cc.SkizzeKopf(screw);
                     cc.ErzeugeKopf(screw);           //Extrudiere Kopf
 
                     if (screw.typ == "Innensechskant")
                     {
-                        cc.ZkizzeTasche(screw);
+                        cc.SkizzeTasche(screw);
                         cc.TascheErzeugen(screw);
                     }
 
