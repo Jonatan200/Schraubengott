@@ -36,7 +36,7 @@ namespace Schraubengott
         {            
             try
             {
-                //"Abfngen" der Laufenden CATIA 
+                //"Abfangen" der Laufenden CATIA 
                 object catiaObject = System.Runtime.InteropServices.Marshal.GetActiveObject(
                     "CATIA.Application");
                 hsp_catiaApp = (INFITF.Application)catiaObject;
