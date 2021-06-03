@@ -52,9 +52,6 @@ namespace Schraubengott
             datenbank.AddNodToBack(1002, "hallo456", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1");
             datenbank.AddNodToBack(1003, "hallo789", "Meyer", "hallo gmbh", "Meyer@hallogmbh.de", "23456", "Musterstraße 1");
 
-         //   DataTable Schraubennn = CreateDataTable();
-          //  myDataGrid.DataContext = Schraubennn.DefaultView;
-
             InitializeComponent();
             cmb_nr.SelectedIndex = 0;           //Combobox hat von Anfang an die erste Schraube ausgewählt
 
@@ -110,7 +107,7 @@ namespace Schraubengott
                 cbfk.Items.Add("12.9");
             }
 
-            cbfk.SelectedIndex = 0;
+            cbfk.SelectedIndex = 0; //Cobobox Index zurücksetzen
         }
 
         #region "Zurücksetzen der Leerfunktion von Textboxen"
@@ -159,16 +156,6 @@ namespace Schraubengott
             a_textBox.SelectionStart = a_textBox.Text.Length;
         }
 
-        public void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            feld[nr].gewindeart = "Feingewinde";    //Gewindeartauswahl der Checkbox wird em Objekt hinzugefügt
-        }
-
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            feld[nr].gewindeart = "Standardgewinde";    //Gewindeartauswahl der Checkbox wird em Objekt hinzugefügt
-        }
-
         private void Cbkopf_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Grafik der Schraube ändern, abhängig von dem Schraubenkopf
@@ -191,29 +178,23 @@ namespace Schraubengott
 
         private void Btnauswahl_Click(object sender, RoutedEventArgs e)
         {
-
-
-
-
-
             #region Fehlermeldung bei Falscheingaben"
-
             if (cbfk.SelectedIndex == 0)
             {
                 MessageBox.Show("Es ist kein Eingabe für Festigkeit getätigt worden.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                return; //Methode beenden, wenn keine Festigkeit angegeben
             }
 
             if (cbkopf.SelectedIndex == 0)
             {
                 MessageBox.Show("Es ist kein Eingabe für Kopf getätigt worden.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                return; //Methode beenden, wenn kein Typ angegeben
             }
 
             if (cbgewinde.SelectedIndex == 0)
             {
                 MessageBox.Show("Es ist keine Eingabe für Gewinde getätigt worden.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                return; //Methode beenden, wenn kein Gewinde angegeben
             }
 
             if (txt_len.Text == "" || txt_gewlen.Text == "")
@@ -240,7 +221,7 @@ namespace Schraubengott
             if (txt_menge.Text.ToString() == "" || txt_menge.Text.ToString() == "0")
             {
                 MessageBox.Show("Es wurde keine Eingabe für die Menge gemacht.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                return; //Methode beenden, wenn keine Menge angegeben
             }
 
             if (cbgewinde.SelectedValue.ToString() == "M4" && Convert.ToInt32(txt_gewlen.Text) > 100)
@@ -281,6 +262,7 @@ namespace Schraubengott
 
             MessageBox.Show("Die aktuelle Konfiguration wurde in die Übersicht hinzugefügt.", "Konfiguration gespeichert", MessageBoxButton.OK, MessageBoxImage.Information);
 
+            //Schraubenauswahl für Catia sichtbar machen
             cbcatia.Visibility = Visibility.Visible;
             catialbl.Content = "Schraube auswählen\num Catia Part zu\nerstellen:";
 
@@ -309,6 +291,10 @@ namespace Schraubengott
                 cbcatia.Items.Remove("Schraube 5"); 
                 cbcatia.Items.Add("Schraube 5");
             }
+
+            //Übersichts Tab sichtbar machen
+            tab_1.Visibility = Visibility.Visible;
+            tabcontrol.SelectedIndex = 1;
         }
 
         private void Cmb_nr_SelectionChanged(object sender, SelectionChangedEventArgs e)//auswahl der Schraubennummer (Index vom Feld)
@@ -478,6 +464,7 @@ namespace Schraubengott
             txt_menge.Text = "";
             gewartcheck.IsChecked = false;
 
+            //neue Schraube zum konfigurieren in der Combobox anzeigen
             switch (new_screw_int)
             {
                 case 1:
@@ -527,13 +514,12 @@ namespace Schraubengott
                 MessageBox.Show("Es ist nichts ausgewählt.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;//wenn keine Checkbox ausgewählt, wird die Methode beendet
             }
-           
-
             #endregion
 
             #region "Die Werte des ausgewälten Objekts werden im Warenkorb gespeichert"
             CreateDataTable2(Summe());
-
+            tab_2.Visibility = Visibility.Visible;
+            tabcontrol.SelectedIndex = 2;
             #endregion
         }
 
@@ -587,9 +573,9 @@ namespace Schraubengott
             return newfeld;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e) //Catia erstellen
         {
-            string[] kundendaten = datenbank.getdata(1001);
+            string[] kundendaten = datenbank.getdata(currentKdNr);
 
             if (cbcatia.Visibility == Visibility.Collapsed || cbcatia.SelectedIndex == 0)
             {
@@ -622,23 +608,21 @@ namespace Schraubengott
         #region "login"
         private void login_Click(object sender, RoutedEventArgs e)  
         {
-            
-
             if(txtkundennr.Text == "" || passwortbox.Password == "" || !datenbank.check(Convert.ToInt32(txtkundennr.Text), passwortbox.Password ))
             {
-                MessageBox.Show("Die Kundennummer oder das Passwort ist falsch", "Falsche Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
-               
+                MessageBox.Show("Die Kundennummer oder das Passwort ist falsch", "Falsche Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);               
             }
             else
             {
+                //Login Fenster Collapsen und Konfigurationsfenster sichtbar machen
                 gridlogin.Visibility = Visibility.Collapsed;
                 logo1.Visibility = Visibility.Visible;
                 tabcontrol.Visibility = Visibility.Visible;
                 ausloggen.Visibility = Visibility.Visible;
 
                 currentKdNr = Convert.ToInt32(txtkundennr.Text); //Kundennummer wird auf die aktuelle gesetzt
-                txtkundennr.Clear();
-                passwortbox.Clear();
+                txtkundennr.Clear();    //Textbox leeren
+                passwortbox.Clear();    //Textbox leeren
             }
         }
 
@@ -646,14 +630,16 @@ namespace Schraubengott
         {
             gridlogin.Visibility = Visibility.Collapsed;
             gridregr.Visibility = Visibility.Visible;
-            txtkundennr.Clear();
-            passwortbox.Clear();
+            txtkundennr.Clear();    //Textbox leeren
+            passwortbox.Clear();    //Textbox leeren
         }
 
         private void zurück_Click(object sender, RoutedEventArgs e)
         {
             gridlogin.Visibility = Visibility.Visible;
             gridregr.Visibility = Visibility.Collapsed;
+
+            //Textboxen leeren
             txtname.Clear();
             txtfirma.Clear();
             txtplz.Clear();
@@ -677,7 +663,7 @@ namespace Schraubengott
             }
             else
             {
-                String name = txtname.Text;                                 //Alle Eingaben werden in einem Listeneintrag der Liste hinzugefügt
+                String name = txtname.Text;   //Alle Eingaben werden in einem Listeneintrag der Liste hinzugefügt
                 String firma = txtfirma.Text;
                 String email = txtemail.Text;
                 String plz = txtplz.Text;
@@ -695,6 +681,7 @@ namespace Schraubengott
                                     //Kundennummer wird einfach immer erhöht, wenn ein neuer Eintrag in die Liste gemacht wurde
 
                 ausloggen.Visibility = Visibility.Visible;
+                //Textboxen leeren
                 txtname.Clear();
                 txtfirma.Clear();
                 txtplz.Clear();
@@ -708,11 +695,41 @@ namespace Schraubengott
 
         private void ausloggen_Click(object sender, RoutedEventArgs e)
         {
+            //Alle Einstellungen zurücksetzen
             tabcontrol.Visibility = Visibility.Collapsed;
             gridlogin.Visibility = Visibility.Visible;
             logo1.Visibility = Visibility.Collapsed;
-        }
+            cbcatia.Visibility = Visibility.Collapsed;
+            cbcatia.Items.Clear();
+            cbcatia.Items.Add("--Bitte auswählen--");
+            tab_1.Visibility = Visibility.Collapsed;
+            tab_2.Visibility = Visibility.Collapsed;
+            tabcontrol.SelectedIndex = 0;
+            check1.IsChecked = false;
+            check2.IsChecked = false;
+            check3.IsChecked = false;
+            check4.IsChecked = false;
+            check5.IsChecked = false;
+            cbfk.SelectedIndex = 0;
+            cbgewinde.SelectedIndex = 0;
+            cbkopf.SelectedIndex = 0;
+            cbmat.SelectedIndex = 0;
+            txt_gewlen.Text = "";
+            txt_len.Text = "";
+            txt_menge.Text = "";
+            gewartcheck.IsChecked = false;
+            cmb_nr.SelectedIndex = 0;
+            screw2.Visibility = Visibility.Collapsed;
+            screw3.Visibility = Visibility.Collapsed;
+            screw4.Visibility = Visibility.Collapsed;
+            screw5.Visibility = Visibility.Collapsed;
+            new_screw_int = 1;
 
+            for (int i = 0; i < feld.Length; i++)
+            {
+                feld[i] = new Schraube();         // Array wird mit Objekten gefüllt
+            }
+        }
         #endregion
 
         public void CreateDataTable()//Datatable wird erzeugt und zugewiesen
@@ -733,6 +750,7 @@ namespace Schraubengott
             }
             Datagrid1.DataContext = dt;
         }
+        
         public void CreateDataTable2(double summe)//Datatable2 wird erzeugt und zugewiesen
         {
             System.Data.DataTable dt2 = new DataTable("MyTable2");
@@ -800,8 +818,7 @@ namespace Schraubengott
                 if (feld[i].preis_summe != 0)
                 {
                     summe = summe + feld[i].preis_summe ;
-                }
-                
+                }           
             }
 
             return summe;

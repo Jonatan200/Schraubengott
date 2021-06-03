@@ -34,15 +34,10 @@ namespace Schraubengott
                     runner = runner.next;
                 }
                 runner.next = node;
-
-            }
-           
-
-
+            }           
         }
         public void PrintList()// nur zum Testen, kommt später wech
         {
-
             LinkedListElement runner = head;
             while (runner != null)
             {
@@ -98,9 +93,6 @@ namespace Schraubengott
 
             return data;
         }
-        
-
-
 
     }
     class LinkedListElement
@@ -114,10 +106,7 @@ namespace Schraubengott
         public String postleitzahl;
         public String email;
 
-
         public LinkedListElement next;
-
-
 
         public LinkedListElement(int kundennr, String password, String name, String firma, String email, String plz, String str)
         {
@@ -129,14 +118,11 @@ namespace Schraubengott
             this.adresse = str;
             this.postleitzahl = plz;
 
-
             next = null;
         }
         public String getpassword()
         {
             return this.password;
         }
-
-
     }
 }

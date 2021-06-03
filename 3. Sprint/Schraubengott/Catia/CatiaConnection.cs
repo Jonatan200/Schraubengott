@@ -30,13 +30,10 @@ namespace Schraubengott
 
         Sketch skizze_kopf;
         Sketch skizze_tasche;
-
-
         
         #region catiastart 
         public bool CATIALaeuft()
-        {
-            
+        {            
             try
             {
                 //"Abfngen" der Laufenden CATIA 
@@ -51,7 +48,6 @@ namespace Schraubengott
                 return false;
             }
         }
-
 
         internal void ErzeugePart()
         {
@@ -69,7 +65,6 @@ namespace Schraubengott
             hsp_catiaSkizze.SetAbsoluteAxisData(arr);
         }
         #endregion
-
 
         #region Zylinder 
         internal void SkizzeZylinderErstellen()
@@ -105,7 +100,6 @@ namespace Schraubengott
             hsp_catiaPartDoc.Part.Update();
         }
 
-
         internal void ZkizzeZylinder(Schraube arr)
         {
             part_Schraube = hsp_catiaPartDoc.Part;
@@ -124,8 +118,7 @@ namespace Schraubengott
 
             hsp_catiaSkizze.CloseEdition();
         }
-
-       
+      
         internal void ErzeugeZylinder(Schraube arr)
         {
             //Referenz für den Volumenkörper aus Skizze übernehmen 
@@ -137,9 +130,7 @@ namespace Schraubengott
 
             hsp_catiaPartDoc.Part.Update();
         }
-
         #endregion
-
 
         #region Gewinde
         internal void ErzeugeGewindeFeature(Schraube [] arr, int i)
@@ -158,18 +149,14 @@ namespace Schraubengott
             thread1.LateralFaceElement = RefMantelfläche;   //Mantelfäache als Referenz 
             thread1.LimitFaceElement = RefFrontfläche;      //Startelement 
 
-
             part_Schraube.Update();
         }
-
 
         internal void ErzeugeFase()
         {
             part_Schraube.InWorkObject = part_Schraube;
-
-            
+          
             Reference reffase = (Reference)part_Schraube.CreateReferenceFromName("");
-
 
             Chamfer fase1 = shapefac.AddNewChamfer(reffase, CatChamferPropagation.catMinimalChamfer, CatChamferMode.catLengthAngleChamfer, CatChamferOrientation.catNoReverseChamfer, 1, 45);
 
@@ -183,9 +170,7 @@ namespace Schraubengott
             fase1.Propagation = CatChamferPropagation.catTangencyChamfer;
             fase1.Orientation = CatChamferOrientation.catNoReverseChamfer;
 
-            part_Schraube.Update();
-
-            
+            part_Schraube.Update();           
         }
         
         internal void ErzeugeGewindehelix(Schraube arr)
@@ -204,13 +189,9 @@ namespace Schraubengott
             Reference RefHelixstartpunkt = part_Schraube.CreateReferenceFromObject(Helixstartpunkt);
 
             //Helix Erstellen 
-
             HybridShapeHelix Helix = hybridshapefac.AddNewHelix(RefHelxDir, false, RefHelixstartpunkt, arr.gewindesteigung, arr.gewindelaenge - 1, false, 0, 0, false);
 
-
-
-                                                                    // Drehrichtung, Startpunkt             Steigung                Höhe             Drehrichtung  Anfangswinkel ...
-
+            // Drehrichtung, Startpunkt             Steigung                Höhe             Drehrichtung  Anfangswinkel ...
             Reference RefHelix = part_Schraube.CreateReferenceFromObject(Helix);
             Reference RefGewinde = part_Schraube.CreateReferenceFromObject(gewinde);
 
@@ -218,12 +199,10 @@ namespace Schraubengott
 
             part_Schraube.InWorkObject = body_Schraube;
 
-
             OriginElements catoriginElements = this.part_Schraube.OriginElements;
             Reference RefPlanezx = (Reference) catoriginElements.PlaneZX;
 
             //Rille erzeugen 
-
             Slot GewindeRille = shapefac.AddNewSlotFromRef(RefGewinde, RefHelix);
 
             Reference RefmyPad = part_Schraube.CreateReferenceFromObject(schaft);
@@ -235,7 +214,6 @@ namespace Schraubengott
             Reference RefGewindeRille = part_Schraube.CreateReferenceFromObject(GewindeRille);
 
             part_Schraube.Update();
-
         }
         
         private Sketch Gewindeskizze(Schraube arr)
@@ -249,22 +227,17 @@ namespace Schraubengott
             part_Schraube.InWorkObject = Skizze_gewinde;
             Skizze_gewinde.set_Name("Gewinde");
 
-
             //Koordinaten Für gewindezkizze berechnen 
             double zInnen = 0.5 * arr.kerndurchmesser + arr.gewinderundung - Math.Sin((30 * Math.PI) / 180) * arr.gewinderundung;
             double xInnen = Math.Cos((30 * Math.PI) / 180) * arr.gewinderundung;
 
-
             double zAußen = 0.5 * arr.durchmesser;
             double xAußen = 2 * 0.1875 * arr.gewindesteigung;
             
-
             double zRadius =0.5 * (arr.kerndurchmesser + arr.gewinderundung);
             double xRadius = 0;
 
-
             // Geometrie zeichnen 
-
             Factory2D catfactory2D2 = Skizze_gewinde.OpenEdition();
 
             Point2D geweindepunkt1 = catfactory2D2.CreatePoint(zInnen, -xInnen);
@@ -292,19 +265,15 @@ namespace Schraubengott
             gewindeRundung.EndPoint = geweindepunkt1;
             gewindeRundung.StartPoint = geweindepunkt2;
 
-
             Skizze_gewinde.CloseEdition();
 
             return Skizze_gewinde;
-
         }
-
         #endregion
 
         #region Kopf
         internal void ErstelleSkizzeKopf(Schraube arr)
         {
-
             part_Schraube.InWorkObject = body_Schraube;
 
             //Referenz für Skizze (Auf oberseite des Zylinders) 
@@ -317,8 +286,6 @@ namespace Schraubengott
             // Ebene festlegen ? 
             
            hsp_catiaPartDoc.Part.Update();
-
-
         }
 
         internal void ZkizzeKopf(Schraube arr)
@@ -342,16 +309,11 @@ namespace Schraubengott
             hsp_catiaPartDoc.Part.Update();
         }
 
-
         internal void SechseckZeichnen(Schraube arr, Sketch skizze)
         {
-
-
             double schlüsselweite = 0.5 * Convert.ToDouble(arr.schluesselbreite);
             double außenkreisSchraubenkopf = schlüsselweite / (Math.Sqrt(3) / 2);
-
-            
-
+          
             Factory2D catfactory2D = skizze.OpenEdition();
 
             Point2D point2D1 = catfactory2D.CreatePoint(0, 0);
@@ -360,7 +322,6 @@ namespace Schraubengott
             Circle2D circle2D1 = catfactory2D.CreateClosedCircle(0, 0, außenkreisSchraubenkopf);
             circle2D1.CenterPoint = point2D1;
             circle2D1.Construction = true;
-
 
             Circle2D circle2D2 = catfactory2D.CreateClosedCircle(0, 0, schlüsselweite);
             circle2D2.CenterPoint = point2D1;
@@ -403,7 +364,6 @@ namespace Schraubengott
             line2D9.EndPoint = point2D2;
         }
 
-
         internal void ErzeugeKopf(Schraube arr)
         {
             hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;
@@ -434,10 +394,7 @@ namespace Schraubengott
             SechseckZeichnen(arr,skizze_tasche);
 
             skizze_tasche.CloseEdition();
-            hsp_catiaPartDoc.Part.Update();
-
-
-            
+            hsp_catiaPartDoc.Part.Update();           
         }
 
         internal void TascheErzeugen(Schraube arr)
@@ -454,7 +411,6 @@ namespace Schraubengott
         internal void Zeichnungsableitung(Schraube arr, int bestellnummer, string[] kundendaten)
         {
             #region Erste Ansicht einfügen
-
             //Neues Dokument aus Vorlage erstellen 
             Documents dokuments1 = hsp_catiaApp.Documents;
             string pfad = System.IO.Path.GetFullPath("Vorlage_HSP_Drawing.CATDrawing");
@@ -487,8 +443,6 @@ namespace Schraubengott
             drawingView1.Activate();
             #endregion
 
-
-
             // 2. Zeichenansicht erstellen (Draufsicht)
             DrawingView drawingView2 = drawingViews1.Add("AutomaticNaming");
             DrawingViewGenerativeBehavior drawingViewGenerativeBehavior2 = drawingView2.GenerativeBehavior;
@@ -510,10 +464,7 @@ namespace Schraubengott
             drawingView2.ReferenceView = drawingView1;
             drawingView2.AlignedWithReferenceView();
 
-
-
             #region Textfelder 
-
             DrawingView drawingView3 = drawingViews1.Add("Textfeld");
             DrawingViewGenerativeLinks drawingViewGenerativeLinks4 = drawingView3.GenerativeLinks;
             DrawingViewGenerativeBehavior drawingViewGenerativeBehavior3 = drawingView3.GenerativeBehavior;
@@ -527,16 +478,13 @@ namespace Schraubengott
             drawingViewGenerativeBehavior3 = drawingView3.GenerativeBehavior;
             drawingViewGenerativeBehavior3.Update();
             
-
             DrawingTexts texts1 = drawingView3.Texts;
             DrawingText text1 = texts1.Add(kundendaten[0], 44, 46.5);
             text1.SetFontSize(0, 0, 2.2);
 
-
             DrawingTexts texts2 = drawingView3.Texts;
             DrawingText text2 = texts2.Add(arr.typ, 141, 40.5);
             text2.SetFontSize(0, 0, 2.2);
-
 
             DrawingTexts texts3 = drawingView3.Texts;
             DrawingText text3 = texts2.Add(arr.material, 141, 36);
@@ -546,16 +494,12 @@ namespace Schraubengott
             DrawingText text4 = texts4.Add(bestellnummer.ToString(), 162, 26);
             text4.SetFontSize(0, 0, 3.5);
 
-
             string anschrift = kundendaten[2] + "\n" + kundendaten[3] + "\n" + kundendaten[4];
 
             DrawingTexts texts5 = drawingView3.Texts;
             DrawingText text5 = texts5.Add(anschrift, 21.5, 43);
             text5.SetFontSize(0, 0, 2.2);
-
-
             #endregion
         }
-
     }
 }
